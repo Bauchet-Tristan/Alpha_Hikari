@@ -6,7 +6,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: false
+            debug: true
         }
     },
     input:{
@@ -22,6 +22,7 @@ var config = {
 //var globale
 var gameOver = false;
 
+//control
 var left;
 var right;
 var up;
@@ -32,6 +33,8 @@ var cursors;
 
 //////var joueur//////
 var player;
+var playerX = 30;
+var playerY = 30;
 var lastDirection ="left";
 
 
