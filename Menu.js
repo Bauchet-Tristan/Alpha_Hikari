@@ -60,6 +60,7 @@ function Controls()
     left=cursors.left.isDown ? true : false;
     right=cursors.right.isDown ? true : false;
 
+
     space=cursors.space.isDown ? true : false;
 
     kunaiRight = keyD.isDown ? true : false;

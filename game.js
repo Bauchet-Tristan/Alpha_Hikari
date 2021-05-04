@@ -50,7 +50,10 @@ var kunaiLeft;
 var kunai_throw_left = false;
 var kunai_throw_right = false;
 
-
+//teleportation
+var kunai1TP=false;
+var kunai1_tp_effective=false;
+var kunai1_boucle_reset=true;
 
 //Timer
 var jumpTime = 0;

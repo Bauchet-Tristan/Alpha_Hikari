@@ -25,6 +25,7 @@ class lvl1 extends Phaser.Scene //
         keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         cursors = this.input.keyboard.createCursorKeys();
+
         cursors.left.reset();
         cursors.right.reset();
 
@@ -95,6 +96,7 @@ class lvl1 extends Phaser.Scene //
 
 
         /////////////////////////////Throw a Kunai
+        //left//
         if(kunaiLeft == true && kunai_throw_left==false)
         {
             kunai1 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(-400).setGravityY(-500);
@@ -102,29 +104,55 @@ class lvl1 extends Phaser.Scene //
             kunai_throw_left = true;
         }
 
-        if(kunaiRight == true && kunai_throw_right==false)
-        {
-            kunai2 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(400).setGravityY(-500);
-            kunaiRightTimer=0;
-            kunai_throw_right = true;
-        }
-        
         if(kunai_throw_left == true && kunaiLeftTimer >= 100)
         {
             kunai1.disableBody(true,true);
             kunai_throw_left = false;
-        }
+        }    
 
+
+        //right//
+        if(kunaiRight == true && kunai_throw_right==false && kunai2_boucle_reset == true)
+        {
+            kunai2 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(400).setGravityY(-500);
+            kunaiRightTimer=0;
+            kunai_throw_right = true;
+            kunai2_boucle_reset = false;
+        }
+        
         if(kunai_throw_right == true && kunaiRightTimer >= 100)
         {
             kunai2.disableBody(true,true);
             kunai_throw_right = false;
         }
+
         /////////////////////////////Throw a Kunai End
 
 
-        //Teleportation on a kunai//
+        ////Teleportation kunai////
 
+        //Unlock la tp si touche relever
+        if(kunaiLeft==false && kunai_throw_left==true)
+        {
+            kunai1TP=true;
+        }
+
+        //teleportation et brise le kunai
+        if(kunai1TP==true && kunaiLeft == true)
+        {
+            kunai1TP=false;
+            player.x=kunai1.x;
+            kunaiLeftTimer=201;
+
+            kunai1_tp_effective = true;
+        }
+
+        if(kunai1_tp_effective == true && kunaiLeft==false)
+        {
+            console.log("fin de tp et bouton relever");
+        }
+
+        
 
 
 

@@ -1,3 +1,4 @@
 Note : 
 
-- Faire un debut de code Alpha
+- Centrer le X et le Y du joueur
+
