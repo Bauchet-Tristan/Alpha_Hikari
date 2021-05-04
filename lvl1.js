@@ -21,13 +21,10 @@ class lvl1 extends Phaser.Scene //
     create ()
     {
         //this.add.text(20,20, "lvl1"); 
-
         //  Input Events Reset
         cursors = this.input.keyboard.createCursorKeys();
         cursors.left.reset();
         cursors.right.reset();
-        cursors.up.reset();
-        cursors.down.reset();
 
 
         // chargement de la carte
@@ -63,8 +60,6 @@ class lvl1 extends Phaser.Scene //
         //  Input Events Reset
         cursors.left.reset();
         cursors.right.reset();
-        cursors.up.reset();
-        cursors.down.reset();
     }
     
 
@@ -94,24 +89,14 @@ class lvl1 extends Phaser.Scene //
 
         space=cursors.space.isDown ? true : false;
 
+        
+        Deplacement(); 
+        
+        //Saut Axe Y-X
+        Jump();
 
-        //Deplacement
-        if (left==true)
-        {
-            lastDirection ="left";
-            player.setVelocityX(-150);
-            player.anims.play('left', true);
-        }
-        else if (right == true)
-        {
-            lastDirection ="right";
-            player.setVelocityX(150);
-            player.anims.play('right', true);
-        }
-        else{
-            player.setVelocityX(0);
-            player.anims.play('turn', true);
-        }
+        //Compteur actualisation ++
+        Timer();
     }
 }
 

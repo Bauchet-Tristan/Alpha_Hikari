@@ -37,5 +37,10 @@ var playerX = 30;
 var playerY = 30;
 var lastDirection ="left";
 
+//saut//
+var jump = false;
+
+//Timer
+var jumpTime = 0;
 
 var game = new Phaser.Game(config);

@@ -34,7 +34,7 @@ class Menu extends Phaser.Scene //
             frameRate: 10,
             repeat: -1
         });
-        
+
         this.anims.create({
             key: 'turn',
             frames: this.anims.generateFrameNumbers('dude', { start: 16, end: 17 }),
@@ -49,7 +49,68 @@ class Menu extends Phaser.Scene //
     {
         this.scene.start("lvl1");
     }
+}
 
+
+function Deplacement()
+{
+    ///////Deplacement axes X Marche-course///////
+
+    if (left==true)
+    {
+        lastDirection ="left";
+        player.setVelocityX(-150);
+        player.anims.play('left', true);
+    }
+    else if (right == true)
+    {
+        lastDirection ="right";
+        player.setVelocityX(150);
+        player.anims.play('right', true);
+    }
+    else
+    {
+        player.setVelocityX(0);
+        player.anims.play('turn', true);
+    }
+}
+
+function Jump()
+{
+    if (space==true && player.body.blocked.down)
+    {
+        jumpTime=0;
+        jump=true;
+    }
+
+    if(jump==true)
+    {
+        if(jumpTime<30)
+        {                                     
+            player.setVelocityY(-550);
+
+            if(lastDirection=="left")
+            {
+                player.setVelocityX(-400);
+            }
+            else if(lastDirection=="right")
+            {
+                player.setVelocityX(400);
+            }
+        }
+        else
+        {
+            player.setVelocityY(0);
+            player.setVelocityX(0);
+            jump=false;
+        }
+    }
+}
+
+function Timer()
+{
+    //saut
+    jumpTime++;
 }
 
 ////////////
