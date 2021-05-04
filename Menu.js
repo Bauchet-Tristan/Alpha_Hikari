@@ -14,6 +14,8 @@ class Menu extends Phaser.Scene //
     preload()
     {
         this.load.spritesheet('dude', 'assets/dude2.png', { frameWidth: 17, frameHeight: 21 });
+
+        this.load.image("kunai","assets/kunai.png");
     }
 
     create()
@@ -52,9 +54,16 @@ class Menu extends Phaser.Scene //
 }
 
 
-function Deplacement()
+function Controls()
 {
     ///////Deplacement axes X Marche-course///////
+    left=cursors.left.isDown ? true : false;
+    right=cursors.right.isDown ? true : false;
+
+    space=cursors.space.isDown ? true : false;
+
+    kunaiRight = keyD.isDown ? true : false;
+    kunaiLeft = keyQ.isDown ? true : false;
 
     if (left==true)
     {
@@ -74,6 +83,7 @@ function Deplacement()
         player.anims.play('turn', true);
     }
 }
+
 
 function Jump()
 {
@@ -107,10 +117,14 @@ function Jump()
     }
 }
 
+
+
 function Timer()
 {
     //saut
     jumpTime++;
+    kunaiRightTimer++;
+    kunaiLeftTimer++;
 }
 
 ////////////

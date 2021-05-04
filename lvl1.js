@@ -22,6 +22,8 @@ class lvl1 extends Phaser.Scene //
     {
         //this.add.text(20,20, "lvl1"); 
         //  Input Events Reset
+        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         cursors = this.input.keyboard.createCursorKeys();
         cursors.left.reset();
         cursors.right.reset();
@@ -84,16 +86,47 @@ class lvl1 extends Phaser.Scene //
         }
 
         //Controle Joueur
-        left=cursors.left.isDown ? true : false;
-        right=cursors.right.isDown ? true : false;
+        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
-        space=cursors.space.isDown ? true : false;
+        Controls(); 
 
-        
-        Deplacement(); 
-        
-        //Saut Axe Y-X
         Jump();
+
+
+        /////////////////////////////Throw a Kunai
+        if(kunaiLeft == true && kunai_throw_left==false)
+        {
+            kunai1 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(-400).setGravityY(-500);
+            kunaiLeftTimer =0;
+            kunai_throw_left = true;
+        }
+
+        if(kunaiRight == true && kunai_throw_right==false)
+        {
+            kunai2 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(400).setGravityY(-500);
+            kunaiRightTimer=0;
+            kunai_throw_right = true;
+        }
+        
+        if(kunai_throw_left == true && kunaiLeftTimer >= 100)
+        {
+            kunai1.disableBody(true,true);
+            kunai_throw_left = false;
+        }
+
+        if(kunai_throw_right == true && kunaiRightTimer >= 100)
+        {
+            kunai2.disableBody(true,true);
+            kunai_throw_right = false;
+        }
+        /////////////////////////////Throw a Kunai End
+
+
+        //Teleportation on a kunai//
+
+
+
 
         //Compteur actualisation ++
         Timer();

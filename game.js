@@ -25,11 +25,11 @@ var gameOver = false;
 //control
 var left;
 var right;
-var up;
-var down;
 
 var space;
 var cursors;
+var keyQ;
+var keyD;
 
 //////var joueur//////
 var player;
@@ -40,7 +40,22 @@ var lastDirection ="left";
 //saut//
 var jump = false;
 
+//Kunai//
+var kunai1;
+var kunai2;
+
+var kunaiRight;
+var kunaiLeft;
+
+var kunai_throw_left = false;
+var kunai_throw_right = false;
+
+
+
 //Timer
 var jumpTime = 0;
+
+var kunaiRightTimer = 0;
+var kunaiLeftTimer = 0;
 
 var game = new Phaser.Game(config);
