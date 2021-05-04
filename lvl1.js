@@ -39,7 +39,9 @@ class lvl1 extends Phaser.Scene //
         // chargement du calque calque_background
         this.backgroundLayer = this.carteDuNiveau.createStaticLayer("Background",this.tileset,0,0);
 
-
+        //Plateform Classic
+        this.plateformes = this.carteDuNiveau.createStaticLayer("Platform_Classic",this.tileset,0,0);
+        this.plateformes.setCollisionByExclusion(-1, true);
 
         //---player
         player = this.physics.add.sprite(playerX, playerY, 'dude');
@@ -48,9 +50,14 @@ class lvl1 extends Phaser.Scene //
 
 
         //---Camera
-        this.cameras.main.setSize(960,540);
-        this.cameras.main.setBounds(0,0,950,830);
+        this.cameras.main.setSize(1920,1080);
+        this.cameras.main.setBounds(0,0,3840,2160);
         this.cameras.main.startFollow(player,true,1,1);
+
+
+    ///////////Collide///////////
+
+        this.physics.add.collider(player, this.plateformes);
 
 
         //  Input Events Reset
@@ -76,8 +83,34 @@ class lvl1 extends Phaser.Scene //
     {
         if (gameOver == true)
         {
+            console.log("gameOver");
             gameOver = false;
             //return;
+        }
+
+        //Controle Joueur
+        left=cursors.left.isDown ? true : false;
+        right=cursors.right.isDown ? true : false;
+
+        space=cursors.space.isDown ? true : false;
+
+
+        //Deplacement
+        if (left==true)
+        {
+            lastDirection ="left";
+            player.setVelocityX(-150);
+            player.anims.play('left', true);
+        }
+        else if (right == true)
+        {
+            lastDirection ="right";
+            player.setVelocityX(150);
+            player.anims.play('right', true);
+        }
+        else{
+            player.setVelocityX(0);
+            player.anims.play('turn', true);
         }
     }
 }

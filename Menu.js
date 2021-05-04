@@ -29,34 +29,20 @@ class Menu extends Phaser.Scene //
         });
 
         this.anims.create({
-            key: 'turn',
-            frames: this.anims.generateFrameNumbers('dude', { start: 16, end: 17 }),
-            frameRate: 5,
-            repeat: -1
-        });
-
-        this.anims.create({
             key: 'right',
             frames: this.anims.generateFrameNumbers('dude', { start: 8, end: 11 }),
             frameRate: 10,
             repeat: -1
         });
-
+        
         this.anims.create({
-            key: 'down',
-            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: 'up',
-            frames: this.anims.generateFrameNumbers('dude', { start: 4, end: 7 }),
-            frameRate: 10,
+            key: 'turn',
+            frames: this.anims.generateFrameNumbers('dude', { start: 16, end: 17 }),
+            frameRate: 5,
             repeat: -1
         });
         /////
-        
+
     }
 
     update()
