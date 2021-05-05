@@ -2,17 +2,29 @@ Note :
 
 - Centrer le X et le Y du joueur
 
-
-
 A faire :
-
--Kunai sur place
 
 -Energie
 -vie
 -ennemi
-
 -Controle manette
 
+
+-interrupteur
+-porte
+
+
+
+
+Question mat :
+
+Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
+
+Les class pour pouvoir faire plusieur ennemie/cléf/portes/interupteur
+
+
 Equilibrage :
-On ne peut pas sauter en attaquant et inversement
+
+-On ne peut pas sauter en attaquant et inversement
+
+-Creer une touche reset timer kunai

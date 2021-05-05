@@ -98,9 +98,8 @@ class lvl1 extends Phaser.Scene //
     
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
-            console.log('je creer');
             kunaiStandTimer = 0;
-            kunai3 = this.physics.add.image(player.x-30, player.y, 'kunai').setGravityY(-500);
+            kunai3 = this.physics.add.image(player.x-1, player.y, 'kunai').setGravityY(-500);
             kunai_throw_stand = true;
         }
         KunaiHere();
@@ -110,19 +109,18 @@ class lvl1 extends Phaser.Scene //
         if(kunaiLeft == true && kunai_throw_left==false)
         {
             kunaiLeftTimer =0;
-            kunai1 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(-400).setGravityY(-500);
+            kunai1 = this.physics.add.image(player.x-33, player.y, 'kunai').setVelocityX(-400).setGravityY(-500);
             kunai_throw_left = true;
         }
 
         if(kunaiRight == true && kunai_throw_right==false)
         {
-            kunai2 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(400).setGravityY(-500);
+            kunai2 = this.physics.add.image(player.x+30, player.y, 'kunai').setVelocityX(400).setGravityY(-500);
             kunaiRightTimer=0;
             kunai_throw_right = true;
         }
         
         KunaiAndTP();
-
 
         Lightning();
 

@@ -171,7 +171,7 @@ function KunaiAndTP()
     {
         kunai1TP=false;
         kunaiLeftTimer =200;
-        player.x=kunai1.x;
+        player.x=kunai1.x+1.5;
         player.y=kunai1.y;
         player.setVelocityY(-20);
         player.setVelocityX(0);
@@ -204,7 +204,7 @@ function KunaiAndTP()
     {
         kunai2TP=false;
         kunaiRightTimer = 200;
-        player.x=kunai2.x;
+        player.x=kunai2.x+1.5;
         player.y=kunai2.y;
         player.setVelocityY(-20);
         player.setVelocityX(0);
@@ -220,7 +220,7 @@ function KunaiAndTP()
     {
         kunai3TP=false;
         kunaiStandTimer = 500;
-        player.x=kunai3.x;
+        player.x=kunai3.x+1.5;
         player.y=kunai3.y;
         player.setVelocityY(0);
         player.setVelocityX(0);
@@ -255,6 +255,3 @@ function Timer()
     kunaiLeftTimer++;
     kunaiStandTimer++;
 }
-
-////////////
-
