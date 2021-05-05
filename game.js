@@ -25,11 +25,14 @@ var gameOver = false;
 //control
 var left;
 var right;
+var down;
 
 var space;
 var cursors;
 var keyQ;
 var keyD;
+
+
 
 //////var joueur//////
 var player;
@@ -37,8 +40,15 @@ var playerX = 30;
 var playerY = 30;
 var lastDirection ="left";
 
-//saut//
+//Saut//
 var jump = false;
+
+//kunai on place
+var kunai3;
+
+var kunaiStand;
+
+var kunai_throw_stand = false;
 
 //Kunai//
 var kunai1;
@@ -50,14 +60,20 @@ var kunaiLeft;
 var kunai_throw_left = false;
 var kunai_throw_right = false;
 
-//teleportation
+//Teleportation
 var kunai1TP=false;
 var kunai2TP=false;
+var kunai3TP=false;
+
+//Lightning Attaque
+var lightning_attack;
+
 
 //Timer
 var jumpTime = 0;
 
 var kunaiRightTimer = 0;
 var kunaiLeftTimer = 0;
+var kunaiStandTimer = 0;
 
 var game = new Phaser.Game(config);

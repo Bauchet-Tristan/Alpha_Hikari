@@ -54,17 +54,23 @@ class Menu extends Phaser.Scene //
 }
 
 
+
+
+//Fonction du code en globale
+
 function Controls()
 {
     ///////Deplacement axes X Marche-course///////
-    left=cursors.left.isDown ? true : false;
-    right=cursors.right.isDown ? true : false;
+    left=cursors.left.isDown;
+    right=cursors.right.isDown;
+    down=cursors.down.isDown;
+    
 
+    space=cursors.space.isDown;
 
-    space=cursors.space.isDown ? true : false;
-
-    kunaiRight = keyD.isDown ? true : false;
-    kunaiLeft = keyQ.isDown ? true : false;
+    kunaiRight = keyD.isDown;
+    kunaiLeft = keyQ.isDown;
+    kunaiStand=cursors.up.isDown;
 
     if (left==true)
     {
@@ -119,6 +125,127 @@ function Jump()
 }
 
 
+function KunaiHere()
+{
+    if(kunai_throw_stand == true && kunaiStandTimer >= 500)
+    {
+        kunai3.disableBody(true,true);
+
+        if(kunaiStand==false)
+        {
+            kunai_throw_stand = false;
+            kunai3TP=false;
+        }
+    }  
+}
+
+function KunaiAndTP()
+{
+    //left
+    if(kunai_throw_left == true && kunaiLeftTimer >= 50)
+    {
+        kunai1.setVelocityX(0);
+    }
+
+    if(kunai_throw_left == true && kunaiLeftTimer >= 200)
+    {
+        kunai1.disableBody(true,true);
+
+        if(kunaiLeft==false)
+        {
+            kunai_throw_left = false;
+            kunai1TP=false;
+        }
+    }    
+
+    ////Teleportation kunai////
+    //Gauche
+    //Unlock la tp si touche relever
+    if(kunaiLeft==false && kunai_throw_left==true)
+    {
+        kunai1TP=true;
+    }
+    
+    //teleportation et brise le kunai
+    if(kunai1TP==true && kunaiLeft == true)
+    {
+        kunai1TP=false;
+        kunaiLeftTimer =200;
+        player.x=kunai1.x;
+        player.y=kunai1.y;
+        player.setVelocityY(-20);
+        player.setVelocityX(0);
+    }
+
+    //Droite//
+    if(kunai_throw_right == true && kunaiRightTimer >= 50)
+    {
+        kunai2.setVelocityX(0);
+    }
+    
+    if(kunai_throw_right == true && kunaiRightTimer >= 200)
+    {
+        kunai2.disableBody(true,true);
+
+        if(kunaiRight==false)
+        {
+            kunai_throw_right = false;
+            kunai2TP=false;
+        }
+        
+    }
+    //tp
+    if(kunaiRight==false && kunai_throw_right==true)
+    {
+        kunai2TP=true;
+    }
+    
+    if(kunai2TP==true && kunaiRight == true)
+    {
+        kunai2TP=false;
+        kunaiRightTimer = 200;
+        player.x=kunai2.x;
+        player.y=kunai2.y;
+        player.setVelocityY(-20);
+        player.setVelocityX(0);
+    }
+
+    //Stand
+    if(kunaiStand==false && kunai_throw_stand==true)
+    {
+        kunai3TP=true;
+    }
+    
+    if(kunai3TP==true && kunaiStand == true)
+    {
+        kunai3TP=false;
+        kunaiStandTimer = 500;
+        player.x=kunai3.x;
+        player.y=kunai3.y;
+        player.setVelocityY(0);
+        player.setVelocityX(0);
+    }
+}
+
+
+function Lightning()
+{
+    if(down==true) 
+    {
+        lightning_attack = true;
+    }
+
+    if(player.body.blocked.down==true)
+    {
+        lightning_attack=false;
+    }
+
+    if(lightning_attack == true)
+    {
+        player.setVelocityY(800);
+        player.setVelocityX(0);
+    }
+}
 
 function Timer()
 {
@@ -126,6 +253,7 @@ function Timer()
     jumpTime++;
     kunaiRightTimer++;
     kunaiLeftTimer++;
+    kunaiStandTimer++;
 }
 
 ////////////

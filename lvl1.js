@@ -94,9 +94,18 @@ class lvl1 extends Phaser.Scene //
 
         Jump();
 
+        //kunai on your place
+    
+        if(kunaiStand==true && kunai_throw_stand ==false)
+        {
+            console.log('je creer');
+            kunaiStandTimer = 0;
+            kunai3 = this.physics.add.image(player.x-30, player.y, 'kunai').setGravityY(-500);
+            kunai_throw_stand = true;
+        }
+        KunaiHere();
 
         /////////////////////////////Throw a Kunai
-        //left//
 
         if(kunaiLeft == true && kunai_throw_left==false)
         {
@@ -104,87 +113,18 @@ class lvl1 extends Phaser.Scene //
             kunai1 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(-400).setGravityY(-500);
             kunai_throw_left = true;
         }
-        
-        if(kunai_throw_left == true && kunaiLeftTimer >= 50)
-        {
-            kunai1.setVelocityX(0);
-        }
 
-        if(kunai_throw_left == true && kunaiLeftTimer >= 200)
-        {
-            kunai1.disableBody(true,true);
-
-            if(kunaiLeft==false)
-            {
-                kunai_throw_left = false;
-                kunai1TP=false;
-            }
-        }    
-
-
-        //right//
         if(kunaiRight == true && kunai_throw_right==false)
         {
             kunai2 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(400).setGravityY(-500);
             kunaiRightTimer=0;
             kunai_throw_right = true;
         }
-
-        if(kunai_throw_right == true && kunaiRightTimer >= 50)
-        {
-            kunai2.setVelocityX(0);
-        }
         
-        if(kunai_throw_right == true && kunaiRightTimer >= 200)
-        {
-            kunai2.disableBody(true,true);
-
-            if(kunaiRight==false)
-            {
-                kunai_throw_right = false;
-                kunai2TP=false;
-            }
-            
-        }
-
-        /////////////////////////////Throw a Kunai End
+        KunaiAndTP();
 
 
-        ////Teleportation kunai////
-
-        //Gauche
-        //Unlock la tp si touche relever
-        if(kunaiLeft==false && kunai_throw_left==true)
-        {
-            kunai1TP=true;
-        }
-        
-        //teleportation et brise le kunai
-        if(kunai1TP==true && kunaiLeft == true)
-        {
-            kunai1TP=false;
-            kunaiLeftTimer =200;
-            player.x=kunai1.x;
-            player.y=kunai1.y;
-        }
-
-        //Droite
-        if(kunaiRight==false && kunai_throw_right==true)
-        {
-            kunai2TP=true;
-        }
-        
-        if(kunai2TP==true && kunaiRight == true)
-        {
-            kunai2TP=false;
-            kunaiRightTimer =200;
-            player.x=kunai2.x;
-            player.y=kunai2.y;
-        }
-
-        
-
-
+        Lightning();
 
         //Compteur actualisation ++
         Timer();
