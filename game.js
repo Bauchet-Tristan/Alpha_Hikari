@@ -1,5 +1,5 @@
 var config = {
-    type: Phaser.AUTO, 
+    type: Phaser.AUTO,  
     width: 3840,
     height: 2160,
     physics: {
@@ -52,8 +52,7 @@ var kunai_throw_right = false;
 
 //teleportation
 var kunai1TP=false;
-var kunai1_tp_effective=false;
-var kunai1_boucle_reset=true;
+var kunai2TP=false;
 
 //Timer
 var jumpTime = 0;

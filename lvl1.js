@@ -97,33 +97,54 @@ class lvl1 extends Phaser.Scene //
 
         /////////////////////////////Throw a Kunai
         //left//
+
         if(kunaiLeft == true && kunai_throw_left==false)
         {
-            kunai1 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(-400).setGravityY(-500);
             kunaiLeftTimer =0;
+            kunai1 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(-400).setGravityY(-500);
             kunai_throw_left = true;
         }
+        
+        if(kunai_throw_left == true && kunaiLeftTimer >= 50)
+        {
+            kunai1.setVelocityX(0);
+        }
 
-        if(kunai_throw_left == true && kunaiLeftTimer >= 100)
+        if(kunai_throw_left == true && kunaiLeftTimer >= 200)
         {
             kunai1.disableBody(true,true);
-            kunai_throw_left = false;
+
+            if(kunaiLeft==false)
+            {
+                kunai_throw_left = false;
+                kunai1TP=false;
+            }
         }    
 
 
         //right//
-        if(kunaiRight == true && kunai_throw_right==false && kunai2_boucle_reset == true)
+        if(kunaiRight == true && kunai_throw_right==false)
         {
             kunai2 = this.physics.add.image(player.x, player.y, 'kunai').setVelocityX(400).setGravityY(-500);
             kunaiRightTimer=0;
             kunai_throw_right = true;
-            kunai2_boucle_reset = false;
+        }
+
+        if(kunai_throw_right == true && kunaiRightTimer >= 50)
+        {
+            kunai2.setVelocityX(0);
         }
         
-        if(kunai_throw_right == true && kunaiRightTimer >= 100)
+        if(kunai_throw_right == true && kunaiRightTimer >= 200)
         {
             kunai2.disableBody(true,true);
-            kunai_throw_right = false;
+
+            if(kunaiRight==false)
+            {
+                kunai_throw_right = false;
+                kunai2TP=false;
+            }
+            
         }
 
         /////////////////////////////Throw a Kunai End
@@ -131,25 +152,34 @@ class lvl1 extends Phaser.Scene //
 
         ////Teleportation kunai////
 
+        //Gauche
         //Unlock la tp si touche relever
         if(kunaiLeft==false && kunai_throw_left==true)
         {
             kunai1TP=true;
         }
-
+        
         //teleportation et brise le kunai
         if(kunai1TP==true && kunaiLeft == true)
         {
             kunai1TP=false;
+            kunaiLeftTimer =200;
             player.x=kunai1.x;
-            kunaiLeftTimer=201;
-
-            kunai1_tp_effective = true;
+            player.y=kunai1.y;
         }
 
-        if(kunai1_tp_effective == true && kunaiLeft==false)
+        //Droite
+        if(kunaiRight==false && kunai_throw_right==true)
         {
-            console.log("fin de tp et bouton relever");
+            kunai2TP=true;
+        }
+        
+        if(kunai2TP==true && kunaiRight == true)
+        {
+            kunai2TP=false;
+            kunaiRightTimer =200;
+            player.x=kunai2.x;
+            player.y=kunai2.y;
         }
 
         
