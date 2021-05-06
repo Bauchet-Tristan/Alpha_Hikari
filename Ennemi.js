@@ -14,16 +14,14 @@ class Ennemi extends Phaser.GameObjects.Sprite
 
     Patern()
     {
-        this.enemy.setVelocityX(50);
-        this.enemy.anims.play('WolfLeft',true);
+        //this.enemy.setVelocityX(50);
     }
 
-    PlayerEnemy(ennemi)
+    PlayerEnemy()
     {
         if(lightning_attack==true)
         {
-            console.log(ennemi);
-            ennemi.destroy();
+            this.enemy.destroy();
         }
     }
 }

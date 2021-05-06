@@ -110,6 +110,12 @@ function Controls()
 }
 
 
+function UI()
+{
+    
+}
+
+
 function Jump()
 {
     if (space==true && player.body.blocked.down || space==true && player.body.touching.down)

@@ -53,8 +53,8 @@ class lvl1 extends Phaser.Scene //
         door1 = new Porte(this,2);
 
         //Ennemi
-        enemy1 = new Ennemi(this);
-        enemy2 = new Ennemi(this);
+        /*enemy1 = new Ennemi(this);
+        enemy2 = new Ennemi(this);*/
 
         //---Camera
         this.cameras.main.setSize(1920,1080);
@@ -68,16 +68,16 @@ class lvl1 extends Phaser.Scene //
 
         this.physics.add.collider(player, door1.ReturnType());
         this.physics.add.collider(this.plateformes, door1.ReturnType());
-
+        
         this.enemyList = [enemy1,enemy2];
         
         //la boucle for fait plusieurs collide d'une meme class
+        /*
         for(let i=0; i < this.enemyList.length; i++)
         {
-            this.physics.add.collider(player, this.enemyList[i].ReturnType());
+            this.physics.add.collider(player, this.enemyList[i].ReturnType(),this.enemyList[i].PlayerEnemy);
             this.physics.add.collider(this.plateformes, this.enemyList[i].ReturnType());
-        }
-
+        }*/
 
 
         //  Input Events Reset
@@ -111,6 +111,8 @@ class lvl1 extends Phaser.Scene //
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
         Controls(); 
+
+        UI();
 
         Jump();
 
@@ -148,7 +150,9 @@ class lvl1 extends Phaser.Scene //
         door1.DoorOpen(2);
 
         //patern enemy
-        enemy1.Patern(this.scene);
+        //enemy1.Patern(this.scene);
+       
+       // enemy1.PlayerEnemy();
 
         //Compteur actualisation ++
         Timer();
