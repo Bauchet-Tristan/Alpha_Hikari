@@ -68,6 +68,9 @@ var kunai3TP=false;
 //Lightning Attaque
 var lightning_attack;
 
+//Door
+var door1;
+
 
 //Timer
 var jumpTime = 0;

@@ -16,6 +16,7 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet('dude', 'assets/dude2.png', { frameWidth: 17, frameHeight: 21 });
 
         this.load.image("kunai","assets/kunai.png");
+        this.load.image("door","assets/Door.png");
     }
 
     create()

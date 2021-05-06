@@ -49,6 +49,9 @@ class lvl1 extends Phaser.Scene //
         player.setCollideWorldBounds(true);
 
 
+        //door
+        door1 = new Porte(this);
+
         //---Camera
         this.cameras.main.setSize(1920,1080);
         this.cameras.main.setBounds(0,0,3840,2160);
@@ -58,6 +61,8 @@ class lvl1 extends Phaser.Scene //
     ///////////Collide///////////
 
         this.physics.add.collider(player, this.plateformes);
+        this.physics.add.collider(player, door1.returntype());
+        this.physics.add.collider(this.plateformes, door1.returntype());
 
 
         //  Input Events Reset
@@ -123,6 +128,8 @@ class lvl1 extends Phaser.Scene //
         KunaiAndTP();
 
         Lightning();
+        
+        door1.doorOpen(3);
 
         //Compteur actualisation ++
         Timer();

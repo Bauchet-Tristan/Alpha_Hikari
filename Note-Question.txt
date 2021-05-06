@@ -2,6 +2,8 @@ Note :
 
 - Centrer le X et le Y du joueur
 
+
+
 A faire :
 
 -Energie
@@ -10,9 +12,8 @@ A faire :
 -Controle manette
 
 
--interrupteur
--porte
-
+-Interrupteur
+-Porte
 
 
 
