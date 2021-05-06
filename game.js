@@ -71,6 +71,9 @@ var lightning_attack;
 //Door
 var door1;
 
+//Ennemi
+var enemy1;
+var enemy2;
 
 //Timer
 var jumpTime = 0;

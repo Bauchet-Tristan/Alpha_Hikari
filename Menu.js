@@ -17,13 +17,15 @@ class Menu extends Phaser.Scene //
 
         this.load.image("kunai","assets/kunai.png");
         this.load.image("door","assets/Door.png");
+
+        this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
     }
 
     create()
     {
         this.add.text(20,20, "Menu1");  
 
-        ///////////les anims
+        ///////////les anims Player
         this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers('dude', { start: 12, end: 15 }),
@@ -45,6 +47,21 @@ class Menu extends Phaser.Scene //
             repeat: -1
         });
         /////
+
+         ///////////les anims Ennemi
+        this.anims.create({
+            key: 'WolfLeft',
+            frames: this.anims.generateFrameNumbers('wolf', { start: 0, end: 11 }),
+            frameRate: 10,
+            repeat: -1
+        });
+    
+        this.anims.create({
+            key: 'WolfRight',
+            frames: this.anims.generateFrameNumbers('wolf', { start: 12, end: 23 }),
+            frameRate: 10,
+            repeat: -1
+        });
 
     }
 
@@ -95,7 +112,7 @@ function Controls()
 
 function Jump()
 {
-    if (space==true && player.body.blocked.down)
+    if (space==true && player.body.blocked.down || space==true && player.body.touching.down)
     {
         jumpTime=0;
         jump=true;

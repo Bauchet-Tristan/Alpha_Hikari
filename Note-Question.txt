@@ -21,7 +21,7 @@ Question mat :
 
 Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
 
-Les class pour pouvoir faire plusieur ennemie/cléf/portes/interupteur
+//Les class pour pouvoir faire plusieur ennemie/cléf/portes/interupteur
 
 
 Equilibrage :

@@ -50,7 +50,11 @@ class lvl1 extends Phaser.Scene //
 
 
         //door
-        door1 = new Porte(this);
+        door1 = new Porte(this,2);
+
+        //Ennemi
+        enemy1 = new Ennemi(this);
+        enemy2 = new Ennemi(this);
 
         //---Camera
         this.cameras.main.setSize(1920,1080);
@@ -61,8 +65,18 @@ class lvl1 extends Phaser.Scene //
     ///////////Collide///////////
 
         this.physics.add.collider(player, this.plateformes);
-        this.physics.add.collider(player, door1.returntype());
-        this.physics.add.collider(this.plateformes, door1.returntype());
+
+        this.physics.add.collider(player, door1.ReturnType());
+        this.physics.add.collider(this.plateformes, door1.ReturnType());
+
+        this.enemyList = [enemy1,enemy2];
+        
+        for(let i=0; i < this.enemyList.length; i++)
+        {
+            this.physics.add.collider(player, this.enemyList[i].ReturnType());
+            this.physics.add.collider(this.plateformes, this.enemyList[i].ReturnType());
+        }
+
 
 
         //  Input Events Reset
@@ -128,8 +142,12 @@ class lvl1 extends Phaser.Scene //
         KunaiAndTP();
 
         Lightning();
-        
-        door1.doorOpen(3);
+
+        //actualisation de l'ouverture de la porte
+        door1.DoorOpen(2);
+
+        //patern enemy
+        enemy1.Patern();
 
         //Compteur actualisation ++
         Timer();

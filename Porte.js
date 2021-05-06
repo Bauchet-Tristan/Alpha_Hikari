@@ -9,18 +9,16 @@ class Porte extends Phaser.GameObjects.Sprite
         this.ennemiMax = ennemiMax;
     }
 
-    returntype()
+    ReturnType()
     {
         return this.door;
     }
 
-    doorOpen(nombreEnnemie)
+    DoorOpen(nombreEnnemie)
     {
         if(nombreEnnemie>=this.ennemiMax)
         {
             this.door.destroy();
         }
-
-
     }
 }
