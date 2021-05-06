@@ -71,6 +71,7 @@ class lvl1 extends Phaser.Scene //
 
         this.enemyList = [enemy1,enemy2];
         
+        //la boucle for fait plusieurs collide d'une meme class
         for(let i=0; i < this.enemyList.length; i++)
         {
             this.physics.add.collider(player, this.enemyList[i].ReturnType());
@@ -147,7 +148,7 @@ class lvl1 extends Phaser.Scene //
         door1.DoorOpen(2);
 
         //patern enemy
-        enemy1.Patern();
+        enemy1.Patern(this.scene);
 
         //Compteur actualisation ++
         Timer();

@@ -264,6 +264,11 @@ function Lightning()
         player.setVelocityX(0);
     }
 }
+/*
+function PlayerEnemy()
+{
+
+}*/
 
 function Timer()
 {
