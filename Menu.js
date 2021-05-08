@@ -14,7 +14,6 @@ class Menu extends Phaser.Scene //
     preload()
     {
         this.load.spritesheet('dude', 'assets/dude2.png', { frameWidth: 17, frameHeight: 21 });
-        this.load.spritesheet('Arazami', 'assets/Arazami.png', { frameWidth: 200, frameHeight: 421 });
 
         this.load.image("kunai","assets/kunai.png");
         this.load.image("door","assets/Door.png");
@@ -29,21 +28,21 @@ class Menu extends Phaser.Scene //
         ///////////les anims Player
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('Arazami', { start: 12, end: 15 }),
+            frames: this.anims.generateFrameNumbers('dude', { start: 12, end: 15 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('Arazami', { start: 8, end: 11 }),
+            frames: this.anims.generateFrameNumbers('dude', { start: 8, end: 11 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'turn',
-            frames: this.anims.generateFrameNumbers('Arazami', { start: 16, end: 17 }),
+            frames: this.anims.generateFrameNumbers('dude', { start: 16, end: 17 }),
             frameRate: 5,
             repeat: -1
         });
