@@ -1,6 +1,7 @@
 Note : 
 
 - Centrer le X et le Y du joueur
+- Object phaser 
 
 
 
@@ -15,12 +16,17 @@ A faire :
 -Porte // partiellement
 -ennemi // partiellement
 
+ 
+
+
 
 Question mat :
 
-Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
+//Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
 
-//Les class, faire les collide enemy...
+Les class, faire les collide enemy...
+
+
 
 
 Equilibrage :

@@ -44,7 +44,7 @@ class lvl1 extends Phaser.Scene //
         this.plateformes.setCollisionByExclusion(-1, true);
 
         //---player
-        player = this.physics.add.sprite(playerX, playerY, 'dude');
+        player = this.physics.add.sprite(playerX, playerY, 'Arazami');
         player.setScale(2);
         player.setCollideWorldBounds(true);
 
@@ -53,8 +53,8 @@ class lvl1 extends Phaser.Scene //
         door1 = new Porte(this,2);
 
         //Ennemi
-        /*enemy1 = new Ennemi(this);
-        enemy2 = new Ennemi(this);*/
+        enemy1 = new Ennemi(this);
+        enemy2 = new Ennemi(this);
 
         //---Camera
         this.cameras.main.setSize(1920,1080);
@@ -72,12 +72,12 @@ class lvl1 extends Phaser.Scene //
         this.enemyList = [enemy1,enemy2];
         
         //la boucle for fait plusieurs collide d'une meme class
-        /*
+        
         for(let i=0; i < this.enemyList.length; i++)
         {
             this.physics.add.collider(player, this.enemyList[i].ReturnType(),this.enemyList[i].PlayerEnemy);
             this.physics.add.collider(this.plateformes, this.enemyList[i].ReturnType());
-        }*/
+        }
 
 
         //  Input Events Reset
@@ -150,9 +150,9 @@ class lvl1 extends Phaser.Scene //
         door1.DoorOpen(2);
 
         //patern enemy
-        //enemy1.Patern(this.scene);
+        enemy1.Patern(this.scene);
        
-       // enemy1.PlayerEnemy();
+        enemy1.PlayerEnemy();
 
         //Compteur actualisation ++
         Timer();
