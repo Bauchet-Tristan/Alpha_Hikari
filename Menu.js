@@ -13,6 +13,9 @@ class Menu extends Phaser.Scene //
 
     preload()
     {
+        this.load.image("Phaser_tuilesdejeu", "assets/Tile_Set.png");
+        this.load.tilemapTiledJSON("carte", "Map_Hikari.json");
+
         this.load.spritesheet('dude', 'assets/dude2.png', { frameWidth: 17, frameHeight: 21 });
 
         this.load.image("kunai","assets/kunai.png");
@@ -151,7 +154,7 @@ function Jump()
 
 function KunaiHere()
 {
-    if(kunai_throw_stand == true && kunaiStandTimer >= 500)
+    if(kunai_throw_stand == true && kunaiStandTimer >= DispawnKunaiThrowSet)
     {
         kunai3.disableBody(true,true);
 
@@ -166,12 +169,12 @@ function KunaiHere()
 function KunaiAndTP()
 {
     //left
-    if(kunai_throw_left == true && kunaiLeftTimer >= 50)
+    if(kunai_throw_left == true && kunaiLeftTimer >= OnplaceKunaiThrow)
     {
         kunai1.setVelocityX(0);
     }
 
-    if(kunai_throw_left == true && kunaiLeftTimer >= 200)
+    if(kunai_throw_left == true && kunaiLeftTimer >= DispawnKunaiThrowTimer)
     {
         kunai1.disableBody(true,true);
 
@@ -194,7 +197,7 @@ function KunaiAndTP()
     if(kunai1TP==true && kunaiLeft == true)
     {
         kunai1TP=false;
-        kunaiLeftTimer =200;
+        kunaiLeftTimer =300;
         player.x=kunai1.x+1.5;
         player.y=kunai1.y;
         player.setVelocityY(-20);
@@ -202,12 +205,12 @@ function KunaiAndTP()
     }
 
     //Droite//
-    if(kunai_throw_right == true && kunaiRightTimer >= 50)
+    if(kunai_throw_right == true && kunaiRightTimer >= OnplaceKunaiThrow)
     {
         kunai2.setVelocityX(0);
     }
     
-    if(kunai_throw_right == true && kunaiRightTimer >= 200)
+    if(kunai_throw_right == true && kunaiRightTimer >= DispawnKunaiThrowTimer)
     {
         kunai2.disableBody(true,true);
 
@@ -227,7 +230,7 @@ function KunaiAndTP()
     if(kunai2TP==true && kunaiRight == true)
     {
         kunai2TP=false;
-        kunaiRightTimer = 200;
+        kunaiRightTimer = DispawnKunaiThrowTimer;
         player.x=kunai2.x+1.5;
         player.y=kunai2.y;
         player.setVelocityY(-20);
@@ -270,11 +273,21 @@ function Lightning()
         player.setVelocityX(0);
     }
 }
-/*
-function PlayerEnemy()
-{
 
-}*/
+
+function collide1()
+{
+    //console.log("didier");
+    enemy1.PlayerEnemy();
+}
+
+
+function collide2()
+{
+    //console.log("didier");
+    enemy2.PlayerEnemy();
+}
+
 
 function Timer()
 {
@@ -283,4 +296,5 @@ function Timer()
     kunaiRightTimer++;
     kunaiLeftTimer++;
     kunaiStandTimer++;
+    invincibleTimer++;
 }

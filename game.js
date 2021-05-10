@@ -40,6 +40,9 @@ var playerX = 30;
 var playerY = 30;
 var lastDirection ="left";
 
+//vie//
+var playerHealth = 6;
+
 //Saut//
 var jump = false;
 
@@ -70,10 +73,14 @@ var lightning_attack;
 
 //Door
 var door1;
+var enemyNumber=0;
 
 //Ennemi
 var enemy1;
 var enemy2;
+
+var enemyList;
+var collideEnemyList;
 
 //Timer
 var jumpTime = 0;
@@ -81,5 +88,16 @@ var jumpTime = 0;
 var kunaiRightTimer = 0;
 var kunaiLeftTimer = 0;
 var kunaiStandTimer = 0;
+var invincibleTimer=0;
+
+
+
+//Equilibrage :
+var DispawnKunaiThrowTimer = 300 ;
+var DispawnKunaiThrowSet = 500 ;
+
+var SpeedKunaiThrow = 500 ;
+
+var OnplaceKunaiThrow = 100 ;
 
 var game = new Phaser.Game(config);

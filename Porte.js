@@ -1,11 +1,11 @@
 class Porte extends Phaser.GameObjects.Sprite 
 { 
-    constructor(scene,ennemiMax)
+    constructor(scene,ennemiMax,x,y)
     {
         super(scene);
         this.scene = scene;
-        this.door = this.scene.physics.add.image(50,50,"door");
-        this.door.setGravityY(0);
+        this.door = this.scene.physics.add.image(x,y,"door");
+        this.door.setImmovable(true);
         this.ennemiMax = ennemiMax;
     }
 
@@ -14,11 +14,11 @@ class Porte extends Phaser.GameObjects.Sprite
         return this.door;
     }
 
-    DoorOpen(nombreEnnemie)
+    DoorOpen()
     {
-        if(nombreEnnemie>=this.ennemiMax)
+        if(enemyNumber>=this.ennemiMax)
         {
-            this.door.destroy();
+            this.door.disableBody(true,true);
         }
     }
 }
