@@ -43,7 +43,7 @@ class lvl1 extends Phaser.Scene //
 
         //---player
         player = this.physics.add.sprite(playerX, playerY, 'dude');
-        player.setScale(2);
+        player.setScale(1);
         player.setCollideWorldBounds(true);
 
         //---Camera

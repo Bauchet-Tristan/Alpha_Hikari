@@ -4,7 +4,7 @@ class Ennemi extends Phaser.GameObjects.Sprite
     {
         super(scene);
         this.scene = scene;
-        this.enemy = this.scene.physics.add.sprite(x,y,"ennemi");
+        this.enemy = this.scene.physics.add.sprite(x,y,"ennemi").setScale(0.5);
         this.enemy.setImmovable(true);
     }
 

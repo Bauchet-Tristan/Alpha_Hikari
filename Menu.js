@@ -16,7 +16,8 @@ class Menu extends Phaser.Scene //
         this.load.image("Phaser_tuilesdejeu", "assets/Tile_Set.png");
         this.load.tilemapTiledJSON("carte", "Map_Hikari.json");
 
-        this.load.spritesheet('dude', 'assets/dude2.png', { frameWidth: 17, frameHeight: 21 });
+        this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 37, frameHeight: 53 });
+        this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 38, frameHeight: 53 });
 
         this.load.image("kunai","assets/kunai.png");
         this.load.image("door","assets/Door.png");
@@ -30,23 +31,58 @@ class Menu extends Phaser.Scene //
 
         ///////////les anims Player
         this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('dude', { start: 12, end: 15 }),
-            frameRate: 10,
+            key: 'RunLeft',
+            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 61, end: 89 }),
+            frameRate: 40,
             repeat: -1
         });
 
         this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('dude', { start: 8, end: 11 }),
-            frameRate: 10,
+            key: 'RunRight',
+            frames: this.anims.generateFrameNumbers('ArazamiR', { start: 61, end: 89 }),
+            frameRate: 40,
             repeat: -1
         });
 
         this.anims.create({
-            key: 'turn',
-            frames: this.anims.generateFrameNumbers('dude', { start: 16, end: 17 }),
-            frameRate: 5,
+            key: 'IdleR',
+            frames: this.anims.generateFrameNumbers('ArazamiR', { start: 0, end: 29 }),
+            frameRate: 30,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'IdleL',
+            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 0, end: 29 }),
+            frameRate: 30,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'AttackL',
+            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 31, end: 42 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'AttackR',
+            frames: this.anims.generateFrameNumbers('ArazamiR', { start: 31, end: 42 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'JumpR',
+            frames: this.anims.generateFrameNumbers('ArazamiR', { start: 44, end: 59 }),
+            frameRate: 16,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'JumpL',
+            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 44, end: 59 }),
+            frameRate: 16,
             repeat: -1
         });
         /////
@@ -97,18 +133,26 @@ function Controls()
     {
         lastDirection ="left";
         player.setVelocityX(-150);
-        player.anims.play('left', true);
+        player.anims.play('RunLeft', true);
     }
     else if (right == true)
     {
         lastDirection ="right";
         player.setVelocityX(150);
-        player.anims.play('right', true);
+        player.anims.play('RunRight', true);
     }
     else
     {
         player.setVelocityX(0);
-        player.anims.play('turn', true);
+        if(lastDirection=="left")
+        {
+            player.anims.play('IdleL', true);
+        }
+        else
+        {
+            player.anims.play('IdleR', true);
+        }
+        
     }
 }
 
@@ -273,6 +317,7 @@ function Lightning()
         player.setVelocityX(0);
     }
 }
+
 
 
 function collide1()
