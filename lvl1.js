@@ -18,16 +18,6 @@ class lvl1 extends Phaser.Scene //
 
     create ()
     {
-        //this.add.text(20,20, "lvl1"); 
-        //  Input Events Reset
-        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        cursors = this.input.keyboard.createCursorKeys();
-
-        cursors.left.reset();
-        cursors.right.reset();
-
-
         // chargement de la carte
         this.carteDuNiveau = this.add.tilemap("carte");
 
@@ -45,11 +35,39 @@ class lvl1 extends Phaser.Scene //
         player = this.physics.add.sprite(playerX, playerY, 'dude');
         player.body.setSize(50,90);
         player.setCollideWorldBounds(true);
-
+        
         //---Camera
         this.cameras.main.setSize(1920,1080);
         this.cameras.main.setBounds(0,0,3840,2160);
         this.cameras.main.startFollow(player,true,1,1);
+
+        ///////// UI
+
+        UILightBlue = this.add.image(620, 1000, 'UIBlue').setScrollFactor(0,0);
+        UILightBlue.setScale(0.08);
+
+        UILightYellow = this.add.image(1320, 1000, 'UIYellow').setScrollFactor(0,0);
+        UILightYellow.setScale(0.08);  
+
+
+        UIYang = this.add.image(920, 1000, 'UIYang').setScrollFactor(0,0);
+        UIYang.setScale(0.2);  
+
+        UIYin = this.add.image(1320, 1000, 'UIYin').setScrollFactor(0,0);
+        UIYin.setScale(0.2);
+
+
+        //  Input Events Reset
+        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        cursors = this.input.keyboard.createCursorKeys();
+
+        cursors.left.reset();
+        cursors.right.reset();
+
+
+        
+
 
         //Ennemi
         enemy1 = new Ennemi(this,250,250);

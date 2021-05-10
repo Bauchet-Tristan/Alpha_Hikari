@@ -22,6 +22,13 @@ class Menu extends Phaser.Scene //
         this.load.image("kunai","assets/kunai.png");
         this.load.image("door","assets/Door.png");
 
+        this.load.image("UIYin","assets/UIYin.png");
+        this.load.image("UIYang","assets/UIYang.png");
+        this.load.image("UIBlue","assets/UIBlue.png");
+        this.load.image("UIYellow","assets/UIYellow.png");
+
+
+
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
     }
 
@@ -159,7 +166,7 @@ function Controls()
 
 function UI()
 {
-    
+    UILightBlue;
 }
 
 

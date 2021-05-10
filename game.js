@@ -32,6 +32,12 @@ var cursors;
 var keyQ;
 var keyD;
 
+//UI
+var UILightBlue;
+var UILightYellow;
+
+var UIYin;
+var UIYang;
 
 
 //////var joueur//////
