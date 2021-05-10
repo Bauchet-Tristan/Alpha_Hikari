@@ -43,7 +43,7 @@ class lvl1 extends Phaser.Scene //
 
         //---player
         player = this.physics.add.sprite(playerX, playerY, 'dude');
-        player.setScale(1);
+        player.body.setSize(50,90);
         player.setCollideWorldBounds(true);
 
         //---Camera
@@ -60,7 +60,6 @@ class lvl1 extends Phaser.Scene //
 
         //door
         door1 = new Porte(this,enemyList.length,700,100);
-
 
     ///////////Collide///////////
 
@@ -125,7 +124,7 @@ class lvl1 extends Phaser.Scene //
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
             
-            kunai3 = this.physics.add.image(player.x-1, player.y, 'kunai').setGravityY(-500);
+            kunai3 = this.physics.add.image(player.x, player.y+40, 'kunai').setGravityY(-500);
             this.physics.add.collider(kunai3,this.plateformes);
             this.physics.add.collider(kunai3,door1.ReturnType());
             for(let i=0; i < enemyList.length; i++)
@@ -143,7 +142,7 @@ class lvl1 extends Phaser.Scene //
         if(kunaiLeft == true && kunai_throw_left==false)
         {
            
-            kunai1 = this.physics.add.image(player.x-33, player.y, 'kunai').setVelocityX(-SpeedKunaiThrow).setGravityY(-500); 
+            kunai1 = this.physics.add.image(player.x, player.y-22, 'kunai').setVelocityX(-SpeedKunaiThrow).setGravityY(-500); 
             this.physics.add.collider(kunai1,this.plateformes);
             this.physics.add.collider(kunai1,door1.ReturnType());
 
@@ -158,7 +157,7 @@ class lvl1 extends Phaser.Scene //
 
         if(kunaiRight == true && kunai_throw_right==false)
         {
-            kunai2 = this.physics.add.image(player.x+30, player.y, 'kunai').setVelocityX(SpeedKunaiThrow).setGravityY(-500);
+            kunai2 = this.physics.add.image(player.x, player.y-22, 'kunai').setVelocityX(SpeedKunaiThrow).setGravityY(-500);
             this.physics.add.collider(kunai2,this.plateformes);
             this.physics.add.collider(kunai2,door1.ReturnType());
             for(let i=0; i < enemyList.length; i++)

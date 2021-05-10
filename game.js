@@ -93,11 +93,11 @@ var invincibleTimer=0;
 
 
 //Equilibrage :
-var DispawnKunaiThrowTimer = 300 ;
+var DispawnKunaiThrowTimer = 250 ;
+var OnplaceKunaiThrow = 70 ;
+var SpeedKunaiThrow = 450 ;
+
+
 var DispawnKunaiThrowSet = 500 ;
-
-var SpeedKunaiThrow = 500 ;
-
-var OnplaceKunaiThrow = 100 ;
 
 var game = new Phaser.Game(config);

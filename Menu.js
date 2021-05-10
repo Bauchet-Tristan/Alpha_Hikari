@@ -16,8 +16,8 @@ class Menu extends Phaser.Scene //
         this.load.image("Phaser_tuilesdejeu", "assets/Tile_Set.png");
         this.load.tilemapTiledJSON("carte", "Map_Hikari.json");
 
-        this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 37, frameHeight: 53 });
-        this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 38, frameHeight: 53 });
+        this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
+        this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
 
         this.load.image("kunai","assets/kunai.png");
         this.load.image("door","assets/Door.png");
@@ -242,8 +242,8 @@ function KunaiAndTP()
     {
         kunai1TP=false;
         kunaiLeftTimer =300;
-        player.x=kunai1.x+1.5;
-        player.y=kunai1.y;
+        player.x=kunai1.x;
+        player.y=kunai1.y-40;
         player.setVelocityY(-20);
         player.setVelocityX(0);
     }
@@ -275,8 +275,8 @@ function KunaiAndTP()
     {
         kunai2TP=false;
         kunaiRightTimer = DispawnKunaiThrowTimer;
-        player.x=kunai2.x+1.5;
-        player.y=kunai2.y;
+        player.x=kunai2.x;
+        player.y=kunai2.y-40;
         player.setVelocityY(-20);
         player.setVelocityX(0);
     }
@@ -291,8 +291,8 @@ function KunaiAndTP()
     {
         kunai3TP=false;
         kunaiStandTimer = 500;
-        player.x=kunai3.x+1.5;
-        player.y=kunai3.y;
+        player.x=kunai3.x;
+        player.y=kunai3.y-40;
         player.setVelocityY(0);
         player.setVelocityX(0);
     }
