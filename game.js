@@ -31,13 +31,27 @@ var space;
 var cursors;
 var keyQ;
 var keyD;
+var keyZ;
 
 //UI
 var UILightBlue;
 var UILightYellow;
 
-var UIYin;
-var UIYang;
+var UIYinList =[UIYin1,UIYin2,UIYin3,UIYin4,UIYin5,UIYin6];//Energie
+var UIYin1;
+var UIYin2;
+var UIYin3;
+var UIYin4;
+var UIYin5;
+var UIYin6;
+
+var UIYangList =[UIYang1,UIYang2,UIYang3,UIYang4,UIYang5,UIYang6];//Vie
+var UIYang1;
+var UIYang2;
+var UIYang3;
+var UIYang4;
+var UIYang5;
+var UIYang6;
 
 
 //////var joueur//////
@@ -48,6 +62,9 @@ var lastDirection ="left";
 
 //vie//
 var playerHealth = 6;
+
+//Seishin//
+var playerSeishin = 6;
 
 //Saut//
 var jump = false;
@@ -100,10 +117,19 @@ var invincibleTimer=0;
 
 //Equilibrage :
 var DispawnKunaiThrowTimer = 250 ;
-var OnplaceKunaiThrow = 70 ;
-var SpeedKunaiThrow = 450 ;
-
+var OnplaceKunaiThrow = 80 ;
+var SpeedKunaiThrow = 500 ;
 
 var DispawnKunaiThrowSet = 500 ;
+
+
+//Jump//
+var jumpSpeed = 550;
+var Jump_time = 35;
+
+//run//
+var runSpeed =180;
+
+
 
 var game = new Phaser.Game(config);

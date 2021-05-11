@@ -134,19 +134,23 @@ function Controls()
 
     kunaiRight = keyD.isDown;
     kunaiLeft = keyQ.isDown;
-    kunaiStand=cursors.up.isDown;
+    kunaiStand = keyZ.isDown;
+    
+    balance=cursors.up.isDown;
 
-    if (left==true)
+    if (left == true)
     {
         lastDirection ="left";
-        player.setVelocityX(-150);
+        player.setVelocityX(-runSpeed);
         player.anims.play('RunLeft', true);
+        player.setOffset(20,20).setSize(60,90,false);
     }
     else if (right == true)
     {
         lastDirection ="right";
-        player.setVelocityX(150);
+        player.setVelocityX(runSpeed);
         player.anims.play('RunRight', true);
+        player.setOffset(20,20).setSize(60,90,false);
     }
     else
     {
@@ -154,10 +158,12 @@ function Controls()
         if(lastDirection=="left")
         {
             player.anims.play('IdleL', true);
+            player.setOffset(30,25).setSize(60,92,false);
         }
         else
         {
             player.anims.play('IdleR', true);
+            player.setOffset(16,25).setSize(60,92,false);
         }
         
     }
@@ -165,8 +171,46 @@ function Controls()
 
 
 function UI()
-{
-    UILightBlue;
+{    
+    if(playerHealth>=1){UIYangList[0].setAlpha(1);}
+    else{UIYangList[0].setAlpha(0);gameOver=true;}
+
+    if(playerHealth>=2){UIYangList[1].setAlpha(1);}
+    else{UIYangList[1].setAlpha(0);}
+
+    if(playerHealth>=3){UIYangList[2].setAlpha(1);}
+    else{UIYangList[2].setAlpha(0);}
+
+    if(playerHealth>=4){UIYangList[3].setAlpha(1);}
+    else{UIYangList[3].setAlpha(0);}
+
+    if(playerHealth>=5){UIYangList[4].setAlpha(1);}
+    else{UIYangList[4].setAlpha(0);}
+
+    if(playerHealth>=6){UIYangList[5].setAlpha(1);}
+    else{UIYangList[5].setAlpha(0);}
+
+    /////////
+
+    if(playerSeishin>=1){UIYinList[0].setAlpha(1);}
+    else{UIYinList[0].setAlpha(0);}
+
+    if(playerSeishin>=2){UIYinList[1].setAlpha(1);}
+    else{UIYinList[1].setAlpha(0);}
+
+    if(playerSeishin>=3){UIYinList[2].setAlpha(1);}
+    else{UIYinList[2].setAlpha(0);}
+
+    if(playerSeishin>=4){UIYinList[3].setAlpha(1);}
+    else{UIYinList[3].setAlpha(0);}
+
+    if(playerSeishin>=5){UIYinList[4].setAlpha(1);}
+    else{UIYinList[4].setAlpha(0);}
+
+    if(playerSeishin>=6){UIYinList[5].setAlpha(1);}
+    else{UIYinList[5].setAlpha(0);}
+
+///////////////////////////
 }
 
 
@@ -180,17 +224,19 @@ function Jump()
 
     if(jump==true)
     {
-        if(jumpTime<30)
+        if(jumpTime<Jump_time)
         {                                     
-            player.setVelocityY(-550);
+            player.setVelocityY(-jumpSpeed);
 
             if(lastDirection=="left")
             {
                 player.setVelocityX(-400);
+                player.anims.play('JumpL', true);
             }
             else if(lastDirection=="right")
             {
                 player.setVelocityX(400);
+                player.anims.play('JumpR', true);
             }
         }
         else
@@ -245,14 +291,15 @@ function KunaiAndTP()
     }
     
     //teleportation et brise le kunai
-    if(kunai1TP==true && kunaiLeft == true)
+    if(kunai1TP==true && kunaiLeft == true && playerSeishin >=1)
     {
         kunai1TP=false;
-        kunaiLeftTimer =300;
+        kunaiLeftTimer = 300;
         player.x=kunai1.x;
-        player.y=kunai1.y-40;
+        player.y=kunai1.y-90;
         player.setVelocityY(-20);
         player.setVelocityX(0);
+        playerSeishin--;
     }
 
     //Droite//
@@ -278,14 +325,15 @@ function KunaiAndTP()
         kunai2TP=true;
     }
     
-    if(kunai2TP==true && kunaiRight == true)
+    if(kunai2TP==true && kunaiRight == true && playerSeishin >=1)
     {
         kunai2TP=false;
         kunaiRightTimer = DispawnKunaiThrowTimer;
-        player.x=kunai2.x;
-        player.y=kunai2.y-40;
+        player.x=kunai2.x-60;
+        player.y=kunai2.y-91;
         player.setVelocityY(-20);
         player.setVelocityX(0);
+        playerSeishin--;
     }
 
     //Stand
@@ -294,14 +342,15 @@ function KunaiAndTP()
         kunai3TP=true;
     }
     
-    if(kunai3TP==true && kunaiStand == true)
+    if(kunai3TP==true && kunaiStand == true && playerSeishin >=1)
     {
         kunai3TP=false;
         kunaiStandTimer = 500;
-        player.x=kunai3.x;
-        player.y=kunai3.y-40;
+        player.x=kunai3.x-30;
+        player.y=kunai3.y-91;
         player.setVelocityY(0);
         player.setVelocityX(0);
+        playerSeishin--;
     }
 }
 
@@ -326,6 +375,19 @@ function Lightning()
 }
 
 
+function Balance()
+{
+    if(balance==true)
+    {
+        var retenu = playerHealth + playerSeishin;
+        //console.log(Math.floor(retenu/2));
+        if(Math.floor(retenu/2) > 0)
+        {
+            playerHealth = Math.floor(retenu /2);
+            playerSeishin = Math.floor(retenu/2);
+        }
+    }
+}
 
 function collide1()
 {

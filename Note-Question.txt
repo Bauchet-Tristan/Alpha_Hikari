@@ -7,10 +7,9 @@ Note :
 
 A faire :
 
--Energie
--vie
+-refaire tiled
+-leger lvl design
 -Controle manette
-
 
 -Interrupteur // partiellement
 -Porte // partiellement
@@ -22,15 +21,28 @@ A faire :
 
 Question mat :
 
-//Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
+-Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
 
-Les class, faire les collide enemy...
+-Les class, faire les collide enemy...
+
+-Kunia qui traverse le mur quand on est coler au mur
 
 
 
 
-Equilibrage :
+Equilibrage / ajout / Beta :
+
+-Saut temp qu'on a pas sauter on peut le faire meme en l'air
+
+-Hit box / Origin ect...
+
+-Créer une touche se baisser
+
+-Creer une fonction animation avec les anims 
+
+-Creer une touche reset timer kunai
 
 -On ne peut pas sauter en attaquant et inversement
 
--Creer une touche reset timer kunai
+
+
