@@ -7,9 +7,11 @@ Note :
 
 A faire :
 
+
 -refaire tiled
 -leger lvl design
 -Controle manette
+-Bonus
 
 -Interrupteur // partiellement
 -Porte // partiellement
