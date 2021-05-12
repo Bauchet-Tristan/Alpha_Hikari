@@ -2,27 +2,26 @@ class Ennemi extends Phaser.GameObjects.Sprite
 { 
     constructor(scene,x,y)
     {
-        super(scene);
-        this.scene = scene;
-        this.enemy = this.scene.physics.add.sprite(x,y,"ennemi").setScale(0.5);
-        this.enemy.setImmovable(true);
-    }
+        super(scene,x,y,"ennemi");
+        scene.add.existing(this);
+        scene.physics.world.enableBody(this);
 
-    ReturnType()
-    {
-        return this.enemy;
+        ///self = this;////
+        this.body.immovable=true;
+        this.body.collideWorldBounds=true;
+        // console.log(this.body);
     }
 
     Patern()
     {
-        this.enemy.setVelocityX(50);
+        this.body.setVelocityX(-100);
     }
 
-    PlayerEnemy()
+    PlayerEnemy(enemy)
     {
         if(lightning_attack==true)
         {
-            this.enemy.disableBody(true,true);
+            enemy.destroy();
             enemyNumber++;
         }
         else
@@ -34,5 +33,4 @@ class Ennemi extends Phaser.GameObjects.Sprite
             }
         }
     }
-
 }

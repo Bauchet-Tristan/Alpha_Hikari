@@ -6,7 +6,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 500 },
-            debug: false
+            debug: true
         }
     },
     input:{
@@ -68,6 +68,7 @@ var playerSeishin = 6;
 
 //Saut//
 var jump = false;
+var canJump = false;
 
 //kunai on place
 var kunai3;

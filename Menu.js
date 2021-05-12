@@ -216,8 +216,15 @@ function UI()
 
 function Jump()
 {
-    if (space==true && player.body.blocked.down || space==true && player.body.touching.down)
+    if (player.body.blocked.down || player.body.touching.down )
     {
+        canJump = true;
+    }
+
+    if (space==true && canJump == true)
+    {
+        canJump = false;
+        console.log(canJump)
         jumpTime=0;
         jump=true;
     }
@@ -371,6 +378,7 @@ function Lightning()
     {
         player.setVelocityY(800);
         player.setVelocityX(0);
+        canJump=false;
     }
 }
 
@@ -389,18 +397,7 @@ function Balance()
     }
 }
 
-function collide1()
-{
-    //console.log("didier");
-    enemy1.PlayerEnemy();
-}
 
-
-function collide2()
-{
-    //console.log("didier");
-    enemy2.PlayerEnemy();
-}
 
 
 function Timer()

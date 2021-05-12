@@ -8,6 +8,8 @@ Note :
 A faire :
 
 
+-KEY Binding QZD
+
 -refaire tiled
 -leger lvl design
 -Controle manette
@@ -27,14 +29,13 @@ Question mat :
 
 -Les class, faire les collide enemy...
 
--Kunia qui traverse le mur quand on est coler au mur
+-Kunai qui traverse le mur quand on est coler au mur
 
 
 
 
 Equilibrage / ajout / Beta :
 
--Saut temp qu'on a pas sauter on peut le faire meme en l'air
 
 -Hit box / Origin ect...
 

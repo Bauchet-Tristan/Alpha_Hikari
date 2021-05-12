@@ -18,6 +18,21 @@ class lvl1 extends Phaser.Scene //
 
     create ()
     {
+        cursors = this.input.keyboard.createCursorKeys();
+
+        //  Input Events Reset
+        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
+
+        cursors.left.reset();
+        cursors.right.reset();
+        cursors.up.reset();
+        cursors.down.reset();
+        cursors.left.reset();
+        cursors.space.reset();
+
+
         // chargement de la carte
         this.carteDuNiveau = this.add.tilemap("carte");
 
@@ -59,23 +74,12 @@ class lvl1 extends Phaser.Scene //
             UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin').setScrollFactor(0,0).setScale(0.15);
         }
 
-        //  Input Events Reset
-        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
-        cursors = this.input.keyboard.createCursorKeys();
-
-        cursors.left.reset();
-        cursors.right.reset();
-
-
-        
+       
         //Ennemi
-        enemy1 = new Ennemi(this,250,250);
-        enemy2 = new Ennemi(this,250,250);
+        enemy1 = new Ennemi(this,350,350).setScale(0.7);
+        enemy2 = new Ennemi(this,250,250).setScale(0.7);
 
         enemyList = [enemy1,enemy2];
-        collideEnemyList =[collide1,collide2];
 
         //door
         door1 = new Porte(this,enemyList.length,700,100);
@@ -86,16 +90,13 @@ class lvl1 extends Phaser.Scene //
 
         for(let i=0; i < enemyList.length; i++)
         {
-            this.physics.add.collider(player, enemyList[i].ReturnType(),collideEnemyList[i]);
-            this.physics.add.collider(this.plateformes, enemyList[i].ReturnType());
-            enemyList[i].ReturnType().setCollideWorldBounds(true);
+            this.physics.add.collider(enemyList[i],player,enemyList[i].PlayerEnemy);
+            this.physics.add.collider(this.plateformes, enemyList[i]);
         }
 
 
-        this.physics.add.collider(player, door1.ReturnType());
-        this.physics.add.collider(this.plateformes, door1.ReturnType());
-        door1.ReturnType().setCollideWorldBounds(true);
-        
+        this.physics.add.collider(player, door1);
+        this.physics.add.collider(this.plateformes, door1);
         
         
         //la boucle for fait plusieurs collide d'une meme class
@@ -104,6 +105,10 @@ class lvl1 extends Phaser.Scene //
         //  Input Events Reset
         cursors.left.reset();
         cursors.right.reset();
+        cursors.up.reset();
+        cursors.down.reset();
+        cursors.left.reset();
+        cursors.space.reset();
     }
     
 
@@ -140,6 +145,8 @@ class lvl1 extends Phaser.Scene //
 
         Jump();
 
+        Lightning();
+
         //kunai on your place
     
         if(kunaiStand==true && kunai_throw_stand ==false)
@@ -147,10 +154,10 @@ class lvl1 extends Phaser.Scene //
             
             kunai3 = this.physics.add.image(player.x+45, player.y+90, 'kunai').setGravityY(-500);
             this.physics.add.collider(kunai3,this.plateformes);
-            this.physics.add.collider(kunai3,door1.ReturnType());
+            //this.physics.add.collider(kunai3,door1);
             for(let i=0; i < enemyList.length; i++)
             {
-                this.physics.add.collider(kunai3, enemyList[i].ReturnType());
+                this.physics.add.collider(kunai3, enemyList[i]);
             }
 
             kunaiStandTimer = 0;
@@ -166,11 +173,11 @@ class lvl1 extends Phaser.Scene //
            
             kunai1 = this.physics.add.image(player.x, player.y+15, 'kunai').setVelocityX(-SpeedKunaiThrow).setGravityY(-500); 
             this.physics.add.collider(kunai1,this.plateformes);
-            this.physics.add.collider(kunai1,door1.ReturnType());
+            //this.physics.add.collider(kunai1,door1);
 
             for(let i=0; i < enemyList.length; i++)
             {
-                this.physics.add.collider(kunai1, enemyList[i].ReturnType());
+                this.physics.add.collider(kunai1, enemyList[i]);
             }
 
             kunaiLeftTimer =0;
@@ -181,10 +188,10 @@ class lvl1 extends Phaser.Scene //
         {
             kunai2 = this.physics.add.image(player.x+60, player.y+15, 'kunai').setVelocityX(SpeedKunaiThrow).setGravityY(-500);
             this.physics.add.collider(kunai2,this.plateformes);
-            this.physics.add.collider(kunai2,door1.ReturnType());
+            //this.physics.add.collider(kunai2,door1);
             for(let i=0; i < enemyList.length; i++)
             {
-                this.physics.add.collider(kunai2, enemyList[i].ReturnType());
+                this.physics.add.collider(kunai2, enemyList[i]);
             }
 
             kunaiRightTimer=0;
@@ -193,15 +200,30 @@ class lvl1 extends Phaser.Scene //
         
         KunaiAndTP();
 
-        Lightning();
-
         Balance();
 
-        //actualisation de l'ouverture de la porte
+
+        
+        //Actualisation de l'ouverture de la porte
         door1.DoorOpen();
 
         //patern enemy
-        enemy1.Patern(this.scene);
+        for(let i=0; i < enemyList.length; i++)
+        {
+            if(enemyList[i].active == true)
+            {
+                enemyList[i].Patern();
+            }
+        }
+        
+       /* if(enemyList[1].active == true)
+        {
+            enemyList[1].Patern();
+        }
+*/
+
+        
+
 
         //Compteur actualisation ++
         Timer();
