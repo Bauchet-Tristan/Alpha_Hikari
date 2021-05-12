@@ -23,11 +23,11 @@ var config = {
 var gameOver = false;
 
 //control
-var left;
-var right;
-var down;
+var leftButton;
+var rightButton;
+var downButton;
 
-var space;
+var jumpButton;
 var cursors;
 var keyQ;
 var keyD;
@@ -60,7 +60,12 @@ var playerX = 30;
 var playerY = 30;
 var lastDirection ="left";
 
-//vie//
+//Deplacement//
+var runLeft;
+var runRight;
+var idle;
+
+//Vie//
 var playerHealth = 6;
 
 //Seishin//
@@ -70,7 +75,12 @@ var playerSeishin = 6;
 var jump = false;
 var canJump = false;
 
-//kunai on place
+//Se baisser//
+var playerCrouch;
+var crouching;
+
+
+//Kunai on place
 var kunai3;
 
 var kunaiStand;
@@ -113,6 +123,10 @@ var kunaiRightTimer = 0;
 var kunaiLeftTimer = 0;
 var kunaiStandTimer = 0;
 var invincibleTimer=0;
+
+
+
+
 
 
 

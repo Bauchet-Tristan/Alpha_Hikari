@@ -118,57 +118,7 @@ class Menu extends Phaser.Scene //
 }
 
 
-
-
 //Fonction du code en globale
-
-function Controls()
-{
-    ///////Deplacement axes X Marche-course///////
-    left=cursors.left.isDown;
-    right=cursors.right.isDown;
-    down=cursors.down.isDown;
-    
-
-    space=cursors.space.isDown;
-
-    kunaiRight = keyD.isDown;
-    kunaiLeft = keyQ.isDown;
-    kunaiStand = keyZ.isDown;
-    
-    balance=cursors.up.isDown;
-
-    if (left == true)
-    {
-        lastDirection ="left";
-        player.setVelocityX(-runSpeed);
-        player.anims.play('RunLeft', true);
-        player.setOffset(20,20).setSize(60,90,false);
-    }
-    else if (right == true)
-    {
-        lastDirection ="right";
-        player.setVelocityX(runSpeed);
-        player.anims.play('RunRight', true);
-        player.setOffset(20,20).setSize(60,90,false);
-    }
-    else
-    {
-        player.setVelocityX(0);
-        if(lastDirection=="left")
-        {
-            player.anims.play('IdleL', true);
-            player.setOffset(30,25).setSize(60,92,false);
-        }
-        else
-        {
-            player.anims.play('IdleR', true);
-            player.setOffset(16,25).setSize(60,92,false);
-        }
-        
-    }
-}
-
 
 function UI()
 {    
@@ -214,21 +164,131 @@ function UI()
 }
 
 
-function Jump()
+function Controls()
 {
-    if (player.body.blocked.down || player.body.touching.down )
+    ///////Deplacement axes X Marche-course///////
+    leftButton=cursors.left.isDown;
+    rightButton=cursors.right.isDown;
+    downButton=cursors.down.isDown;
+    
+    jumpButton=cursors.space.isDown;
+
+    kunaiRight = keyD.isDown;
+    kunaiLeft = keyQ.isDown;
+    kunaiStand = keyZ.isDown;
+    
+    balanceButton=cursors.up.isDown;
+
+
+
+    //Shifting
+    if (leftButton == true)
+    {
+        runLeft = true;
+        runRight = false;
+    }
+    else if (rightButton == true)
+    {
+        runRight = true;
+        runLeft = false;
+    }
+    else
+    {
+        runRight = false;
+        runLeft = false;
+        idle = true;
+    }
+
+
+
+    //On peu JUMP
+    if(player.body.blocked.down || player.body.touching.down)
     {
         canJump = true;
     }
 
-    if (space==true && canJump == true)
+    //Lighting attack
+    if(downButton==true && !player.body.blocked.down) 
     {
+        lightning_attack = true;
+        jumpTime = 35; // cancel le jump si attack
+        canJump=false; // cancel le jump si attack
+    }
+    //Crouch 
+    else if(downButton == true && player.body.blocked.down) 
+    {
+        playerCrouch = true;
+        lightning_attack = false;
+        canJump=false;
+        //console.log("egjijr");
+    }
+    else
+    {
+        playerCrouch = false;
+    }
+
+    if(player.body.blocked.down==true)
+    {
+        lightning_attack=false;
+    }
+
+    //Jump 
+    if (jumpButton == true && canJump == true)
+    {   
         canJump = false;
-        console.log(canJump)
         jumpTime=0;
         jump=true;
     }
 
+    //Balance
+    if(balanceButton==true)
+    {
+        balance=true;
+    }
+    else
+    {
+        balance=false;
+    }
+}
+
+function Shifting()
+{
+    if(runLeft == true)
+    {
+        lastDirection ="left";
+        player.setVelocityX(-runSpeed);
+        player.anims.play('RunLeft', true);
+        player.setOffset(20,25).setSize(60,90,false);
+    }
+    else if (runRight == true)
+    {
+        lastDirection ="right";
+        player.setVelocityX(runSpeed);
+        player.anims.play('RunRight', true);
+        player.setOffset(20,25).setSize(60,90,false);
+    }
+    else if(idle == true)
+    {
+        player.setVelocityX(0);
+
+        if(lastDirection=="left")
+        {
+            player.anims.play('IdleL', true);
+            player.setOffset(30,25).setSize(60,90,false);
+        }
+        else
+        {
+            player.anims.play('IdleR', true);
+            player.setOffset(16,25).setSize(60,90,false);
+        }
+    }
+    else{}
+}
+
+
+
+function Jump()
+{
     if(jump==true)
     {
         if(jumpTime<Jump_time)
@@ -364,21 +424,25 @@ function KunaiAndTP()
 
 function Lightning()
 {
-    if(down==true) 
-    {
-        lightning_attack = true;
-    }
-
-    if(player.body.blocked.down==true)
-    {
-        lightning_attack=false;
-    }
-
     if(lightning_attack == true)
     {
         player.setVelocityY(800);
         player.setVelocityX(0);
-        canJump=false;
+    }
+}
+
+function Crouch()
+{
+    if(playerCrouch == true)
+    {
+        player.setOffset(20,20).setSize(60,45,false);
+        crouching = true;
+    }
+
+    if(crouching == true && playerCrouch==false)
+    {
+        player.y=player.y-45
+        crouching =false;
     }
 }
 
@@ -396,8 +460,6 @@ function Balance()
         }
     }
 }
-
-
 
 
 function Timer()

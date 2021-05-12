@@ -139,13 +139,20 @@ class lvl1 extends Phaser.Scene //
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);     
 
+        UI();
+
         Controls(); 
 
-        UI();
+        Shifting();
 
         Jump();
 
         Lightning();
+        
+        Crouch();
+
+        
+
 
         //kunai on your place
     
@@ -203,7 +210,7 @@ class lvl1 extends Phaser.Scene //
         Balance();
 
 
-        
+
         //Actualisation de l'ouverture de la porte
         door1.DoorOpen();
 

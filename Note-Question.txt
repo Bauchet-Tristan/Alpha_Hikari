@@ -27,15 +27,14 @@ Question mat :
 
 -Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
 
--Les class, faire les collide enemy...
-
--Kunai qui traverse le mur quand on est coler au mur
+-Kunai qui traverse le mur quand on est colé au mur
 
 
 
 
 Equilibrage / ajout / Beta :
 
+-Une action a la fois (mettre les controle dans la meme fonction)
 
 -Hit box / Origin ect...
 
