@@ -14,7 +14,7 @@ class Porte extends Phaser.GameObjects.Sprite
 
     DoorOpen()
     {
-        if(enemyNumber>=this.ennemiMax)
+        if(enemyNumberToUnlock>=this.ennemiMax)
         {
             this.destroy();
         }

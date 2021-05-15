@@ -46,6 +46,7 @@ class lvl1 extends Phaser.Scene //
         this.plateformes = this.carteDuNiveau.createStaticLayer("Platform_Classic",this.tileset,0,0);
         this.plateformes.setCollisionByExclusion(-1, true);
 
+
         //---player
         player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0,0).setOffset(30,25).setSize(60,90,false);
 
@@ -74,25 +75,43 @@ class lvl1 extends Phaser.Scene //
             UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin').setScrollFactor(0,0).setScale(0.15);
         }
 
-       
-        //Ennemi
-        enemy1 = new Ennemi(this,350,350).setScale(0.7);
-        enemy2 = new Ennemi(this,250,250).setScale(0.7);
 
-        enemyList = [enemy1,enemy2];
+        this.groupeEnemy = this.physics.add.group({
+    
+        });
+
+        const groupeEnemyObjects = this.carteDuNiveau.getObjectLayer('didier').objects;
+
+        for(const i of groupeEnemyObjects){
+            enemyNumberToUnlock++;
+            this.groupeEnemy.create(i.x,i.y, 'ennemi')
+            .setOrigin(0.5,0.5)
+            .setScale(0.7);
+        };
+
+        for (const i of this.groupeEnemy.children.entries) {
+
+            this.physics.add.collider(i,player,PlayerEnemy);
+            this.physics.add.collider(this.plateformes,i);
+        }
+
+        //Ennemi
+        //enemy1 = new Ennemi(this,350,350).setScale(0.7);
+        //enemy2 = new Ennemi(this,250,250).setScale(0.7);
+        //enemyList = [enemy1,enemy2];
 
         //door
-        door1 = new Porte(this,enemyList.length,700,100);
+        door1 = new Porte(this,enemyNumberToUnlock,700,100);
 
     ///////////Collide///////////
 
         this.physics.add.collider(player, this.plateformes);
 
-        for(let i=0; i < enemyList.length; i++)
+       /* for(let i=0; i < enemyList.length; i++)
         {
             this.physics.add.collider(enemyList[i],player,enemyList[i].PlayerEnemy);
             this.physics.add.collider(this.plateformes, enemyList[i]);
-        }
+        }*/
 
 
         this.physics.add.collider(player, door1);
@@ -215,13 +234,13 @@ class lvl1 extends Phaser.Scene //
         door1.DoorOpen();
 
         //patern enemy
-        for(let i=0; i < enemyList.length; i++)
+        /*for(let i=0; i < enemyList.length; i++)
         {
             if(enemyList[i].active == true)
             {
                 enemyList[i].Patern();
             }
-        }
+        }*/
         
        /* if(enemyList[1].active == true)
         {

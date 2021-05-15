@@ -107,14 +107,13 @@ var lightning_attack;
 
 //Door
 var door1;
-var enemyNumber=0;
+var enemyNumberToUnlock=0;
 
 //Ennemi
 var enemy1;
 var enemy2;
 
-var enemyList;
-var collideEnemyList;
+var test=0;
 
 //Timer
 var jumpTime = 0;

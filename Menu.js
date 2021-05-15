@@ -97,14 +97,14 @@ class Menu extends Phaser.Scene //
          ///////////les anims Ennemi
         this.anims.create({
             key: 'WolfLeft',
-            frames: this.anims.generateFrameNumbers('wolf', { start: 0, end: 11 }),
+            frames: this.anims.generateFrameNumbers('ennemi', { start: 0, end: 11 }),
             frameRate: 10,
             repeat: -1
         });
     
         this.anims.create({
             key: 'WolfRight',
-            frames: this.anims.generateFrameNumbers('wolf', { start: 12, end: 23 }),
+            frames: this.anims.generateFrameNumbers('ennemi', { start: 12, end: 23 }),
             frameRate: 10,
             repeat: -1
         });
@@ -119,6 +119,25 @@ class Menu extends Phaser.Scene //
 
 
 //Fonction du code en globale
+
+function PlayerEnemy(i,player)
+{
+    if(lightning_attack==true)
+    {
+        i.destroy();
+        enemyNumberToUnlock++;
+    }
+    else
+    {
+        if(invincibleTimer>= 210)
+        {
+            playerHealth--;
+            invincibleTimer =0;
+        }
+    }
+}
+
+
 
 function UI()
 {    
