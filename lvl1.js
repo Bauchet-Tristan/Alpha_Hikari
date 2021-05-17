@@ -46,6 +46,9 @@ class lvl1 extends Phaser.Scene //
         this.plateformes = this.carteDuNiveau.createStaticLayer("Platform_Classic",this.tileset,0,0);
         this.plateformes.setCollisionByExclusion(-1, true);
 
+        //platform background
+        this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
+
 
         //---player
         player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0,0).setOffset(30,25).setSize(60,90,false);
@@ -181,10 +184,10 @@ class lvl1 extends Phaser.Scene //
             kunai3 = this.physics.add.image(player.x+45, player.y+90, 'kunai').setGravityY(-500);
             this.physics.add.collider(kunai3,this.plateformes);
             //this.physics.add.collider(kunai3,door1);
-            for(let i=0; i < enemyList.length; i++)
+            /*for(let i=0; i < enemyList.length; i++)
             {
                 this.physics.add.collider(kunai3, enemyList[i]);
-            }
+            }*/
 
             kunaiStandTimer = 0;
             kunai_throw_stand = true;
@@ -201,10 +204,10 @@ class lvl1 extends Phaser.Scene //
             this.physics.add.collider(kunai1,this.plateformes);
             //this.physics.add.collider(kunai1,door1);
 
-            for(let i=0; i < enemyList.length; i++)
+            /*for(let i=0; i < enemyList.length; i++)
             {
                 this.physics.add.collider(kunai1, enemyList[i]);
-            }
+            }*/
 
             kunaiLeftTimer =0;
             kunai_throw_left = true;
@@ -215,10 +218,10 @@ class lvl1 extends Phaser.Scene //
             kunai2 = this.physics.add.image(player.x+60, player.y+15, 'kunai').setVelocityX(SpeedKunaiThrow).setGravityY(-500);
             this.physics.add.collider(kunai2,this.plateformes);
             //this.physics.add.collider(kunai2,door1);
-            for(let i=0; i < enemyList.length; i++)
+            /*for(let i=0; i < enemyList.length; i++)
             {
                 this.physics.add.collider(kunai2, enemyList[i]);
-            }
+            }*/
 
             kunaiRightTimer=0;
             kunai_throw_right = true;

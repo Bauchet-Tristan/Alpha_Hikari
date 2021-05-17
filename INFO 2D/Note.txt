@@ -2,7 +2,10 @@ Par personnage 3-4 couleur.
 
 Decors:
 
--3 nuance Orange
 -3 nuance violet 
--noir
--blanc
+
+Degarder + lumière 
+
+Degrader plus foncer quand acoté d'autre chose et plus claire quand rien a coté 
+
+lumière meme coueur que l'element qui la projette en plus claire.
