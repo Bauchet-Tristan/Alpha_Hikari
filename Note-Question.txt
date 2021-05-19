@@ -8,16 +8,16 @@ Note :
 A faire :
 
 
--KEY Binding QZD
 
--refaire tiled
--leger lvl design
--Controle manette
 -Bonus
 
 -Interrupteur // partiellement
 -Porte // partiellement
 -ennemi // partiellement
+
+-refaire tiled
+-leger lvl design
+-Controle manette
 
  
 

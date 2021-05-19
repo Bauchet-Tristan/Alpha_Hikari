@@ -115,6 +115,10 @@ var enemy2;
 
 var test=0;
 
+//bonus1
+var bonus1State = "active";
+var retenu ;
+
 //Timer
 var jumpTime = 0;
 
@@ -123,7 +127,7 @@ var kunaiLeftTimer = 0;
 var kunaiStandTimer = 0;
 var invincibleTimer=0;
 
-
+var bonus1Cooldown = 400;
 
 
 

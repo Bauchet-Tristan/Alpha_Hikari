@@ -115,12 +115,31 @@ class Menu extends Phaser.Scene //
     {
         this.scene.start("lvl1");
     }
+
+}
+
+// Fonction du code
+function PlayerBonus1(i)
+{
+    if(bonus1State == "unactive")
+    {    
+        bonus1Cooldown = 0;
+    
+        i.setAlpha(0);
+    }
+    else
+    {  
+        bonus1Cooldown = 0;
+    
+        i.setAlpha(0);///////////////////////////////////////////////////////////////////////////////
+    }
+
 }
 
 
 //Fonction du code en globale
 
-function PlayerEnemy(i,player)
+function PlayerEnemy(i)
 {
     if(lightning_attack==true)
     {
@@ -220,7 +239,7 @@ function Controls()
 
 
 
-    //On peu JUMP
+    //On peut JUMP
     if(player.body.blocked.down || player.body.touching.down)
     {
         canJump = true;
@@ -303,7 +322,6 @@ function Shifting()
     }
     else{}
 }
-
 
 
 function Jump()
@@ -466,6 +484,23 @@ function Crouch()
 }
 
 
+function Bonus1()
+{    
+    if(bonus1Cooldown<=400)
+    {
+        bonus1State = "active";
+        playerSeishin=7;
+
+        //player.setTintFill(0x5f5f5f);//change direct la couleur de base
+        player.setTint(0x5f5f5f);//filtre
+    }
+    else
+    {
+        player.clearTint();
+    }
+}
+
+
 function Balance()
 {
     if(balance==true)
@@ -481,6 +516,8 @@ function Balance()
 }
 
 
+
+
 function Timer()
 {
     //saut
@@ -489,4 +526,5 @@ function Timer()
     kunaiLeftTimer++;
     kunaiStandTimer++;
     invincibleTimer++;
+    bonus1Cooldown++;
 }

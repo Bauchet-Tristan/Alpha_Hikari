@@ -49,7 +49,7 @@
         {
          "draworder":"topdown",
          "id":8,
-         "name":"didier",
+         "name":"Object_ennemi",
          "objects":[
                 {
                  "gid":1,
@@ -68,12 +68,35 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":10,
+         "name":"Object_bonus1",
+         "objects":[
+                {
+                 "gid":56,
+                 "height":35,
+                 "id":12,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":315,
+                 "y":244.666666666667
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":10,
- "nextobjectid":11,
+ "nextlayerid":11,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.5.0",
+ "tiledversion":"1.4.2",
  "tileheight":35,
  "tilesets":[
         {
@@ -91,6 +114,6 @@
         }],
  "tilewidth":35,
  "type":"map",
- "version":1.5,
+ "version":1.4,
  "width":80
 }
