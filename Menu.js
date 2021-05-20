@@ -27,6 +27,7 @@ class Menu extends Phaser.Scene //
         this.load.image("UIBlue","assets/UIBlue.png");
         this.load.image("UIYellow","assets/UIYellow.png");
 
+        this.load.image("Bonus1","assets/Bonus1.png");
 
 
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
@@ -121,7 +122,7 @@ class Menu extends Phaser.Scene //
 // Fonction du code
 function PlayerBonus1(i)
 {
-    if(bonus1State == "unactive")
+    if(bonus1State == "unactive" && bonus1Cooldown>=400)
     {    
         bonus1Cooldown = 0;
     
@@ -131,7 +132,7 @@ function PlayerBonus1(i)
     {  
         bonus1Cooldown = 0;
     
-        i.setAlpha(0);///////////////////////////////////////////////////////////////////////////////
+        i.setAlpha(1);///////////////////////////////////////////////////////////////////////////////
     }
 
 }
@@ -489,7 +490,7 @@ function Bonus1()
     if(bonus1Cooldown<=400)
     {
         bonus1State = "active";
-        playerSeishin=7;
+        playerSeishin=6;
 
         //player.setTintFill(0x5f5f5f);//change direct la couleur de base
         player.setTint(0x5f5f5f);//filtre

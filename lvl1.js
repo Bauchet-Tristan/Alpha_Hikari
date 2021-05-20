@@ -86,7 +86,7 @@ class lvl1 extends Phaser.Scene //
         const groupeBonus1Objects = this.carteDuNiveau.getObjectLayer('Object_bonus1').objects;
 
         for(const i of groupeBonus1Objects){
-            this.groupeBonus1.create(i.x,i.y, 'kunai')
+            this.groupeBonus1.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
             .setGravityY(-500)
             .setImmovable(true);
@@ -98,12 +98,11 @@ class lvl1 extends Phaser.Scene //
 
         //ennemi
         this.groupeEnemy = this.physics.add.group({
-
         });
 
-        const groupeEnemyObjects = this.carteDuNiveau.getObjectLayer('Object_ennemi').objects;
+        const listEnemyObjects = this.carteDuNiveau.getObjectLayer('Object_ennemi').objects;
 
-        for(const i of groupeEnemyObjects){
+        for(const i of listEnemyObjects){
             enemyNumberToUnlock++;
             this.groupeEnemy.create(i.x,i.y, 'ennemi')
             .setOrigin(0.5,0.5)
@@ -117,6 +116,7 @@ class lvl1 extends Phaser.Scene //
             this.physics.add.collider(i,this.plateformes);
         }
 
+        console.log(listEnemyObjects[0]);
 
 
         //Ennemi
