@@ -1,50 +1,32 @@
 Note : 
 
-- Centrer le X et le Y du joueur
-- Object phaser 
-
 
 
 A faire :
 
+-Porte 
+-Interrupteur 
 
 
--Bonus
-
--Interrupteur // partiellement
--Porte // partiellement
--ennemi // partiellement
-
--refaire tiled
 -leger lvl design
 -Controle manette
-
- 
-
-
-
-Question mat :
-
--Faire des ennemies avec tiled ou un moyen de les placer avec tiled ? 
-
--Kunai qui traverse le mur quand on est colé au mur
-
 
 
 
 Equilibrage / ajout / Beta :
 
--Une action a la fois (mettre les controle dans la meme fonction)
 
--Hit box / Origin ect...
+- Creer une fonction animation avec les anims 
 
--Créer une touche se baisser
+- Creer une touche reset timer kunai
 
--Creer une fonction animation avec les anims 
+- Centrer le X et le Y du joueur
 
--Creer une touche reset timer kunai
+- Hit box / Origin ect...
 
--On ne peut pas sauter en attaquant et inversement
+- Kunai qui traverse le mur quand on est colé au mur
+
+
 
 
 

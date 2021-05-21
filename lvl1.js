@@ -91,6 +91,7 @@ class lvl1 extends Phaser.Scene //
             this.groupeBonus1.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
             .setGravityY(-500)
+            .setScale(0.03)
             .setImmovable(true);
         };
 
@@ -109,6 +110,7 @@ class lvl1 extends Phaser.Scene //
             this.groupeBonus2.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
             .setGravityY(-500)
+            .setScale(0.03)
             .setImmovable(true);
         };
 
@@ -194,7 +196,7 @@ class lvl1 extends Phaser.Scene //
     
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
-            kunai3 = this.physics.add.image(player.x+45, player.y+90, 'kunai');
+            kunai3 = this.physics.add.image(player.x+45, player.y+90, 'Projectil').setScale(0.1);
             kunai3.body.allowGravity = false;
             this.physics.add.collider(kunai3,this.plateformes);
 
@@ -213,7 +215,7 @@ class lvl1 extends Phaser.Scene //
 
         if(kunaiRight == true && kunai_throw_right==false)
         {
-            kunai2 = this.physics.add.image(player.x+60, player.y+15, 'kunai').setVelocityX(SpeedKunaiThrow);
+            kunai2 = this.physics.add.image(player.x+60, player.y+15, 'ProjectilRight').setVelocityX(SpeedKunaiThrow).setScale(0.2,0.15);
             kunai2.body.allowGravity = false;
             this.physics.add.collider(kunai2,this.plateformes);
             for (const i of this.groupeEnemy.children.entries) 
@@ -226,7 +228,7 @@ class lvl1 extends Phaser.Scene //
 
         if(kunaiLeft == true && kunai_throw_left==false)
         {
-            kunai1 = this.physics.add.image(player.x, player.y+15, 'kunai').setVelocityX(-SpeedKunaiThrow).setGravityY(-500); 
+            kunai1 = this.physics.add.image(player.x, player.y+15, 'ProjectilLeft').setVelocityX(-SpeedKunaiThrow).setScale(0.2,0.15); 
             kunai1.body.allowGravity = false;
             this.physics.add.collider(kunai1,this.plateformes);
 

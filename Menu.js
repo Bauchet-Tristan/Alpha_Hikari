@@ -19,7 +19,10 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
         this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
 
-        this.load.image("kunai","assets/kunai.png");
+        this.load.image("Projectil","assets/Projectil.png");
+        this.load.image("ProjectilLeft","assets/ProjectilLeft.png");
+        this.load.image("ProjectilRight","assets/ProjectilRight.png");
+
         this.load.image("door","assets/Door.png");
 
         this.load.image("UIYin","assets/UIYin.png");
@@ -116,7 +119,6 @@ class Menu extends Phaser.Scene //
     {
         this.scene.start("lvl1");
     }
-
 }
 
 // Fonction du code
@@ -145,6 +147,7 @@ function Patern(enemy)
 {
     distancePlayerEnemy = player.x - enemy.x;
     //console.log(distancePlayerEnemy);
+    
     if(distancePlayerEnemy > 100 || distancePlayerEnemy < -100)
     {
         enemy.setVelocityX(0);
@@ -554,7 +557,6 @@ function Bonus2()
         playerSeishin=6;
 
         //player.setTintFill(0x5f5f5f);//change direct la couleur de base
-        console.log("boby");
         player.setTint(0x9D9D99);//filtre de couleur
     }
     else
