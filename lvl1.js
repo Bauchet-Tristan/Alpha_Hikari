@@ -78,8 +78,10 @@ class lvl1 extends Phaser.Scene //
             UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin').setScrollFactor(0,0).setScale(0.15);
         }
 
+
         ////////////Groupe Object 
-        //bonus
+
+        //bonus1//
         this.groupeBonus1 = this.physics.add.group({
         });
 
@@ -96,6 +98,26 @@ class lvl1 extends Phaser.Scene //
             this.physics.add.overlap(i,player,PlayerBonus1);
         }
 
+
+        //bonus2//
+        this.groupeBonus2 = this.physics.add.group({
+        });
+
+        const groupeBonus2Objects = this.carteDuNiveau.getObjectLayer('Object_bonus2').objects;
+
+        for(const i of groupeBonus2Objects){
+            this.groupeBonus2.create(i.x,i.y, 'Bonus1')
+            .setOrigin(0.5,0.5)
+            .setGravityY(-500)
+            .setImmovable(true);
+        };
+
+        for (const i of this.groupeBonus2.children.entries) {
+            this.physics.add.overlap(i,player,PlayerBonus2);
+        }
+
+
+
         //ennemi
         this.groupeEnemy = this.physics.add.group({
         });
@@ -108,44 +130,14 @@ class lvl1 extends Phaser.Scene //
             .setOrigin(0.5,0.5)
             .setScale(0.7)
             .setImmovable(true);
-        };
-
-        for (const i of this.groupeEnemy.children.entries) 
-        {
-            this.physics.add.collider(i,player,PlayerEnemy);
-            this.physics.add.collider(i,this.plateformes);
         }
 
-        console.log(listEnemyObjects[0]);
-
-
-        //Ennemi
-        /*enemy1 = new Ennemi(this,350,350).setScale(0.7);
-        enemy2 = new Ennemi(this,250,250).setScale(0.7);
-        enemyList = [enemy1,enemy2];*/
-
-        //door
-        door1 = new Porte(this,enemyNumberToUnlock,700,100);
-
-    ///////////Collide///////////
+        ///////////Collide///////////
 
         this.physics.add.collider(player, this.plateformes);
-
-       /* for(let i=0; i < enemyList.length; i++)
-        {
-            this.physics.add.collider(enemyList[i],player,enemyList[i].PlayerEnemy);
-            this.physics.add.collider(this.plateformes, enemyList[i]);
-        }*/
-
-
-        this.physics.add.collider(player, door1);
-        this.physics.add.collider(this.plateformes, door1);
-        
-        
-        //la boucle for fait plusieurs collide d'une meme class
         
 
-        //  Input Events Reset
+        // Input Events Reset
         cursors.left.reset();
         cursors.right.reset();
         cursors.up.reset();
@@ -182,6 +174,9 @@ class lvl1 extends Phaser.Scene //
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);     
 
+
+        ///////////// Avatar and UIAvatar Property /////////////
+
         UI();
 
         Controls(); 
@@ -193,8 +188,6 @@ class lvl1 extends Phaser.Scene //
         Lightning();
         
         Crouch();
-
-        Bonus1();
 
 
         //kunai on your place
@@ -251,10 +244,23 @@ class lvl1 extends Phaser.Scene //
 
         Balance();
 
-        //Actualisation de l'ouverture de la porte
-        door1.DoorOpen();
+        /////////////////// Bonus ///////////////////
 
-        //Compteur actualisation ++
+        Bonus1();
+        Bonus2();
+        BonusUI();
+
+        /////////////////// Ennemi Property ///////////////////
+
+        for (const i of this.groupeEnemy.children.entries) 
+        {
+            this.physics.add.collider(i,player,PlayerEnemy);
+            this.physics.add.collider(i,this.plateformes);
+            Patern(i);
+        }
+
+
+        //Compteur actualisation ++//
         Timer();
     }
 }

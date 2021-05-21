@@ -110,14 +110,15 @@ var door1;
 var enemyNumberToUnlock=0;
 
 //Ennemi
-var enemy1;
-var enemy2;
 
-var test=0;
 
 //bonus1
-var bonus1State = "active";
-var retenu ;
+var bonus1State = "unactive";
+
+
+//bonus1
+var bonus2State = "unactive";
+
 
 //Timer
 var jumpTime = 0;
@@ -128,6 +129,7 @@ var kunaiStandTimer = 0;
 var invincibleTimer=0;
 
 var bonus1Cooldown = 400;
+var bonus2Cooldown = 400;
 
 
 
@@ -149,5 +151,5 @@ var Jump_time = 35;
 var runSpeed =180;
 
 
-
+//
 var game = new Phaser.Game(config);

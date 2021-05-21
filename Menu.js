@@ -99,14 +99,14 @@ class Menu extends Phaser.Scene //
         this.anims.create({
             key: 'WolfLeft',
             frames: this.anims.generateFrameNumbers('ennemi', { start: 0, end: 11 }),
-            frameRate: 10,
+            frameRate: 12,
             repeat: -1
         });
     
         this.anims.create({
             key: 'WolfRight',
             frames: this.anims.generateFrameNumbers('ennemi', { start: 12, end: 23 }),
-            frameRate: 10,
+            frameRate: 12,
             repeat: -1
         });
 
@@ -120,22 +120,6 @@ class Menu extends Phaser.Scene //
 }
 
 // Fonction du code
-function PlayerBonus1(i)
-{
-    if(bonus1State == "unactive" && bonus1Cooldown>=400)
-    {    
-        bonus1Cooldown = 0;
-    
-        i.setAlpha(0);
-    }
-    else
-    {  
-        bonus1Cooldown = 0;
-    
-        i.setAlpha(1);///////////////////////////////////////////////////////////////////////////////
-    }
-
-}
 
 
 //Fonction du code en globale
@@ -149,7 +133,7 @@ function PlayerEnemy(i)
     }
     else
     {
-        if(invincibleTimer>= 210)
+        if(invincibleTimer >= 210)
         {
             playerHealth--;
             invincibleTimer =0;
@@ -157,6 +141,31 @@ function PlayerEnemy(i)
     }
 }
 
+function Patern(enemy)
+{
+    distancePlayerEnemy = player.x - enemy.x;
+    //console.log(distancePlayerEnemy);
+    if(distancePlayerEnemy > 100 || distancePlayerEnemy < -100)
+    {
+        enemy.setVelocityX(0);
+        // mettre l'anims loup assis // 
+    }
+    else
+    {
+        if(distancePlayerEnemy > 0)
+        {
+            //gauche
+            enemy.anims.play('WolfRight',true);
+            enemy.setVelocityX(50);
+        }
+        else if (distancePlayerEnemy < 0)
+        {
+            //droite
+            enemy.anims.play('WolfLeft',true);
+            enemy.setVelocityX(-50);
+        }
+    }
+}
 
 
 function UI()
@@ -484,24 +493,6 @@ function Crouch()
     }
 }
 
-
-function Bonus1()
-{    
-    if(bonus1Cooldown<=400)
-    {
-        bonus1State = "active";
-        playerSeishin=6;
-
-        //player.setTintFill(0x5f5f5f);//change direct la couleur de base
-        player.setTint(0x5f5f5f);//filtre
-    }
-    else
-    {
-        player.clearTint();
-    }
-}
-
-
 function Balance()
 {
     if(balance==true)
@@ -519,6 +510,67 @@ function Balance()
 
 
 
+function PlayerBonus1()
+{
+    if(bonus1State == "unactive")
+    {    
+        bonus1Cooldown = 0;
+    }
+}
+
+
+function Bonus1()
+{    
+    if(bonus1Cooldown<=400)
+    {
+        bonus1State = "active";
+        playerSeishin=6;
+
+        //player.setTintFill(0x5f5f5f);//change direct la couleur de base
+        player.setTint(0x5f5f5f);//filtre de couleur
+    }
+    else
+    {
+        bonus1State = "unactive";
+        player.clearTint();
+    }
+}
+
+
+function PlayerBonus2()
+{
+    if(bonus2State == "unactive")
+    {    
+        bonus1Cooldown = 0;
+    }
+}
+
+function Bonus2()
+{    
+    
+    if(bonus2Cooldown<=400)
+    {
+        bonus2State = "active";
+        playerSeishin=6;
+
+        //player.setTintFill(0x5f5f5f);//change direct la couleur de base
+        console.log("boby");
+        player.setTint(0x9D9D99);//filtre de couleur
+    }
+    else
+    {
+        bonus2State = "unactive";
+        //player.clearTint();
+    }
+}
+
+function BonusUI()
+{
+
+}
+
+
+
 function Timer()
 {
     //saut
@@ -528,4 +580,5 @@ function Timer()
     kunaiStandTimer++;
     invincibleTimer++;
     bonus1Cooldown++;
+    bonus2Cooldown++;
 }
