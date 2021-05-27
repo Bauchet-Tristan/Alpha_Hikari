@@ -9,7 +9,7 @@ A faire :
 
 
 -leger lvl design
--Controle manette
+-Controle mobile
 
 
 

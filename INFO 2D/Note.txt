@@ -3,6 +3,7 @@
 
 A faire sur Animate:
 
+-ui mobile fleche gauche droite bas haut (joystique) / saut / kunai / attack(ou vers le bas)
 -Animation Porte Destruction + Animation Clef recuperer temporairement
 -Faire des interupteurs de plusieurs couleurs
 -Personnage, chara design
