@@ -3,5 +3,7 @@
 
 A faire sur Animate:
 
--Collectible/interupteur,Porte
--Personnage
+-Animation Porte Destruction + Animation Clef recuperer temporairement
+-Faire des interupteurs de plusieurs couleurs
+-Personnage, chara design
+-Proportion du monde en pixel sur photoshop
