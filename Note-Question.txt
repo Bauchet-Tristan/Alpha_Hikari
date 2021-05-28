@@ -4,17 +4,20 @@ Note :
 
 A faire :
 
--Porte 
--Interrupteur 
+- UI Ecran titre avec les dimension
+- Creer un vrai ecran de jeu avec les dimensions
+- Faire un excel avec le rapport hauteur largeur de ntous les assets en fonctions des dimensions
+- Chara design de personnage (rechercher la creation de perso en vecto)
+- Leger lvl design
+- Controle mobile
 
 
--leger lvl design
--Controle mobile
 
+Code :
 
+- Changer la resolution
 
-Equilibrage / ajout / Beta :
-
+- Ecran Titre
 
 - Creer une fonction animation avec les anims 
 
