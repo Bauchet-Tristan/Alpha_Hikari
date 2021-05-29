@@ -4,10 +4,13 @@ Note :
 
 A faire :
 
-- UI Ecran titre avec les dimension
-- Creer un vrai ecran de jeu avec les dimensions
-- Faire un excel avec le rapport hauteur largeur de ntous les assets en fonctions des dimensions
+- Creer un vrai ecran de jeu avec les dimensions  (Personnage / Kunai / UI / "Ennemi" / Porte)
+- Faire un excel avec le rapport hauteur largeur de tous les assets en fonctions des dimensions
+
+-DOCUMENTATION
+
 - Chara design de personnage (rechercher la creation de perso en vecto)
+- Chara design des ennemis 
 - Leger lvl design
 - Controle mobile
 
@@ -15,9 +18,6 @@ A faire :
 
 Code :
 
-- Changer la resolution
-
-- Ecran Titre
 
 - Creer une fonction animation avec les anims 
 
