@@ -1,7 +1,7 @@
 var config = {
     type: Phaser.AUTO,  
-    width: 1920,
-    height: 1080,
+    width: 2000,
+    height: 1000,
     physics: {
         default: 'arcade',
         arcade: {
@@ -135,7 +135,7 @@ var bonus2Cooldown = 400;
 //Equilibrage :
 var DispawnKunaiThrowTimer = 250 ;
 var OnplaceKunaiThrow = 80 ;
-var SpeedKunaiThrow = 500 ;
+var SpeedKunaiThrow = 750 ;
 
 var DispawnKunaiThrowSet = 500 ;
 
@@ -145,7 +145,7 @@ var jumpSpeed = 550;
 var Jump_time = 35;
 
 //run//
-var runSpeed =180;
+var runSpeed =250;
 
 
 //

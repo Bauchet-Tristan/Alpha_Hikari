@@ -147,7 +147,7 @@ function Patern(enemy)
     distancePlayerEnemy = player.x - enemy.x;
     //console.log(distancePlayerEnemy);
     
-    if(distancePlayerEnemy > 100 || distancePlayerEnemy < -100)
+    if(distancePlayerEnemy > 1000 || distancePlayerEnemy < -1000)
     {
         enemy.setVelocityX(0);
         // mettre l'anims loup assis // 
@@ -158,13 +158,13 @@ function Patern(enemy)
         {
             //gauche
             enemy.anims.play('WolfRight',true);
-            enemy.setVelocityX(50);
+            enemy.setVelocityX(300);
         }
         else if (distancePlayerEnemy < 0)
         {
             //droite
             enemy.anims.play('WolfLeft',true);
-            enemy.setVelocityX(-50);
+            enemy.setVelocityX(-300);
         }
     }
 }
@@ -308,6 +308,7 @@ function Shifting()
         lastDirection ="left";
         player.setVelocityX(-runSpeed);
         player.anims.play('RunLeft', true);
+        player.setOffset(20,10).setSize(40,85,false);
 
     }
     else if (runRight == true)
@@ -315,6 +316,7 @@ function Shifting()
         lastDirection ="right";
         player.setVelocityX(runSpeed);
         player.anims.play('RunRight', true);
+        player.setOffset(10,10).setSize(40,85,false);
 
     }
     else if(idle == true)
@@ -324,12 +326,12 @@ function Shifting()
         if(lastDirection=="left")
         {
             player.anims.play('IdleL', true);
-           // player.setSize(60,90,false);
+            player.setOffset(20,10).setSize(40,85,false);
         }
         else
         {
             player.anims.play('IdleR', true);
-           // player.setSize(60,90,false);
+            player.setOffset(10,10).setSize(40,85,false);
         }
     }
     else{}
@@ -479,12 +481,12 @@ function Lightning()
         player.setVelocityX(0);
     }
 }
-
+/*
 function Crouch()
 {
     if(playerCrouch == true)
     {
-        player.setOffset(20,20).setSize(60,45,false);
+        player.setSize(40,40,false);
         crouching = true;
     }
 
@@ -493,7 +495,7 @@ function Crouch()
         player.y=player.y-45
         crouching =false;
     }
-}
+}*/
 
 function Balance()
 {

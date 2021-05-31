@@ -44,7 +44,7 @@ class lvl1 extends Phaser.Scene //
         this.backgroundLayer = this.carteDuNiveau.createStaticLayer("Background",this.tileset,0,0);
 
         //Plateform Classic
-        this.plateformes = this.carteDuNiveau.createStaticLayer("Platform_Classic",this.tileset,0,0);
+        this.plateformes = this.carteDuNiveau.createStaticLayer("Grille/Platform_Classic",this.tileset,0,0);
         this.plateformes.setCollisionByExclusion(-1, true);
 
         //platform background
@@ -52,7 +52,7 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player
-        player = this.physics.add.sprite(playerX, playerY, 'dude').setOffset(0).setSize(60,90,false);
+        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -67,19 +67,19 @@ class lvl1 extends Phaser.Scene //
 
         ///////// UI
 
-        UILightBlue = this.add.image(700, 525, 'UIBlue').setScrollFactor(0);
+        UILightBlue = this.add.image(-250, 500, 'UIBlue').setOrigin(0,0).setScrollFactor(0);
 
-        UILightYellow = this.add.image(1220, 525, 'UIYellow').setScrollFactor(0); 
+        UILightYellow = this.add.image(820, 500, 'UIYellow').setOrigin(0,0).setScrollFactor(0); 
 
 
         for(let i=0; i < UIYangList.length; i++)
         {
-            UIYangList[i] = this.add.sprite(880-(i*70), 1025, 'UIYang').setScrollFactor(0);
+            UIYangList[i] = this.add.sprite(800-(i*150), 800, 'UIYang').setOrigin(0,0).setScrollFactor(0);
         }
 
         for(let i=0; i < UIYinList.length; i++)
         {
-            UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin').setScrollFactor(0);
+            UIYinList[i] = this.add.image(1070+(i*150), 800, 'UIYin').setOrigin(0,0).setScrollFactor(0);
         }
 
 
@@ -89,7 +89,7 @@ class lvl1 extends Phaser.Scene //
         this.groupeBonus1 = this.physics.add.group({
         });
 
-        const groupeBonus1Objects = this.carteDuNiveau.getObjectLayer('Object_bonus1').objects;
+        const groupeBonus1Objects = this.carteDuNiveau.getObjectLayer('Object/Object_bonus1').objects;
 
         for(const i of groupeBonus1Objects){
             this.groupeBonus1.create(i.x,i.y, 'Bonus1')
@@ -107,7 +107,7 @@ class lvl1 extends Phaser.Scene //
         this.groupeBonus2 = this.physics.add.group({
         });
 
-        const groupeBonus2Objects = this.carteDuNiveau.getObjectLayer('Object_bonus2').objects;
+        const groupeBonus2Objects = this.carteDuNiveau.getObjectLayer('Object/Object_bonus2').objects;
 
         for(const i of groupeBonus2Objects){
             this.groupeBonus2.create(i.x,i.y, 'Bonus1')
@@ -126,7 +126,7 @@ class lvl1 extends Phaser.Scene //
         this.groupeEnemy = this.physics.add.group({
         });
 
-        const listEnemyObjects = this.carteDuNiveau.getObjectLayer('Object_ennemi').objects;
+        const listEnemyObjects = this.carteDuNiveau.getObjectLayer('Object/Object_ennemi').objects;
 
         for(const i of listEnemyObjects){
             enemyNumberToUnlock++;
@@ -197,7 +197,7 @@ class lvl1 extends Phaser.Scene //
 
         Lightning();
         
-        Crouch();
+        //Crouch();
 
 
         //kunai on your place
@@ -223,7 +223,7 @@ class lvl1 extends Phaser.Scene //
 
         if(kunaiRight == true && kunai_throw_right==false)
         {
-            kunai2 = this.physics.add.image(player.x+60, player.y+15, 'ProjectilRight').setVelocityX(SpeedKunaiThrow);
+            kunai2 = this.physics.add.image(player.x-25, player.y-30, 'ProjectilRight').setVelocityX(SpeedKunaiThrow);
             kunai2.body.allowGravity = false;
             this.physics.add.collider(kunai2,this.plateformes);
             for (const i of this.groupeEnemy.children.entries) 
@@ -236,7 +236,7 @@ class lvl1 extends Phaser.Scene //
 
         if(kunaiLeft == true && kunai_throw_left==false)
         {
-            kunai1 = this.physics.add.image(player.x, player.y+15, 'ProjectilLeft').setVelocityX(-SpeedKunaiThrow); 
+            kunai1 = this.physics.add.image(player.x+25, player.y-30, 'ProjectilLeft').setVelocityX(-SpeedKunaiThrow); 
             kunai1.body.allowGravity = false;
             this.physics.add.collider(kunai1,this.plateformes);
 
