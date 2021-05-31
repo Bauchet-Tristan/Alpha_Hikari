@@ -51,31 +51,31 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player
-        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0,0).setOffset(30,25).setSize(60,90,false);
+        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0,0).setOffset(30,25);
 
         player.setCollideWorldBounds(true);
         
         
         //---Camera
-        this.cameras.main.setSize(1920,1080);
-        this.cameras.main.setBounds(1,1,3840,2160);
-        this.cameras.main.startFollow(player,true,1,1);
+        this.cameras.main.setSize(896,448);
+        this.cameras.main.setBounds(1,1,2688,896);
+        //this.cameras.main.startFollow(player,false,0.5,0.5);
 
         ///////// UI
 
-        UILightBlue = this.add.image(700, 1025, 'UIBlue').setScrollFactor(0,0).setScale(0.07);
+        UILightBlue = this.add.image(700, 525, 'UIBlue').setScrollFactor(0,0);
 
-        UILightYellow = this.add.image(1220, 1025, 'UIYellow').setScrollFactor(0,0).setScale(0.07); 
+        UILightYellow = this.add.image(1220, 525, 'UIYellow').setScrollFactor(0,0); 
 
 
         for(let i=0; i < UIYangList.length; i++)
         {
-            UIYangList[i] = this.add.sprite(880-(i*70), 1025, 'UIYang').setScrollFactor(0,0).setScale(0.15);
+            UIYangList[i] = this.add.sprite(880-(i*70), 1025, 'UIYang').setScrollFactor(0,0);
         }
 
         for(let i=0; i < UIYinList.length; i++)
         {
-            UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin').setScrollFactor(0,0).setScale(0.15);
+            UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin').setScrollFactor(0,0);
         }
 
 
@@ -91,7 +91,6 @@ class lvl1 extends Phaser.Scene //
             this.groupeBonus1.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
             .setGravityY(-500)
-            .setScale(0.03)
             .setImmovable(true);
         };
 
@@ -110,7 +109,6 @@ class lvl1 extends Phaser.Scene //
             this.groupeBonus2.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
             .setGravityY(-500)
-            .setScale(0.03)
             .setImmovable(true);
         };
 
@@ -137,6 +135,12 @@ class lvl1 extends Phaser.Scene //
         ///////////Collide///////////
 
         this.physics.add.collider(player, this.plateformes);
+
+        for (const i of this.groupeEnemy.children.entries) 
+        {
+            this.physics.add.collider(i,player,PlayerEnemy);
+            this.physics.add.collider(i,this.plateformes);
+        }
         
 
         // Input Events Reset
@@ -196,7 +200,7 @@ class lvl1 extends Phaser.Scene //
     
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
-            kunai3 = this.physics.add.image(player.x+45, player.y+90, 'Projectil').setScale(0.1);
+            kunai3 = this.physics.add.image(player.x+45, player.y+90, 'Projectil');
             kunai3.body.allowGravity = false;
             this.physics.add.collider(kunai3,this.plateformes);
 
@@ -215,7 +219,7 @@ class lvl1 extends Phaser.Scene //
 
         if(kunaiRight == true && kunai_throw_right==false)
         {
-            kunai2 = this.physics.add.image(player.x+60, player.y+15, 'ProjectilRight').setVelocityX(SpeedKunaiThrow).setScale(0.2,0.15);
+            kunai2 = this.physics.add.image(player.x+60, player.y+15, 'ProjectilRight').setVelocityX(SpeedKunaiThrow);
             kunai2.body.allowGravity = false;
             this.physics.add.collider(kunai2,this.plateformes);
             for (const i of this.groupeEnemy.children.entries) 
@@ -228,7 +232,7 @@ class lvl1 extends Phaser.Scene //
 
         if(kunaiLeft == true && kunai_throw_left==false)
         {
-            kunai1 = this.physics.add.image(player.x, player.y+15, 'ProjectilLeft').setVelocityX(-SpeedKunaiThrow).setScale(0.2,0.15); 
+            kunai1 = this.physics.add.image(player.x, player.y+15, 'ProjectilLeft').setVelocityX(-SpeedKunaiThrow); 
             kunai1.body.allowGravity = false;
             this.physics.add.collider(kunai1,this.plateformes);
 
@@ -256,8 +260,6 @@ class lvl1 extends Phaser.Scene //
 
         for (const i of this.groupeEnemy.children.entries) 
         {
-            this.physics.add.collider(i,player,PlayerEnemy);
-            this.physics.add.collider(i,this.plateformes);
             Patern(i);
         }
 

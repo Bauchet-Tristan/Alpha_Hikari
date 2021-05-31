@@ -1,19 +1,17 @@
-Note : 
-
-
-
 A faire :
 
-- Creer un vrai ecran de jeu avec les dimensions  (Personnage / Kunai / UI / "Ennemi" / Porte)
-- Faire un excel avec le rapport hauteur largeur de tous les assets en fonctions des dimensions
+-Dimension finalisation
 
--DOCUMENTATION
+- DOCUMENTATION
 
 - Chara design de personnage (rechercher la creation de perso en vecto)
 - Chara design des ennemis 
-- Leger lvl design
-- Controle mobile
 
+Illustrator c'est quoi cette bite ??
+
+- Ennemi
+- Controle mobile
+- Leger lvl design
 
 
 Code :
