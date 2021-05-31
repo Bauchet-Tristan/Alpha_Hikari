@@ -1,7 +1,7 @@
 var config = {
     type: Phaser.AUTO,  
-    width: 2688,
-    height: 896,
+    width: 1920,
+    height: 1080,
     physics: {
         default: 'arcade',
         arcade: {
@@ -13,9 +13,6 @@ var config = {
         gamepad:true
     },
     scene: [Menu,lvl1],
-    scale: {
-        zoom: 2
-    }
 };
 
 

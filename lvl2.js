@@ -1,9 +1,9 @@
 
-class lvl1 extends Phaser.Scene //
+class lvl2 extends Phaser.Scene //
 { 
     constructor()
     {
-        super("lvl1"); 
+        super("lvl2"); 
     }
 
     init(data)
@@ -52,41 +52,43 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player
-        player = this.physics.add.sprite(playerX, playerY, 'dude').setOffset(0).setSize(60,90,false);
+        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0,0).setOffset(30,25);
 
-        this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
+        //this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
         player.setCollideWorldBounds(true);
         
         
         //---Camera
-        this.cameras.main.setSize(config.width,config.height);
-        this.cameras.main.startFollow(player);
+        this.cameras.main.setSize(960,540);
+        //this.cameras.main.setBounds(0,0,1920,1080);
         this.cameras.main.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixelss);
+        this.cameras.main.startFollow(player, true);
+        
         
 
         ///////// UI
+/*
+        UILightBlue = this.add.image(700, 525, 'UIBlue');
 
-        UILightBlue = this.add.image(700, 525, 'UIBlue').setScrollFactor(0);
-
-        UILightYellow = this.add.image(1220, 525, 'UIYellow').setScrollFactor(0); 
+        UILightYellow = this.add.image(1220, 525, 'UIYellow') ;
 
 
         for(let i=0; i < UIYangList.length; i++)
         {
-            UIYangList[i] = this.add.sprite(880-(i*70), 1025, 'UIYang').setScrollFactor(0);
+            UIYangList[i] = this.add.sprite(880-(i*70), 1025, 'UIYang');
         }
 
         for(let i=0; i < UIYinList.length; i++)
         {
-            UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin').setScrollFactor(0);
+            UIYinList[i] = this.add.image(1030+(i*70), 1025, 'UIYin');
         }
-
+*/
 
         ////////////Groupe Object 
 
         //bonus1//
-        this.groupeBonus1 = this.physics.add.group({
+        /*this.groupeBonus1 = this.physics.add.group({
         });
 
         const groupeBonus1Objects = this.carteDuNiveau.getObjectLayer('Object_bonus1').objects;
@@ -134,12 +136,12 @@ class lvl1 extends Phaser.Scene //
             .setOrigin(0.5,0.5)
             .setScale(0.7)
             .setImmovable(true);
-        }
+        }*/
 
         ///////////Collide///////////
 
         this.physics.add.collider(player, this.plateformes);
-
+/*
         for (const i of this.groupeEnemy.children.entries) 
         {
             this.physics.add.collider(i,player,PlayerEnemy);
@@ -153,7 +155,7 @@ class lvl1 extends Phaser.Scene //
         cursors.up.reset();
         cursors.down.reset();
         cursors.left.reset();
-        cursors.space.reset();
+        cursors.space.reset();*/
     }
     
 
@@ -187,7 +189,7 @@ class lvl1 extends Phaser.Scene //
 
         ///////////// Avatar and UIAvatar Property /////////////
 
-        UI();
+        //UI();
 
         Controls(); 
 
@@ -195,13 +197,13 @@ class lvl1 extends Phaser.Scene //
 
         Jump();
 
-        Lightning();
+       // Lightning();
         
-        Crouch();
+        //Crouch();
 
 
         //kunai on your place
-    
+    /*
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
             kunai3 = this.physics.add.image(player.x+45, player.y+90, 'Projectil');
@@ -258,6 +260,7 @@ class lvl1 extends Phaser.Scene //
 
         Bonus1();
         Bonus2();
+        BonusUI();
 
         /////////////////// Ennemi Property ///////////////////
 
@@ -265,7 +268,7 @@ class lvl1 extends Phaser.Scene //
         {
             Patern(i);
         }
-
+*/
 
         //Compteur actualisation ++//
         Timer();

@@ -31,6 +31,7 @@ class Menu extends Phaser.Scene //
         this.load.image("UIYellow","assets/UIYellow.png");
 
         this.load.image("Bonus1","assets/Bonus1.png");
+        this.load.image("FOND","assets/Fond.png");
 
 
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
@@ -124,8 +125,6 @@ class Menu extends Phaser.Scene //
 // Fonction du code
 
 
-//Fonction du code en globale
-
 function PlayerEnemy(i)
 {
     if(lightning_attack==true)
@@ -138,7 +137,7 @@ function PlayerEnemy(i)
         if(invincibleTimer >= 210)
         {
             playerHealth--;
-            invincibleTimer =0;
+            invincibleTimer = 0;
         }
     }
 }
@@ -218,6 +217,7 @@ function UI()
 function Controls()
 {
     ///////Deplacement axes X Marche-course///////
+
     leftButton=cursors.left.isDown;
     rightButton=cursors.right.isDown;
     downButton=cursors.down.isDown;
@@ -229,7 +229,6 @@ function Controls()
     kunaiStand = keyZ.isDown;
     
     balanceButton=cursors.up.isDown;
-
 
 
     //Shifting
@@ -309,14 +308,14 @@ function Shifting()
         lastDirection ="left";
         player.setVelocityX(-runSpeed);
         player.anims.play('RunLeft', true);
-        player.setOffset(20,25).setSize(60,90,false);
+
     }
     else if (runRight == true)
     {
         lastDirection ="right";
         player.setVelocityX(runSpeed);
         player.anims.play('RunRight', true);
-        player.setOffset(20,25).setSize(60,90,false);
+
     }
     else if(idle == true)
     {
@@ -325,12 +324,12 @@ function Shifting()
         if(lastDirection=="left")
         {
             player.anims.play('IdleL', true);
-            player.setOffset(30,25).setSize(60,90,false);
+           // player.setSize(60,90,false);
         }
         else
         {
             player.anims.play('IdleR', true);
-            player.setOffset(16,25).setSize(60,90,false);
+           // player.setSize(60,90,false);
         }
     }
     else{}
@@ -564,11 +563,6 @@ function Bonus2()
         bonus2State = "unactive";
         //player.clearTint();
     }
-}
-
-function BonusUI()
-{
-
 }
 
 
