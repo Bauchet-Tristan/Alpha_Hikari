@@ -10,7 +10,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
         //
         this.body.immovable=true;
         this.body.collideWorldBounds=true;
-        this.body.allowGravity = false;
+        //this.body.allowGravity = false;
 
         console.log(this);
         //
@@ -19,6 +19,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
 
     Patern(scene)
     {
+        /*
         var distancePlayerEnemy = player.x - this.body.x;
         //console.log(distancePlayerEnemy);
         
@@ -57,6 +58,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
                 this.body.setVelocityX(-300);
             }
         }
+        */
     }
 
 

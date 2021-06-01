@@ -84,6 +84,41 @@
                 }, 
                 {
                  "draworder":"topdown",
+                 "id":27,
+                 "name":"Ennemi2",
+                 "objects":[
+                        {
+                         "gid":1,
+                         "height":80,
+                         "id":36,
+                         "name":"",
+                         "rotation":0,
+                         "type":"",
+                         "visible":true,
+                         "width":80,
+                         "x":720,
+                         "y":800
+                        }, 
+                        {
+                         "gid":1,
+                         "height":80,
+                         "id":38,
+                         "name":"",
+                         "rotation":0,
+                         "type":"",
+                         "visible":true,
+                         "width":80,
+                         "x":160,
+                         "y":1040
+                        }],
+                 "opacity":1,
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
                  "id":17,
                  "name":"Object_bonus1",
                  "objects":[
@@ -169,11 +204,11 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":27,
- "nextobjectid":36,
+ "nextlayerid":28,
+ "nextobjectid":39,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.6.0",
+ "tiledversion":"1.4.2",
  "tileheight":80,
  "tilesets":[
         {
@@ -192,6 +227,6 @@
         }],
  "tilewidth":80,
  "type":"map",
- "version":"1.6",
+ "version":1.4,
  "width":60
 }

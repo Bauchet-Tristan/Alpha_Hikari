@@ -160,8 +160,26 @@ class lvl1 extends Phaser.Scene //
             this.Ennemi1List [groupeEnnemi1Objects.indexOf(i)] = new Ennemi1(this,i.x,i.y);
 
             this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
+
+            this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],this.plateformes);
         }
 
+
+        //ennemi2
+
+        const groupeEnnemi2Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi2').objects;
+
+        this.Ennemi2List = [];
+
+        for(const i of groupeEnnemi2Objects)
+        {
+            this.Ennemi2List [groupeEnnemi2Objects.indexOf(i)] = new Ennemi2(this,i.x,i.y);
+
+            this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
+        
+            this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],this.plateformes);
+
+        }
 
 
         ///////////Collide///////////
@@ -247,6 +265,13 @@ class lvl1 extends Phaser.Scene //
             for(let i = 0; i< this.Ennemi1List.length; i++)
             {
                 this.physics.add.collider(this.Ennemi1List[i],kunai2);
+
+                /*for(const i of groupeDoorObjects)
+                {
+                    this.doorList [groupeDoorObjects.indexOf(i)] = new Porte(this,1,i.x,i.y);
+        
+                    this.physics.add.collider(this.doorList [groupeDoorObjects.indexOf(i)],player);
+                }*/
             }
 
             kunaiRightTimer=0;
@@ -288,6 +313,8 @@ class lvl1 extends Phaser.Scene //
 
         /////////////////// Ennemi Property ///////////////////
 
+        ///////////////// Ennemi1
+
         for(let i = 0; i< this.Ennemi1List.length; i++)
         {
             if(this.Ennemi1List[i].displayList != null)
@@ -296,6 +323,16 @@ class lvl1 extends Phaser.Scene //
             }
         }
 
+
+        ///////////////// Ennemi2 
+
+        for(let i = 0; i< this.Ennemi2List.length; i++)
+        {
+            if(this.Ennemi2List[i].displayList != null)
+            {
+                this.Ennemi2List[i].Patern(this);
+            }
+        }
 
         //Compteur actualisation ++//
         Timer();
