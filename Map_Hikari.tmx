@@ -66,7 +66,7 @@
   </layer>
  </group>
  <group id="24" name="Object">
-  <objectgroup id="16" name="Object_ennemi">
+  <objectgroup id="16" name="Ennemi1">
    <object id="29" gid="1" x="1760" y="800" width="80" height="80"/>
   </objectgroup>
   <objectgroup id="17" name="Object_bonus1">

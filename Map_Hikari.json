@@ -62,7 +62,7 @@
                 {
                  "draworder":"topdown",
                  "id":16,
-                 "name":"Object_ennemi",
+                 "name":"Ennemi1",
                  "objects":[
                         {
                          "gid":1,

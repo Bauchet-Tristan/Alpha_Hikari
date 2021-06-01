@@ -1,22 +1,29 @@
 class Porte extends Phaser.GameObjects.Sprite 
 { 
-    constructor(scene,ennemiMax,x,y)
+    constructor(scene,key,x,y)
     { 
         super(scene,x,y,"door");
+
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
         //
         this.body.immovable=true;
         this.body.collideWorldBounds=true;
-
-        this.ennemiMax = ennemiMax;
+        this.key = key;
+        this.body.allowGravity = false;
+       
     }
 
-    DoorOpen()
+    DoorOpen(numberKey)
     {
-        if(enemyNumberToUnlock>=this.ennemiMax)
+        //console.log("boby");
+        if( numberKey == this.key)
         {
+            numberKey-this.key;
             this.destroy();
         }
     }
+
+    
+
 }

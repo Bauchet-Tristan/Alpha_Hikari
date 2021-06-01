@@ -102,6 +102,9 @@ var kunai3TP=false;
 //Lightning Attaque
 var lightning_attack;
 
+//key
+var keyNumber = 0;
+
 //Door
 var door1;
 var enemyNumberToUnlock=0;

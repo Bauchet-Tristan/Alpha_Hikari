@@ -24,6 +24,7 @@ class Menu extends Phaser.Scene //
         this.load.image("ProjectilRight","assets/ProjectilRight.png");
 
         this.load.image("door","assets/Door.png");
+        this.load.image("key","assets/KeyPurple.png");
 
         this.load.image("UIYin","assets/UIYin.png");
         this.load.image("UIYang","assets/UIYang.png");
@@ -124,23 +125,6 @@ class Menu extends Phaser.Scene //
 
 // Fonction du code
 
-
-function PlayerEnemy(i)
-{
-    if(lightning_attack==true)
-    {
-        i.destroy();
-        enemyNumberToUnlock++;
-    }
-    else
-    {
-        if(invincibleTimer >= 210)
-        {
-            playerHealth--;
-            invincibleTimer = 0;
-        }
-    }
-}
 
 function Patern(enemy)
 {
