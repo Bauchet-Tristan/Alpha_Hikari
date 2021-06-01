@@ -61,20 +61,20 @@
          "layers":[
                 {
                  "draworder":"topdown",
-                 "id":16,
-                 "name":"Ennemi1",
+                 "id":28,
+                 "name":"Ennemi3",
                  "objects":[
                         {
                          "gid":1,
                          "height":80,
-                         "id":29,
+                         "id":40,
                          "name":"",
                          "rotation":0,
                          "type":"",
                          "visible":true,
                          "width":80,
-                         "x":1760,
-                         "y":800
+                         "x":1920,
+                         "y":640
                         }],
                  "opacity":1,
                  "type":"objectgroup",
@@ -119,19 +119,19 @@
                 }, 
                 {
                  "draworder":"topdown",
-                 "id":17,
-                 "name":"Object_bonus1",
+                 "id":16,
+                 "name":"Ennemi1",
                  "objects":[
                         {
-                         "gid":9,
+                         "gid":1,
                          "height":80,
-                         "id":31,
+                         "id":39,
                          "name":"",
                          "rotation":0,
                          "type":"",
                          "visible":true,
                          "width":80,
-                         "x":480,
+                         "x":160,
                          "y":400
                         }],
                  "opacity":1,
@@ -188,6 +188,29 @@
                 }, 
                 {
                  "draworder":"topdown",
+                 "id":17,
+                 "name":"Object_bonus1",
+                 "objects":[
+                        {
+                         "gid":9,
+                         "height":80,
+                         "id":31,
+                         "name":"",
+                         "rotation":0,
+                         "type":"",
+                         "visible":true,
+                         "width":80,
+                         "x":480,
+                         "y":400
+                        }],
+                 "opacity":1,
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
                  "id":18,
                  "name":"Object_bonus2",
                  "objects":[],
@@ -204,11 +227,11 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":28,
- "nextobjectid":39,
+ "nextlayerid":29,
+ "nextobjectid":41,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.6.0",
  "tileheight":80,
  "tilesets":[
         {
@@ -227,6 +250,6 @@
         }],
  "tilewidth":80,
  "type":"map",
- "version":1.4,
+ "version":"1.6",
  "width":60
 }

@@ -18,7 +18,7 @@ class Clef extends Phaser.GameObjects.Sprite
     {
         keyNumber++;
         key.destroy();
-        console.log(keyNumber);
+        //console.log(keyNumber);
     }
 
 }

@@ -12,53 +12,46 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
         this.body.collideWorldBounds=true;
         //this.body.allowGravity = false;
 
-        console.log(this);
-        //
-
+        this.speed = 300;
+        this.timeHit = 300;
+        this.distancePlayerEnemy;
     }
 
-    Patern(scene)
+    Patern()
     {
-        /*
-        var distancePlayerEnemy = player.x - this.body.x;
+        this.timeHit++;
+
+        if(this.timeHit >= 1000)
+        {
+            //console.log(this.timeHit);
+            //this.speed = 300;
+        }
+
+        this.distancePlayerEnemy = player.x - this.body.x;
         //console.log(distancePlayerEnemy);
         
-        if(distancePlayerEnemy > 1000 || distancePlayerEnemy < -1000)
+        if(this.distancePlayerEnemy > 1000 || this.distancePlayerEnemy < -1000 || //distance max
+            this.distancePlayerEnemy > 100 && this.distancePlayerEnemy < 200 ||//distance corp a corp 
+            this.distancePlayerEnemy < 100 && this.distancePlayerEnemy > 0) // //distance corp a corp
         {
             this.body.setVelocityX(0);
             // mettre l'anims loup assis // 
         }
-
-        
-        if(distancePlayerEnemy >= 100 && distancePlayerEnemy < 230)
-        {
-            //gauche
-            this.anims.play('WolfRight',true);
-            this.body.setVelocityX(0);
-        }
-        else if (distancePlayerEnemy <= 100 && distancePlayerEnemy > -20)
-        {
-            //droite
-            this.anims.play('WolfLeft',true);
-            this.body.setVelocityX(0);
-        }
-
         else
         {
-            if(distancePlayerEnemy > 100)
+            if(this.distancePlayerEnemy > 100)
             {
                 //gauche
                 this.anims.play('WolfRight',true);
-                this.body.setVelocityX(300);
+                this.body.setVelocityX(this.speed);
             }
-            else if (distancePlayerEnemy < 100)
+            else if (this.distancePlayerEnemy < 100)
             {
                 //droite
                 this.anims.play('WolfLeft',true);
-                this.body.setVelocityX(-300);
+                this.body.setVelocityX(-this.speed);
             }
         }
-        */
     }
 
 
@@ -74,6 +67,11 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
         {
             if(invincibleTimer >= 150)
             {
+                this.speed = 50;
+                this.timeHit = 0;
+
+
+                //console.log(this.timeHit);
                 playerHealth--;
                 invincibleTimer = 0;
             }

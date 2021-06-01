@@ -1,17 +1,20 @@
 A faire :
 
--Dimension finalisation
+
+- Dimension finalisation
+
+- Ennemi1 bug this.timerhit non actualiser;
+
+- Ecran tire en code //Menu//
 
 - DOCUMENTATION
 
-- Chara design de personnage (rechercher la creation de perso en vecto)
+- Leger lvl design
+
 - Chara design des ennemis 
 
-Illustrator c'est quoi cette bite ??
-
-- Ennemi
 - Controle mobile
-- Leger lvl design
+
 
 
 Code :

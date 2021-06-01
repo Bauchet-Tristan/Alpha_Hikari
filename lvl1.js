@@ -148,6 +148,7 @@ class lvl1 extends Phaser.Scene //
             this.physics.add.overlap(i,player,PlayerBonus2);
         }
 
+        /////////////////////////// Ennemi /////////////////////////// 
 
         //ennemi1
 
@@ -164,7 +165,6 @@ class lvl1 extends Phaser.Scene //
             this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],this.plateformes);
         }
 
-
         //ennemi2
 
         const groupeEnnemi2Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi2').objects;
@@ -178,7 +178,21 @@ class lvl1 extends Phaser.Scene //
             this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
         
             this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],this.plateformes);
+        }
 
+        //ennemi3
+
+        const groupeEnnemi3Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi3').objects;
+
+        this.Ennemi3List = [];
+
+        for(const i of groupeEnnemi3Objects)
+        {
+            this.Ennemi3List [groupeEnnemi3Objects.indexOf(i)] = new Ennemi3(this,i.x,i.y);
+
+            this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
+        
+            this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
         }
 
 
@@ -265,13 +279,14 @@ class lvl1 extends Phaser.Scene //
             for(let i = 0; i< this.Ennemi1List.length; i++)
             {
                 this.physics.add.collider(this.Ennemi1List[i],kunai2);
-
-                /*for(const i of groupeDoorObjects)
-                {
-                    this.doorList [groupeDoorObjects.indexOf(i)] = new Porte(this,1,i.x,i.y);
-        
-                    this.physics.add.collider(this.doorList [groupeDoorObjects.indexOf(i)],player);
-                }*/
+            }
+            for(let i = 0; i< this.Ennemi2List.length; i++)
+            {
+                this.physics.add.collider(this.Ennemi2List[i],kunai2);
+            }
+            for(let i = 0; i< this.doorList.length; i++)
+            {
+                this.physics.add.collider(this.doorList[i],kunai2);
             }
 
             kunaiRightTimer=0;
@@ -287,6 +302,14 @@ class lvl1 extends Phaser.Scene //
             for(let i = 0; i< this.Ennemi1List.length; i++)
             {
                 this.physics.add.collider(this.Ennemi1List[i],kunai1);
+            }
+            for(let i = 0; i< this.Ennemi2List.length; i++)
+            {
+                this.physics.add.collider(this.Ennemi2List[i],kunai1);
+            }
+            for(let i = 0; i< this.doorList.length; i++)
+            {
+                this.physics.add.collider(this.doorList[i],kunai1);
             }
 
             kunaiLeftTimer =0;
@@ -319,7 +342,7 @@ class lvl1 extends Phaser.Scene //
         {
             if(this.Ennemi1List[i].displayList != null)
             {
-                this.Ennemi1List[i].Patern(this);
+                this.Ennemi1List[i].Patern();
             }
         }
 
@@ -330,7 +353,18 @@ class lvl1 extends Phaser.Scene //
         {
             if(this.Ennemi2List[i].displayList != null)
             {
-                this.Ennemi2List[i].Patern(this);
+                this.Ennemi2List[i].Patern();
+            }
+        }
+
+
+        ///////////////// Ennemi3 
+
+        for(let i = 0; i< this.Ennemi3List.length; i++)
+        {
+            if(this.Ennemi3List[i].displayList != null)
+            {
+                this.Ennemi3List[i].Patern();
             }
         }
 

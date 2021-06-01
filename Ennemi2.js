@@ -12,20 +12,27 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         this.body.collideWorldBounds=true;
         //this.body.allowGravity = false;
 
-        console.log(this);
-        //
+        this.timer = 0;
 
     }
 
 
-    Patern(scene)
+    Patern()
     {
+
         if(jump == true)
         {
             this.body.setVelocityY(-500);
+            this.timer = 1;
+        }
+        else if(this.timer == 1)
+        {
+            this.body.setVelocityY(0);
+            this.timer = 0;
         }
 
-        // mettre l'anims loup assis // 
+        // mettre l'anims loup assis //
+
     }
 
 
