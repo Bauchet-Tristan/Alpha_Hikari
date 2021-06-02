@@ -19,7 +19,7 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
 
     Patern()
     {
-/*
+
         if(jump == true)
         {
             this.body.setVelocityY(-500);
@@ -29,7 +29,7 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         {
             this.body.setVelocityY(0);
             this.timer = 0;
-        }*/
+        }
 
         // mettre l'anims loup assis //
 

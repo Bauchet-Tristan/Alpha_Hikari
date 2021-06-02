@@ -21,7 +21,7 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 
 
     Patern()
-    {        /*  
+    {          
 
         this.timerAttack++;
 
@@ -91,7 +91,7 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
             this.timerAttack = 0;
             this.speedX = 200;
             this.body.setVelocityY(0);
-        }*/
+        }
     }
 
 
