@@ -6,11 +6,6 @@ class Menu extends Phaser.Scene //
         super("Menu"); //nom = menu 
     }
 
-    init(data)
-    {
-        //dispo partout
-    }
-
     preload()
     {
         this.load.image("Phaser_tuilesdejeu", "assets/Tile_Set.png");
@@ -34,12 +29,17 @@ class Menu extends Phaser.Scene //
         this.load.image("Bonus1","assets/Bonus1.png");
         
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
+
         this.load.image("FOND","assets/Background/72ppi/fond.png");
+        this.load.image("StarterScreen","assets/EcranTitre.png");
     }
 
     create()
     {
-        this.add.text(20,20, "Menu1");  
+        this.add.image(960, 540, 'StarterScreen');
+
+
+        this.add.text(450,0, "Press space to play").setScale(5,5);  
 
         ///////////les anims Player
         this.anims.create({
@@ -114,11 +114,17 @@ class Menu extends Phaser.Scene //
             repeat: -1
         });
 
+        cursors = this.input.keyboard.createCursorKeys();
+        cursors.space.reset();
     }
 
     update()
     {
-        this.scene.start("lvl1");
+        if(cursors.space.isDown)
+        {
+            this.scene.start("lvl1");
+        }
+        
     }
 }
 
@@ -151,6 +157,23 @@ function Patern(enemy)
         }
     }
 }
+
+function UICreation(scene)
+ {
+    UILightBlue = scene.add.image(280, 800, 'UIBlue').setOrigin(0,0).setScrollFactor(0);
+    UILightYellow = scene.add.image(1020, 850, 'UIYellow').setOrigin(0,0).setScrollFactor(0); 
+
+    for(let i=0; i < UIYangList.length; i++)
+    {
+        UIYangList[i] = scene.add.sprite(800-(i*90), 900, 'UIYang').setOrigin(0,0).setScrollFactor(0);
+    }
+
+    for(let i=0; i < UIYinList.length; i++)
+    {
+        UIYinList[i] = scene.add.image(1070+(i*90), 900, 'UIYin').setOrigin(0,0).setScrollFactor(0);
+    }
+ }
+
 
 
 function UI()

@@ -6,12 +6,6 @@ class lvl1 extends Phaser.Scene //
         super("lvl1"); 
     }
 
-    init(data)
-    {
-        //dispo partout
-    }
-
-
     preload ()
     {
     }
@@ -64,25 +58,6 @@ class lvl1 extends Phaser.Scene //
         this.cameras.main.startFollow(player);
         this.cameras.main.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixelss);
         
-
-        ///////// UI
-
-        UILightBlue = this.add.image(-250, 500, 'UIBlue').setOrigin(0,0).setScrollFactor(0);
-
-        UILightYellow = this.add.image(820, 500, 'UIYellow').setOrigin(0,0).setScrollFactor(0); 
-
-
-        for(let i=0; i < UIYangList.length; i++)
-        {
-            UIYangList[i] = this.add.sprite(800-(i*150), 800, 'UIYang').setOrigin(0,0).setScrollFactor(0);
-        }
-
-        for(let i=0; i < UIYinList.length; i++)
-        {
-            UIYinList[i] = this.add.image(1070+(i*150), 800, 'UIYin').setOrigin(0,0).setScrollFactor(0);
-        }
-
-
         ////////////Groupe Object 
 
         //Key1//
@@ -200,6 +175,8 @@ class lvl1 extends Phaser.Scene //
 
         this.physics.add.collider(player, this.plateformes);
         
+        ///////// UI
+        UICreation(this);
 
         // Input Events Reset
         cursors.left.reset();

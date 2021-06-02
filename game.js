@@ -133,8 +133,6 @@ var bonus2Cooldown = 400;
 
 
 
-
-
 //Equilibrage :
 var DispawnKunaiThrowTimer = 250 ;
 var OnplaceKunaiThrow = 80 ;

@@ -13,7 +13,8 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
         //this.body.allowGravity = false;
 
         this.speed = 300;
-        this.timeHit = 300;
+        this.timeHit = 0;
+
         this.distancePlayerEnemy;
     }
 
@@ -21,16 +22,16 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
     {
         this.timeHit++;
 
-        if(this.timeHit >= 1000)
+        if(this.timeHit >= 500)
         {
             //console.log(this.timeHit);
-            //this.speed = 300;
+            this.speed = 300;
         }
 
         this.distancePlayerEnemy = player.x - this.body.x;
         //console.log(distancePlayerEnemy);
         
-        if(this.distancePlayerEnemy > 1000 || this.distancePlayerEnemy < -1000 || //distance max
+        if(this.distancePlayerEnemy > 1000 || this.distancePlayerEnemy < -1000 ||//distance max
             this.distancePlayerEnemy > 100 && this.distancePlayerEnemy < 200 ||//distance corp a corp 
             this.distancePlayerEnemy < 100 && this.distancePlayerEnemy > 0) // //distance corp a corp
         {
@@ -67,11 +68,11 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
         {
             if(invincibleTimer >= 150)
             {
-                this.speed = 50;
-                this.timeHit = 0;
+                enemy.speed = 150;
+                enemy.timeHit = 0;
 
 
-                //console.log(this.timeHit);
+                console.log(enemy);
                 playerHealth--;
                 invincibleTimer = 0;
             }
