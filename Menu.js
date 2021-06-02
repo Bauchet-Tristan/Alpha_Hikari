@@ -23,19 +23,18 @@ class Menu extends Phaser.Scene //
         this.load.image("ProjectilLeft","assets/ProjectilLeft.png");
         this.load.image("ProjectilRight","assets/ProjectilRight.png");
 
-        this.load.image("door","assets/Door.png");
-        this.load.image("key","assets/KeyPurple.png");
+        this.load.image("door","assets/Door1.png");
+        this.load.image("key","assets/Key.png");
 
-        this.load.image("UIYin","assets/UIYin.png");
-        this.load.image("UIYang","assets/UIYang.png");
-        this.load.image("UIBlue","assets/UIBlue.png");
-        this.load.image("UIYellow","assets/UIYellow.png");
+        this.load.image("UIYin","assets/UI//72ppi/Fichier1UI.png");
+        this.load.image("UIYang","assets/UI//72ppi/Fichier2UI.png");
+        this.load.image("UIBlue","assets/UI//72ppi/Fichier3Lightning.png");
+        this.load.image("UIYellow","assets/UI//72ppi/Fichier2Lightning.png");
 
         this.load.image("Bonus1","assets/Bonus1.png");
-        this.load.image("FOND","assets/Fond.png");
-
-
+        
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
+        this.load.image("FOND","assets/Background/72ppi/fond.png");
     }
 
     create()

@@ -13,7 +13,7 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
         this.body.allowGravity = false;
         //
 
-        this.speedX = 100;
+        this.speedX = 200;
         this.speedY = 500;
         this.distancePlayerEnemy;
         this.timerAttack = 0;
@@ -21,9 +21,10 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 
 
     Patern()
-    {   
+    {          
+
         this.timerAttack++;
-        
+
         this.distancePlayerEnemy = player.x - this.body.x;
         // console.log(this.distancePlayerEnemy);
 
@@ -33,7 +34,7 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 
         if(this.timerAttack <200)
         {
-            if(this.distancePlayerEnemy > 750 || this.distancePlayerEnemy < -750 || //distance max
+            if(this.distancePlayerEnemy > 750 || this.distancePlayerEnemy < -750 ||//distance max
                 this.distancePlayerEnemy > 100 && this.distancePlayerEnemy < 200 ||//distance corp a corp 
                 this.distancePlayerEnemy < 100 && this.distancePlayerEnemy > 0) // //distance corp a corp
             {
@@ -57,9 +58,11 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
             }
 
             //Attack
-            if(this.timerAttack > 150 )
+            if(this.timerAttack > 150 && this.distancePlayerEnemy < 750 || //timer + Aoe de detection
+                this.timerAttack > 150 && this.distancePlayerEnemy > -750)
             {
                 this.speedX = 400;
+
                 //en Y
                 if(this.hauterPlayerEnemy < -10)
                 {
