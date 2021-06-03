@@ -1,23 +1,14 @@
 
 A faire :
 
-- Dimension finalisation
+- Ennemis (oiseau /chevre)
 
-- Ennemi1 bug this.timerhit non actualiser;
+- Asset du joueur dimension.
 
 - Ecran tire en code //Menu//
 
-- DOCUMENTATION
+- Lvl design
 
-- Leger lvl design
-
-- Chara design des ennemis 
-
-
-
-- Controle mobile : 
-  	- Input
-	-
 
 
 
@@ -26,9 +17,7 @@ Code :
 
 - Creer une fonction animation avec les anims 
 
-- Creer une touche reset timer kunai
-
-- Centrer le X et le Y du joueur
+- Creer une touche reset timer kunai / ergonomi des touches
 
 - Hit box / Origin ect...
 

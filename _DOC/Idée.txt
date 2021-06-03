@@ -1,11 +1,14 @@
 GDD :
 
-// a faire
+// a Faire
+Interface
+
+
+// a Integrer
+Boucle de gameplay globale
+Tetrade elementaire 
 Personna
-interface
 
-// a integrer
-tetrade elementaire 
-lvl design
 
-Bible grahique :
+
+------------------------Lvl design-----------------------
