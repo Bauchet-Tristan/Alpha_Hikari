@@ -1,55 +1,11 @@
-on peut faire un niveau tuto si on a le temp
+GDD :
 
+// a faire
+Personna
+interface
 
+// a integrer
+tetrade elementaire 
+lvl design
 
-
-/////////////////////// 
-
-
-Des Kunai peuvent êtres lancer devant soit et/ou placer au sol, on peut s'y téléporter mais on perd notre inertie de deplacement.
-
-Se teleporter sur un kunai le detruit.
-
-Les kunai ne tue pas les ennemies.
-
-Le Saut va très vite a hauteur max mais il est en diagonale.
-
-On peut faire un Dash vers le sol qui tue les ennemies.
-
-
-
-Power up / temporaire :
-
-1-Quand on se teleporte sur un kunai on crée une zone qui explose et fait des dégats.
-
-2-Energie infini.
-
-3-se teleporter sur kunai ne le detruit plus.
-
-4- //Tout dans le jeu aura des "contraintes" 
-exemple un bonus aura forcément un effet négatif en plus d’un effet positif 
-exemple : vous ne consommez plus d'énergie mais vous ne pouvez plus faire de double saut.//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Bible grahique :
