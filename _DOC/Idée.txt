@@ -1,14 +1,7 @@
 GDD :
 
-// a Faire
-Interface
-
 
 // a Integrer
-Boucle de gameplay globale
-Tetrade elementaire 
-Personna
 
 
-
-------------------------Lvl design-----------------------
+------------------------Lvl design------------------------
