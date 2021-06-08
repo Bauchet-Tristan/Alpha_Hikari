@@ -104,6 +104,8 @@ var lightning_attack;
 
 //key
 var keyNumber = 0;
+var keyNumber2 = 0;
+var keyNumber3 = 0;
 
 //Door
 var door1;

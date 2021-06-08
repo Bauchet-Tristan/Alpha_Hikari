@@ -1,8 +1,8 @@
-class Porte extends Phaser.GameObjects.Sprite 
+class Porte2 extends Phaser.GameObjects.Sprite 
 { 
     constructor(scene,key,x,y)
     { 
-        super(scene,x,y,"door1");
+        super(scene,x,y,"door2");
 
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
@@ -14,12 +14,12 @@ class Porte extends Phaser.GameObjects.Sprite
        
     }
 
-    DoorOpen(numberKey)
+    DoorOpen(numberKey2)
     {
         //console.log("boby");
-        if( numberKey == this.key)
+        if( numberKey2 == this.key)
         {
-            numberKey-this.key;
+            numberKey2-this.key;
             this.destroy();
         }
     }

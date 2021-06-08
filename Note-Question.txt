@@ -3,7 +3,7 @@ A faire :
 
 - Asset du joueur dimension.
 
-- Lvl design (une porte plus une clef + Interrupteur//key temporaire)
+- Lvl design (une porte plus une clef + Interrupteur // key temporaire)
 
 
 
@@ -12,9 +12,11 @@ Code :
 
 - Creer une fonction animation avec les anims 
 
+- UI,UX Kunai
+
 - UI,UX Interrupteur
 
-- UI,UX Kunai
+
 
 
 

@@ -1,8 +1,8 @@
-class Clef extends Phaser.GameObjects.Sprite 
+class Clef2 extends Phaser.GameObjects.Sprite 
 { 
     constructor(scene,x,y)
     { 
-        super(scene,x,y,"key1");
+        super(scene,x,y,"key2");
 
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
@@ -16,9 +16,8 @@ class Clef extends Phaser.GameObjects.Sprite
 
     keyPlayer(key)
     {
-        keyNumber++;
+        keyNumber2++;
         key.destroy();
         //console.log(keyNumber);
     }
-
 }

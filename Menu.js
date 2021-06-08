@@ -18,8 +18,13 @@ class Menu extends Phaser.Scene //
         this.load.image("ProjectilLeft","assets/ProjectilLeft.png");
         this.load.image("ProjectilRight","assets/ProjectilRight.png");
 
-        this.load.image("door","assets/Door1.png");
-        this.load.image("key","assets/Key.png");
+        this.load.image("door1","assets/FichierDoor(1).png");
+        this.load.image("door2","assets/FichierDoor(2).png");
+        this.load.image("door3","assets/FichierDoor(3).png");
+
+        this.load.image("key1","assets/key(1).png");
+        this.load.image("key2","assets/key(2).png");
+        this.load.image("key3","assets/key(3).png");
 
         this.load.image("UIYin","assets/UI//72ppi/Fichier1UI.png");
         this.load.image("UIYang","assets/UI//72ppi/Fichier2UI.png");
@@ -44,7 +49,6 @@ class Menu extends Phaser.Scene //
     create()
     {
         this.add.image(960, 540, 'StarterScreen');
-
 
         this.add.text(450,0, "Press space to play").setScale(5,5);  
 
