@@ -12,7 +12,8 @@ class lvl1 extends Phaser.Scene //
 
     create ()
     {
-        this.add.image(960, 540, 'FOND');
+        
+        Fond(this);
         cursors = this.input.keyboard.createCursorKeys();
 
         //  Input Events Reset
@@ -46,7 +47,7 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player
-        player = this.physics.add.sprite(1500, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -68,7 +69,7 @@ class lvl1 extends Phaser.Scene //
 
         for(const i of groupeKeyObjects)
         {
-            this.keyList [groupeKeyObjects.indexOf(i)] = new Clef(this,i.x,i.y);
+            this.keyList [groupeKeyObjects.indexOf(i)] = new Clef(this,i.x+40,i.y);
 
             //collide key
             this.physics.add.overlap(this.keyList[groupeKeyObjects.indexOf(i)],player,this.keyList[groupeKeyObjects.indexOf(i)].keyPlayer);
@@ -82,7 +83,7 @@ class lvl1 extends Phaser.Scene //
 
         for(const i of groupeDoorObjects)
         {
-            this.doorList [groupeDoorObjects.indexOf(i)] = new Porte(this,1,i.x,i.y);
+            this.doorList [groupeDoorObjects.indexOf(i)] = new Porte(this,1,i.x+40,i.y);
 
             this.physics.add.collider(this.doorList [groupeDoorObjects.indexOf(i)],player);
         }
@@ -235,7 +236,7 @@ class lvl1 extends Phaser.Scene //
     
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
-            kunai3 = this.physics.add.image(player.x+45, player.y+90, 'Projectil');
+            kunai3 = this.physics.add.image(player.x+30, player.y-40, 'Projectil');
             kunai3.body.allowGravity = false;
             this.physics.add.collider(kunai3,this.plateformes);
 

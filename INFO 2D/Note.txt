@@ -8,8 +8,12 @@ Blanc = R = 240 V = 240 B = 240
 A faire sur Animate:
 
 -Ui life and spirit quand on perd une des deux ressource on efface que le centre et on laisse le contour
--ui mobile fleche gauche droite bas haut (joystique) / saut / kunai / attack(ou vers le bas)
--Animation Porte Destruction + Animation Clef recuperer temporairement
+
 -Faire des interupteurs de plusieurs couleurs
--Personnage, chara design
--Proportion du monde en pixel sur photoshop
+
+-Personnage
+
+
+
+//Mobile
+-ui mobile fleche gauche droite bas haut (joystique) / saut / kunai / attack(ou vers le bas)

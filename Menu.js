@@ -30,7 +30,14 @@ class Menu extends Phaser.Scene //
         
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
 
-        this.load.image("FOND","assets/Background/72ppi/fond.png");
+        this.load.image("FOND1","assets/Background/72ppi/Plan(1).png");
+        this.load.image("FOND2","assets/Background/72ppi/Plan(2).png");
+        this.load.image("FOND3","assets/Background/72ppi/Plan(3).png");
+        this.load.image("FOND4","assets/Background/72ppi/Plan(4).png");
+        this.load.image("FOND5","assets/Background/72ppi/Plan(5).png");
+        this.load.image("FOND6","assets/Background/72ppi/Plan(6).png");
+        this.load.image("Sun","assets/Background/72ppi/Plan(7).png");
+
         this.load.image("StarterScreen","assets/EcranTitre.png");
     }
 
@@ -120,6 +127,8 @@ class Menu extends Phaser.Scene //
 
     update()
     {
+        this.scene.start("lvl1");
+
         if(cursors.space.isDown)
         {
             this.scene.start("lvl1");
@@ -129,6 +138,17 @@ class Menu extends Phaser.Scene //
 }
 
 // Fonction du code
+
+function Fond(scene)
+{
+    scene.add.image(2300, 950, 'FOND6').setScrollFactor(0.8,0.6);
+    scene.add.image(2400, 950, 'Sun').setScrollFactor(0.8,0.6);
+    scene.add.image(2300, 950, 'FOND5').setScrollFactor(0.8,0.6);
+    scene.add.image(2700, 950, 'FOND4').setScrollFactor(0.65,0.6);
+    scene.add.image(2700, 950, 'FOND3').setScrollFactor(0.6,0.6);
+    scene.add.image(2200, 950, 'FOND2').setScrollFactor(0.55,0.6);
+    scene.add.image(2200, 950, 'FOND1').setScrollFactor(0.5,0.6);
+}
 
 
 function Patern(enemy)
@@ -267,7 +287,7 @@ function Controls()
     if(downButton==true && !player.body.blocked.down) 
     {
         lightning_attack = true;
-        jumpTime = 35; // cancel le jump si attack
+        jumpTime = 20; // cancel le jump si attack
         canJump=false; // cancel le jump si attack
     }
     //Crouch 
@@ -420,7 +440,7 @@ function KunaiAndTP()
         kunai1TP=false;
         kunaiLeftTimer = 300;
         player.x=kunai1.x;
-        player.y=kunai1.y-90;
+        player.y=kunai1.y-40;
         player.setVelocityY(-20);
         player.setVelocityX(0);
         playerSeishin--;
@@ -453,8 +473,8 @@ function KunaiAndTP()
     {
         kunai2TP=false;
         kunaiRightTimer = DispawnKunaiThrowTimer;
-        player.x=kunai2.x-60;
-        player.y=kunai2.y-91;
+        player.x=kunai2.x;
+        player.y=kunai2.y-40;
         player.setVelocityY(-20);
         player.setVelocityX(0);
         playerSeishin--;
@@ -470,8 +490,8 @@ function KunaiAndTP()
     {
         kunai3TP=false;
         kunaiStandTimer = 500;
-        player.x=kunai3.x-30;
-        player.y=kunai3.y-91;
+        player.x=kunai3.x;
+        player.y=kunai3.y-40;
         player.setVelocityY(0);
         player.setVelocityX(0);
         playerSeishin--;

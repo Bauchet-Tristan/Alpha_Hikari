@@ -53,8 +53,8 @@ var UIYang6;
 
 //////var joueur//////
 var player;
-var playerX = 30;
-var playerY = 30;
+var playerX = 50;
+var playerY = 2200;
 var lastDirection ="left";
 
 //Deplacement//
@@ -134,16 +134,15 @@ var bonus2Cooldown = 400;
 
 
 //Equilibrage :
-var DispawnKunaiThrowTimer = 250 ;
-var OnplaceKunaiThrow = 80 ;
+var DispawnKunaiThrowTimer = 200 ;
+var OnplaceKunaiThrow = 49; //8 block de porter
 var SpeedKunaiThrow = 750 ;
 
 var DispawnKunaiThrowSet = 500 ;
 
-
 //Jump//
 var jumpSpeed = 550;
-var Jump_time = 35;
+var Jump_time = 20;
 
 //run//
 var runSpeed =250;

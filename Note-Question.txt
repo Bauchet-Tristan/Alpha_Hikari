@@ -1,29 +1,21 @@
-
+﻿
 A faire :
-
-- Ennemis (oiseau /chevre)
 
 - Asset du joueur dimension.
 
-- Ecran tire en code //Menu//
-
-- Lvl design
+- Lvl design (une porte plus une clef + Interrupteur//key temporaire)
 
 
 
 
 Code :
 
-
 - Creer une fonction animation avec les anims 
 
-- Creer une touche reset timer kunai / ergonomi des touches
+- UI,UX Interrupteur
 
-- Hit box / Origin ect...
-
-- Kunai qui traverse le mur quand on est colé au mur
+- UI,UX Kunai
 
 
 
-
-
+/////Info 2D/////
