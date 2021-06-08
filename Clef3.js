@@ -12,12 +12,41 @@ class Clef3 extends Phaser.GameObjects.Sprite
         this.body.allowGravity = false;
         //
 
+        this.body.setRotation = 20;
+
+
     }
 
-    keyPlayer(key)
+    keyPlayer()
     {
         keyNumber3++;
-        key.destroy();
+        SwitchDoor3Open = 0;
         //console.log(keyNumber);
+    }
+
+    Switch(key,player)
+    {
+        if(SwitchTime >= 180)
+        {
+            SwitchTime = 0;
+        }
+
+        if(keyNumber3 >= 1)
+        {
+            key.setRotation(SwitchTime);
+
+            SwitchDoor3Open++;
+
+            if(SwitchDoor3Open >= 50)
+            {
+                key.setRotation(SwitchTime);
+                restartDoor3 = 1;
+            }
+        }
+
+        if(player.y <= 600 && player.x <=535)
+        {
+            this.destroy();
+        }
     }
 }

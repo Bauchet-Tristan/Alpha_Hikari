@@ -46,8 +46,9 @@ class lvl1 extends Phaser.Scene //
         this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
 
 
-        //---player
-        player = this.physics.add.sprite(500, 100, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+
+        //---player--//
+        player = this.physics.add.sprite(600, 100, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -59,6 +60,9 @@ class lvl1 extends Phaser.Scene //
         this.cameras.main.startFollow(player);
         this.cameras.main.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixelss);
         
+
+
+        
         ////////////Groupe Object 
 
         //Key3//
@@ -69,7 +73,7 @@ class lvl1 extends Phaser.Scene //
 
         for(const i of groupeKey3Objects)
         {
-            this.key3List [groupeKey3Objects.indexOf(i)] = new Clef3(this,i.x+40,i.y);
+            this.key3List[groupeKey3Objects.indexOf(i)] = new Clef3(this,i.x+40,i.y-10);
 
             //collide key
             this.physics.add.overlap(this.key3List[groupeKey3Objects.indexOf(i)],player,this.key3List[groupeKey3Objects.indexOf(i)].keyPlayer);
@@ -87,7 +91,7 @@ class lvl1 extends Phaser.Scene //
         {
             this.door3List [groupeDoor3Objects.indexOf(i)] = new Porte3(this,1,i.x+40,i.y);
 
-            this.physics.add.collider(this.door3List [groupeDoor3Objects.indexOf(i)],player);
+            this.collideDoor3 = this.physics.add.collider(this.door3List [groupeDoor3Objects.indexOf(i)],player);
         }
 
 
@@ -100,7 +104,7 @@ class lvl1 extends Phaser.Scene //
 
         for(const i of groupeKey2Objects)
         {
-            this.key2List [groupeKey2Objects.indexOf(i)] = new Clef2(this,i.x+40,i.y);
+            this.key2List [groupeKey2Objects.indexOf(i)] = new Clef2(this,i.x+40,i.y-10);
 
             //collide key
             this.physics.add.overlap(this.key2List[groupeKey2Objects.indexOf(i)],player,this.key2List[groupeKey2Objects.indexOf(i)].keyPlayer);
@@ -131,7 +135,7 @@ class lvl1 extends Phaser.Scene //
 
         for(const i of groupeKeyObjects)
         {
-            this.keyList [groupeKeyObjects.indexOf(i)] = new Clef(this,i.x+40,i.y);
+            this.keyList [groupeKeyObjects.indexOf(i)] = new Clef(this,i.x+40,i.y+10);
 
             //collide key
             this.physics.add.overlap(this.keyList[groupeKeyObjects.indexOf(i)],player,this.keyList[groupeKeyObjects.indexOf(i)].keyPlayer);
@@ -381,8 +385,23 @@ class lvl1 extends Phaser.Scene //
         //door3
         for(let i = 0; i< this.door3List.length; i++)
         {
-            this.door3List[i].DoorOpen(keyNumber3);
+            this.door3List[i].DoorOpen(this.collideDoor3);
         }
+
+        if(restartDoor3 >= 1)      
+        {        
+            for(let i = 0; i< this.door3List.length; i++)
+            {
+                this.door3List[i].Reset(this.collideDoor3);
+            }
+        }
+
+        //Key3
+        for(let i = 0; i< this.key3List.length; i++)
+        {
+            this.key3List[i].Switch(this.key3List[i],player);
+        }
+
 
         /////////////////// Bonus ///////////////////
 

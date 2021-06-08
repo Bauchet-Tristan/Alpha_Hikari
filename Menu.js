@@ -609,4 +609,5 @@ function Timer()
     invincibleTimer++;
     bonus1Cooldown++;
     bonus2Cooldown++;
+    SwitchTime++;
 }

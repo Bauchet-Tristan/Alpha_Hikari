@@ -102,23 +102,22 @@ var kunai3TP=false;
 //Lightning Attaque
 var lightning_attack;
 
-//key
+//keys
 var keyNumber = 0;
 var keyNumber2 = 0;
 var keyNumber3 = 0;
 
 //Door
-var door1;
 var enemyNumberToUnlock=0;
-
-//Ennemi
+var restartDoor3; 
+var SwitchDoor3Open = 0;
 
 
 //bonus1
 var bonus1State = "unactive";
 
 
-//bonus1
+//bonus2
 var bonus2State = "unactive";
 
 
@@ -133,6 +132,8 @@ var invincibleTimer=0;
 var bonus1Cooldown = 400;
 var bonus2Cooldown = 400;
 
+var SwitchTime = 180;
+
 
 
 //Equilibrage :
@@ -142,9 +143,11 @@ var SpeedKunaiThrow = 750 ;
 
 var DispawnKunaiThrowSet = 500 ;
 
+
 //Jump//
 var jumpSpeed = 550;
 var Jump_time = 20;
+
 
 //run//
 var runSpeed =250;
