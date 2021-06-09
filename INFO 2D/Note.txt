@@ -9,8 +9,6 @@ A faire sur Animate:
 
 -Ui life and spirit quand on perd une des deux ressource on efface que le centre et on laisse le contour
 
--Faire des interupteurs de plusieurs couleurs
-
 -Personnage
 
 

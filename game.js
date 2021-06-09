@@ -5,7 +5,7 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 500 },
+            gravity: { y: 1500 },
             debug: false
         }
     },
@@ -145,12 +145,12 @@ var DispawnKunaiThrowSet = 500 ;
 
 
 //Jump//
-var jumpSpeed = 550;
-var jump_time_Max = 20;
+var jumpSpeed = 750;
+var jump_time_Max = 1;
 
 
 //run//
-var runSpeed =250;
+var runSpeed =300;
 
 
 //

@@ -426,25 +426,25 @@ function Jump()
 {
     if(jump==true)
     {
-        if(jumpTime<jump_time_Max)
+        if(jumpTime < jump_time_Max)
         {                                     
             player.setVelocityY(-jumpSpeed);
 
             if(lastDirection=="left")
             {
-                player.setVelocityX(-400);
+                //player.setVelocityX(-400);
                 player.anims.play('JumpL', true);
             }
             else if(lastDirection=="right")
             {
-                player.setVelocityX(400);
+                //player.setVelocityX(400);
                 player.anims.play('JumpR', true);
             }
         }
         else
         {
-            player.setVelocityY(0);
-            player.setVelocityX(0);
+            /*player.setVelocityY(0);
+            player.setVelocityX(0);*/
             jump=false;
         }
     }
@@ -499,8 +499,8 @@ function KunaiAndTP()
         kunaiLeftTimer = 300;
         player.x=kunai1.x;
         player.y=kunai1.y-40;
-        player.setVelocityY(-20);
-        player.setVelocityX(0);
+        /*player.setVelocityY(-20);
+        player.setVelocityX(0);*/
         playerSeishin--;
     }
 
@@ -533,8 +533,8 @@ function KunaiAndTP()
         kunaiRightTimer = DispawnKunaiThrowTimer;
         player.x=kunai2.x;
         player.y=kunai2.y-40;
-        player.setVelocityY(-20);
-        player.setVelocityX(0);
+        /*player.setVelocityY(-20);
+        player.setVelocityX(0);*/
         playerSeishin--;
     }
 
@@ -561,8 +561,13 @@ function Lightning()
 {
     if(lightning_attack == true)
     {
-        player.setVelocityY(800);
+        player.body.setMaxVelocityY(900);
+        player.setVelocityY(900);
         player.setVelocityX(0);
+    }
+    else
+    {
+        player.body.setMaxVelocityY(800);
     }
 }
 /*

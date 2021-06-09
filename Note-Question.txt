@@ -1,13 +1,9 @@
 ﻿
 A faire :
 
-- Saut remake
-
 - Kunai remake
 
 - Kunai UX remake
-
-- Jump UX remake
 
 - Player Asset (Creer une fonction animation avec les anims) + Equilibrage ingame
 
@@ -15,14 +11,14 @@ A faire :
 
 - Lvl design sequence Boss
 
-
+- Jump UX Made
 
 
 Code Bonus :
 
-- UI,UX Kunai
+- UI Kunai
 
-- UI,UX Interrupteur
+- UI Interrupteur
 
 - fonction reset timer 
 

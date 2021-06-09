@@ -53,7 +53,8 @@ class lvl1 extends Phaser.Scene //
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
         player.setCollideWorldBounds(true);
-        
+        player.body.setMaxVelocityY(900);
+
         //---Camera
         this.cameras.main.setSize(config.width,config.height);
         this.cameras.main.startFollow(player);
@@ -167,7 +168,7 @@ class lvl1 extends Phaser.Scene //
         for(const i of groupeBonus1Objects){
             this.groupeBonus1.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
-            .setGravityY(-500)
+            .setGravityY(-1500)
             .setImmovable(true);
         };
 
@@ -184,7 +185,7 @@ class lvl1 extends Phaser.Scene //
         for(const i of groupeBonus2Objects){
             this.groupeBonus2.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
-            .setGravityY(-500)
+            .setGravityY(-1500)
             .setImmovable(true);
         };
 
@@ -278,6 +279,7 @@ class lvl1 extends Phaser.Scene //
             gameOver = false;
             //return;
         }
+        
 
         //Controle Joueur
         keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
@@ -324,15 +326,15 @@ class lvl1 extends Phaser.Scene //
             
             for(let i = 0; i< this.doorList.length; i++)
             {
-                this.physics.add.collider(this.doorList[i],kunai1);
+                this.physics.add.collider(this.doorList[i],kunai2);
             }
             for(let i = 0; i< this.door2List.length; i++)
             {
-                this.physics.add.collider(this.door2List[i],kunai1);
+                this.physics.add.collider(this.door2List[i],kunai2);
             }
             for(let i = 0; i< this.door3List.length; i++)
             {
-                this.physics.add.collider(this.door3List[i],kunai1);
+                this.physics.add.collider(this.door3List[i],kunai2);
             }
 
             kunaiRightTimer=0;
