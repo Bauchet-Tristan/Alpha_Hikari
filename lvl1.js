@@ -48,12 +48,11 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(1500, 100, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
         player.setCollideWorldBounds(true);
-        
         
         //---Camera
         this.cameras.main.setSize(config.width,config.height);
@@ -305,7 +304,7 @@ class lvl1 extends Phaser.Scene //
     
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
-            kunai3 = this.physics.add.image(player.x+30, player.y-40, 'Projectil');
+            kunai3 = this.physics.add.image(player.x, player.y, 'Projectil');
             kunai3.body.allowGravity = false;
             this.physics.add.collider(kunai3,this.plateformes);
 
@@ -323,17 +322,17 @@ class lvl1 extends Phaser.Scene //
             kunai2.body.allowGravity = false;
             this.physics.add.collider(kunai2,this.plateformes);
             
-            for(let i = 0; i< this.Ennemi1List.length; i++)
-            {
-                this.physics.add.collider(this.Ennemi1List[i],kunai2);
-            }
-            for(let i = 0; i< this.Ennemi2List.length; i++)
-            {
-                this.physics.add.collider(this.Ennemi2List[i],kunai2);
-            }
             for(let i = 0; i< this.doorList.length; i++)
             {
-                this.physics.add.collider(this.doorList[i],kunai2);
+                this.physics.add.collider(this.doorList[i],kunai1);
+            }
+            for(let i = 0; i< this.door2List.length; i++)
+            {
+                this.physics.add.collider(this.door2List[i],kunai1);
+            }
+            for(let i = 0; i< this.door3List.length; i++)
+            {
+                this.physics.add.collider(this.door3List[i],kunai1);
             }
 
             kunaiRightTimer=0;
@@ -346,17 +345,17 @@ class lvl1 extends Phaser.Scene //
             kunai1.body.allowGravity = false;
             this.physics.add.collider(kunai1,this.plateformes);
 
-            for(let i = 0; i< this.Ennemi1List.length; i++)
-            {
-                this.physics.add.collider(this.Ennemi1List[i],kunai1);
-            }
-            for(let i = 0; i< this.Ennemi2List.length; i++)
-            {
-                this.physics.add.collider(this.Ennemi2List[i],kunai1);
-            }
             for(let i = 0; i< this.doorList.length; i++)
             {
                 this.physics.add.collider(this.doorList[i],kunai1);
+            }
+            for(let i = 0; i< this.door2List.length; i++)
+            {
+                this.physics.add.collider(this.door2List[i],kunai1);
+            }
+            for(let i = 0; i< this.door3List.length; i++)
+            {
+                this.physics.add.collider(this.door3List[i],kunai1);
             }
 
             kunaiLeftTimer =0;

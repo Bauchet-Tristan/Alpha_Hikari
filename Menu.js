@@ -15,8 +15,12 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
 
         this.load.spritesheet("GoatR", "assets/Bouquetin_116_123.png", { frameWidth: 116, frameHeight: 123 });
+ 
         this.load.spritesheet("GrueR", "assets/Grue_Right_161_147.png", { frameWidth: 161, frameHeight: 147 });
         this.load.spritesheet("GrueL", "assets/Grue_Left_162_147.png", { frameWidth: 162, frameHeight: 147 });
+
+        this.load.spritesheet("GrueLPrepa", "assets/GrueLeftPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
+        this.load.spritesheet("GrueRPrepa", "assets/GrueRightPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
 
         this.load.image("Projectil","assets/Projectil.png");
         this.load.image("ProjectilLeft","assets/ProjectilLeft.png");
@@ -157,6 +161,20 @@ class Menu extends Phaser.Scene //
         this.anims.create({
             key: 'GrueFlyLeft',
             frames: this.anims.generateFrameNumbers('GrueL', { start: 0, end: 62 }),
+            frameRate: 60,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'GrueRightPrepaAttack',
+            frames: this.anims.generateFrameNumbers('GrueRPrepa', { start: 0, end: 62 }),
+            frameRate: 60,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'GrueLeftPrepaAttack',
+            frames: this.anims.generateFrameNumbers('GrueLPrepa', { start: 0, end: 62 }),
             frameRate: 60,
             repeat: -1
         });

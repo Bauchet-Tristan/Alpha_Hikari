@@ -72,7 +72,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
                 enemy.timeHit = 0;
 
 
-                console.log(enemy);
+                //console.log(enemy);
                 playerHealth--;
                 invincibleTimer = 0;
             }
