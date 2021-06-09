@@ -146,7 +146,7 @@ var DispawnKunaiThrowSet = 500 ;
 
 //Jump//
 var jumpSpeed = 550;
-var Jump_time = 20;
+var jump_time_Max = 20;
 
 
 //run//

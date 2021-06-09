@@ -14,6 +14,10 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
         this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
 
+        this.load.spritesheet("GoatR", "assets/Bouquetin_116_123.png", { frameWidth: 116, frameHeight: 123 });
+        this.load.spritesheet("GrueR", "assets/Grue_Right_161_147.png", { frameWidth: 161, frameHeight: 147 });
+        this.load.spritesheet("GrueL", "assets/Grue_Left_162_147.png", { frameWidth: 162, frameHeight: 147 });
+
         this.load.image("Projectil","assets/Projectil.png");
         this.load.image("ProjectilLeft","assets/ProjectilLeft.png");
         this.load.image("ProjectilRight","assets/ProjectilRight.png");
@@ -122,6 +126,38 @@ class Menu extends Phaser.Scene //
             key: 'WolfRight',
             frames: this.anims.generateFrameNumbers('ennemi', { start: 12, end: 23 }),
             frameRate: 12,
+            repeat: -1
+        });
+
+        //Goat
+
+        this.anims.create({
+            key: 'GoatIdle',
+            frames: this.anims.generateFrameNumbers('GoatR', { start: 16, end: 32 }),
+            frameRate: 16,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'GoatJump',
+            frames: this.anims.generateFrameNumbers('GoatR', { start: 0, end: 14 }),
+            frameRate: 14,
+            repeat: -1
+        });
+
+        //Grue
+
+        this.anims.create({
+            key: 'GrueFlyRight',
+            frames: this.anims.generateFrameNumbers('GrueR', { start: 0, end: 62 }),
+            frameRate: 60,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'GrueFlyLeft',
+            frames: this.anims.generateFrameNumbers('GrueL', { start: 0, end: 62 }),
+            frameRate: 60,
             repeat: -1
         });
 
@@ -291,7 +327,7 @@ function Controls()
     if(downButton==true && !player.body.blocked.down) 
     {
         lightning_attack = true;
-        jumpTime = 20; // cancel le jump si attack
+        jumpTime = jump_time_Max; // cancel le jump si attack
         canJump=false; // cancel le jump si attack
     }
     //Crouch 
@@ -372,7 +408,7 @@ function Jump()
 {
     if(jump==true)
     {
-        if(jumpTime<Jump_time)
+        if(jumpTime<jump_time_Max)
         {                                     
             player.setVelocityY(-jumpSpeed);
 

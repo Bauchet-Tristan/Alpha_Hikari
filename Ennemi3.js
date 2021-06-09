@@ -2,7 +2,7 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 { 
     constructor(scene,x,y)
     { 
-        super(scene,x,y,"ennemi");
+        super(scene,x,y,"GrueR");
 
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
@@ -22,7 +22,6 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 
     Patern()
     {          
-
         this.timerAttack++;
 
         this.distancePlayerEnemy = player.x - this.body.x;
@@ -46,13 +45,13 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
                 if(this.distancePlayerEnemy > 100)
                 {
                     //gauche
-                    this.anims.play('WolfRight',true);
+                    this.anims.play('GrueFlyRight',true);
                     this.body.setVelocityX(this.speedX);
                 }
                 else if (this.distancePlayerEnemy < 100)
                 {
                     //droite
-                    this.anims.play('WolfLeft',true);
+                    this.anims.play('GrueFlyLeft',true);
                     this.body.setVelocityX(-this.speedX);
                 }
             }
