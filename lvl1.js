@@ -48,7 +48,7 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(600, 0, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
