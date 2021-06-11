@@ -22,9 +22,9 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet("GrueLPrepa", "assets/GrueLeftPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
         this.load.spritesheet("GrueRPrepa", "assets/GrueRightPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
 
-        this.load.image("Projectil","assets/Projectil.png");
-        this.load.image("ProjectilLeft","assets/ProjectilLeft.png");
-        this.load.image("ProjectilRight","assets/ProjectilRight.png");
+        this.load.image("Mark","assets/Projectil.png");
+        this.load.image("Projectil","assets/ProjectilLeft.png");
+
 
         this.load.image("door1","assets/FichierDoor(1).png");
         this.load.image("door2","assets/FichierDoor(2).png");
@@ -185,7 +185,7 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl1");
+        //this.scene.start("lvl1");
 
         if(cursors.space.isDown)
         {
@@ -302,14 +302,29 @@ function UI()
 
 function kunai_click(scene)
 {
-    if(kunai_Throw && kunai_throw == false) 
+    if(kunai_Throwing && kunai_throw == false && kunaiTP == false && kunaiUnlock ==true) 
     {
+        kunaiUnlock = false;
         kunai_throw = true;
         kunai_active = true;
         kunaiTimer = 0;
+        kunaiTimerTouched =0;
 
         kunai = new Kunai(scene, player.x -25, player.y - 30);
         scene.physics.add.collider(kunai, scene.plateformes,kunai.KunaiPlatforme);
+
+        for(let i = 0; i< scene.doorList.length; i++)
+        {
+            scene.physics.add.collider(kunai,scene.doorList[i],kunai.KunaiPlatforme);
+        }
+        for(let i = 0; i< scene.door2List.length; i++)
+        {
+            scene.physics.add.collider(kunai,scene.door2List[i],kunai.KunaiPlatforme);
+        }
+        for(let i = 0; i< scene.door3List.length; i++)
+        {
+            scene.physics.add.collider(kunai,scene.door3List[i],kunai.KunaiPlatforme);
+        }
         
         kunai.Shoot(scene);
     }
@@ -323,12 +338,86 @@ function kunai_click(scene)
         }   
         else if(kunai_touched == true)    
         {
-            kunai.FadeOut();
-        } 
+            kunaiTimerTouched++;
+
+            if(kunaiTimerTouched >100)
+            {
+                kunai.FadeOut();
+            }
+        }
+        else{} 
+    }
+
+    ///////////////////////Teleportation
+
+    if(kunai_Throwing == false && kunai_throw ==true)
+    {
+        kunaiTP = true;
+    }
+
+    if(kunai_Throwing && kunai_throw == true && kunaiTP == true && playerSeishin > 0)
+    {
+        playerSeishin--;
+        player.x=kunai.x;
+        player.y=kunai.y;
+        player.setVelocity(0,0);
+        kunai.Destroy();
+    }
+
+    if(kunai_Throwing == false && kunai_throw == false)
+    {
+        kunaiUnlock = true;
     }
 }
 
 
+
+function Mark_Space(scene)
+{
+    if(markStand && mark_throw == false && markTP == false && markUnlock ==true) 
+    {
+        markUnlock = false;
+        mark_throw = true;
+        mark_active = true;
+        markTimer = 0;
+
+        mark = new Mark(scene, player.x -25, player.y - 30);
+        scene.physics.add.collider(mark, scene.plateformes,);
+
+    }
+
+    if(mark_active == true)
+    {
+       //console.log(markTimer);
+        if(markTimer >= 150)
+        {
+            mark.FadeOut();
+        }   
+        else{} 
+    }
+
+
+    ///////////////////////Teleportation
+
+    if(markStand == false && mark_throw ==true)
+    {
+        markTP = true;
+    }
+
+    if(markStand && mark_throw == true && markTP == true && playerSeishin > 0)
+    {
+        playerSeishin--;
+        player.x=mark.x;
+        player.y=mark.y;
+        player.setVelocity(0,0);
+        mark.Destroy();
+    }
+
+    if(markStand == false && mark_throw == false)
+    {
+        markUnlock = true;
+    }
+}
 
 
 
@@ -336,26 +425,28 @@ function Controls(scene)
 {
     //
     pointer = scene.input.activePointer;
-    kunai_Throw = pointer.isDown;
+    kunai_Throwing = pointer.isDown;
 
     keyQ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
     keyD = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    keyZ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);  
+    keyS = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);  
+    keyZ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
+    keyA = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 
     ///////Deplacement axes X Marche-course///////
 
-    leftButton=cursors.left.isDown;
-    rightButton=cursors.right.isDown;
-    downButton=cursors.down.isDown;
-    
-    jumpButton=cursors.space.isDown;
+    leftButton=keyQ.isDown;
+    rightButton=keyD.isDown;
+    downButton=keyS.isDown;
+    jumpButton=keyZ.isDown;
+    balanceButton=keyA.isDown;
+    markStand=cursors.space.isDown;
+    //jumpButton=cursors.space.isDown;
 
-    kunaiRight = keyD.isDown;
+    /*kunaiRight = keyD.isDown;
     kunaiLeft = keyQ.isDown;
-    kunaiStand = keyZ.isDown;
+    kunaiStand = keyZ.isDown;*/
     
-    balanceButton=cursors.up.isDown;
-
 
     //Shifting
     if (leftButton == true)
@@ -376,44 +467,15 @@ function Controls(scene)
     }
 
 
-
-    //On peut JUMP
-    if(player.body.blocked.down || player.body.touching.down)
-    {
-        canJump = true;
-    }
-
     //Lighting attack
     if(downButton==true && !player.body.blocked.down) 
     {
         lightning_attack = true;
-        jumpTime = jump_time_Max; // cancel le jump si attack
-        canJump=false; // cancel le jump si attack
-    }
-    //Crouch 
-    else if(downButton == true && player.body.blocked.down) 
-    {
-        playerCrouch = true;
-        lightning_attack = false;
-        canJump=false;
-        //console.log("egjijr");
-    }
-    else
-    {
-        playerCrouch = false;
     }
 
     if(player.body.blocked.down==true)
     {
         lightning_attack=false;
-    }
-
-    //Jump 
-    if (jumpButton == true && canJump == true)
-    {   
-        canJump = false;
-        jumpTime=0;
-        jump=true;
     }
 
     //Balance
@@ -466,30 +528,22 @@ function Shifting()
 
 function Jump()
 {
-    if(jump==true)
-    {
-        if(jumpTime < jump_time_Max)
-        {                                     
-            player.setVelocityY(-jumpSpeed);
+    if( jumpButton ==true && (player.body.blocked.down || player.body.touching.down))
+    {                                   
+        player.setVelocityY(-jumpSpeed);
 
-            if(lastDirection=="left")
-            {
-                //player.setVelocityX(-400);
-                player.anims.play('JumpL', true);
-            }
-            else if(lastDirection=="right")
-            {
-                //player.setVelocityX(400);
-                player.anims.play('JumpR', true);
-            }
-        }
-        else
+        if(lastDirection=="left")
         {
-            /*player.setVelocityY(0);
-            player.setVelocityX(0);*/
-            jump=false;
+            //player.setVelocityX(-400);
+            player.anims.play('JumpL', true);
+        }
+        else if(lastDirection=="right")
+        {
+            //player.setVelocityX(400);
+            player.anims.play('JumpR', true);
         }
     }
+    else{}
 }
 
 
@@ -534,7 +588,7 @@ function KunaiAndTP()
         kunai1TP=true;
     }
     
-    //teleportation et brise le kunai
+    //Teleportation et brise le kunai
     if(kunai1TP==true && kunaiLeft == true && playerSeishin >=1)
     {
         kunai1TP=false;
@@ -561,9 +615,9 @@ function KunaiAndTP()
             kunai_throw_right = false;
             kunai2TP=false;
         }
-        
     }
-    //tp
+
+    //TP
     if(kunaiRight==false && kunai_throw_right==true)
     {
         kunai2TP=true;
@@ -612,6 +666,8 @@ function Lightning()
         player.body.setMaxVelocityY(800);
     }
 }
+
+
 /*
 function Crouch()
 {
@@ -627,6 +683,7 @@ function Crouch()
         crouching =false;
     }
 }*/
+
 
 function Balance()
 {
@@ -705,7 +762,6 @@ function Timer()
     //saut
     jumpTime++;
     kunaiTimer++;
-    kunaiStandTimer++;
     invincibleTimer++;
     bonus1Cooldown++;
     bonus2Cooldown++;

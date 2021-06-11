@@ -294,6 +294,8 @@ class lvl1 extends Phaser.Scene //
 
         kunai_click(this);
 
+        Mark_Space(this);
+
         Shifting();
 
         Jump();
@@ -305,8 +307,8 @@ class lvl1 extends Phaser.Scene //
 
 
         //Kunai on your place
+        
         /*
-    
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
             kunai3 = this.physics.add.image(player.x, player.y, 'Projectil');
@@ -318,7 +320,7 @@ class lvl1 extends Phaser.Scene //
         }
 
         KunaiHere();
-
+        
         /////////////////////////////Throw a Kunai
 
         if(kunaiRight == true && kunai_throw_right==false)

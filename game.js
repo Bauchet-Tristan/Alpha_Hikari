@@ -6,7 +6,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 1500 },
-            debug: true
+            debug: false
         }
     },
     input:{
@@ -21,6 +21,7 @@ var gameOver = false;
 
 //control
 var pointer;
+var kunai_Throwing;
 
 var leftButton;
 var rightButton;
@@ -31,6 +32,8 @@ var cursors;
 var keyQ;
 var keyD;
 var keyZ;
+var keyS;
+var keyA;
 
 //UI
 var UILightBlue;
@@ -79,12 +82,12 @@ var playerCrouch;
 var crouching;
 
 
-//Kunai on place
-var kunai3;
-
-var kunaiStand;
-
-var kunai_throw_stand = false;
+//Mark
+var mark;
+var mark_throw = false;
+var mark_active = false;
+var mark_touched = false;
+var markUnlock = true;
 
 //Kunai//
 var kunai;
@@ -92,11 +95,13 @@ var kunai;
 var kunai_throw = false;
 var kunai_active = false;
 var kunai_touched = false;
+var kunaiUnlock = true;
+
 
 //Teleportation
-var kunai1TP=false;
-var kunai2TP=false;
-var kunai3TP=false;
+var kunaiTP=false;
+
+var markTP=false;
 
 //Lightning Attaque
 var lightning_attack;
@@ -124,8 +129,9 @@ var bonus2State = "unactive";
 var jumpTime = 0;
 
 var kunaiTimer = 0;
+var kunaiTimerTouched = 0;
+var markTimer = 0;
 
-var kunaiStandTimer = 0;
 var invincibleTimer=0;
 
 var bonus1Cooldown = 400;
@@ -135,12 +141,8 @@ var SwitchTime = 180;
 
 
 
-//Equilibrage :
-var DispawnKunaiThrowTimer = 1000 ;
-var OnplaceKunaiThrow = 49; //8 block de porter
+////////////// Equilibrage: //////////////
 var SpeedKunaiThrow = 750 ;
-
-var DispawnKunaiThrowSet = 500 ;
 
 
 //Jump//
