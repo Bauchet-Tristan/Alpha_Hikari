@@ -11,7 +11,6 @@ class Porte3 extends Phaser.GameObjects.Sprite
         this.body.collideWorldBounds=true;
         this.key = key;
         this.body.allowGravity = false;
-       
     }
 
     DoorOpen(collide)

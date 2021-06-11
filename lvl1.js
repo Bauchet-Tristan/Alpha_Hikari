@@ -271,6 +271,7 @@ class lvl1 extends Phaser.Scene //
 
     update ()
     {
+
         if (gameOver == true)
         {
             console.log("gameOver");
@@ -282,16 +283,16 @@ class lvl1 extends Phaser.Scene //
         
 
         //Controle Joueur
-        keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyZ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);     
+          
 
 
         ///////////// Avatar and UIAvatar Property /////////////
 
         UI();
 
-        Controls(); 
+        Controls(this); 
+
+        kunai_click(this);
 
         Shifting();
 
@@ -302,7 +303,9 @@ class lvl1 extends Phaser.Scene //
         //Crouch();
 
 
+
         //Kunai on your place
+        /*
     
         if(kunaiStand==true && kunai_throw_stand ==false)
         {
@@ -365,7 +368,7 @@ class lvl1 extends Phaser.Scene //
         }
 
         
-        KunaiAndTP();
+        KunaiAndTP();*/
 
         Balance();
 

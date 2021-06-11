@@ -298,8 +298,50 @@ function UI()
 }
 
 
-function Controls()
+
+
+function kunai_click(scene)
 {
+    if(kunai_Throw && kunai_throw == false) 
+    {
+        kunai_throw = true;
+        kunai_active = true;
+        kunaiTimer = 0;
+
+        kunai = new Kunai(scene, player.x -25, player.y - 30);
+        scene.physics.add.collider(kunai, scene.plateformes,kunai.KunaiPlatforme);
+        
+        kunai.Shoot(scene);
+    }
+
+    if(kunai_active == true)
+    {
+       //console.log(kunaiTimer);
+        if(kunaiTimer >= 30 && kunai_touched == false)
+        {
+            kunai.FadeOut();
+        }   
+        else if(kunai_touched == true)    
+        {
+            kunai.FadeOut();
+        } 
+    }
+}
+
+
+
+
+
+function Controls(scene)
+{
+    //
+    pointer = scene.input.activePointer;
+    kunai_Throw = pointer.isDown;
+
+    keyQ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+    keyD = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    keyZ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);  
+
     ///////Deplacement axes X Marche-course///////
 
     leftButton=cursors.left.isDown;
@@ -662,8 +704,7 @@ function Timer()
 {
     //saut
     jumpTime++;
-    kunaiRightTimer++;
-    kunaiLeftTimer++;
+    kunaiTimer++;
     kunaiStandTimer++;
     invincibleTimer++;
     bonus1Cooldown++;

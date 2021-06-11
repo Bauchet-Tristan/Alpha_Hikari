@@ -6,7 +6,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 1500 },
-            debug: false
+            debug: true
         }
     },
     input:{
@@ -20,6 +20,8 @@ var config = {
 var gameOver = false;
 
 //control
+var pointer;
+
 var leftButton;
 var rightButton;
 var downButton;
@@ -85,14 +87,11 @@ var kunaiStand;
 var kunai_throw_stand = false;
 
 //Kunai//
-var kunai1;
-var kunai2;
+var kunai;
 
-var kunaiRight;
-var kunaiLeft;
-
-var kunai_throw_left = false;
-var kunai_throw_right = false;
+var kunai_throw = false;
+var kunai_active = false;
+var kunai_touched = false;
 
 //Teleportation
 var kunai1TP=false;
@@ -124,8 +123,8 @@ var bonus2State = "unactive";
 //Timer
 var jumpTime = 0;
 
-var kunaiRightTimer = 0;
-var kunaiLeftTimer = 0;
+var kunaiTimer = 0;
+
 var kunaiStandTimer = 0;
 var invincibleTimer=0;
 
@@ -137,7 +136,7 @@ var SwitchTime = 180;
 
 
 //Equilibrage :
-var DispawnKunaiThrowTimer = 200 ;
+var DispawnKunaiThrowTimer = 1000 ;
 var OnplaceKunaiThrow = 49; //8 block de porter
 var SpeedKunaiThrow = 750 ;
 
