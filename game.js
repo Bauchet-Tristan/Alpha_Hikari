@@ -142,17 +142,14 @@ var SwitchTime = 180;
 
 
 ////////////// Equilibrage: //////////////
-var SpeedKunaiThrow = 750 ;
 
 
 //Jump//
 var jumpSpeed = 750;
 var jump_time_Max = 1;
 
-
 //run//
 var runSpeed =300;
-
 
 //
 var game = new Phaser.Game(config);

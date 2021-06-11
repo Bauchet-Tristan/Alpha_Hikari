@@ -186,6 +186,7 @@ class Menu extends Phaser.Scene //
     update()
     {
         //this.scene.start("lvl1");
+        //controling(this);
 
         if(cursors.space.isDown)
         {
@@ -196,6 +197,10 @@ class Menu extends Phaser.Scene //
 }
 
 // Fonction du code
+function controling(scene)
+{
+    boby=cursors.space.isDown;
+}
 
 function Fond(scene)
 {
@@ -389,7 +394,7 @@ function Mark_Space(scene)
     if(mark_active == true)
     {
        //console.log(markTimer);
-        if(markTimer >= 150)
+        if(markTimer >= 350)
         {
             mark.FadeOut();
         }   
@@ -762,6 +767,7 @@ function Timer()
     //saut
     jumpTime++;
     kunaiTimer++;
+    markTimer++;
     invincibleTimer++;
     bonus1Cooldown++;
     bonus2Cooldown++;

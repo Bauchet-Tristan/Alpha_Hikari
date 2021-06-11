@@ -48,7 +48,7 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(600, 0, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -304,73 +304,6 @@ class lvl1 extends Phaser.Scene //
         
         //Crouch();
 
-
-
-        //Kunai on your place
-        
-        /*
-        if(kunaiStand==true && kunai_throw_stand ==false)
-        {
-            kunai3 = this.physics.add.image(player.x, player.y, 'Projectil');
-            kunai3.body.allowGravity = false;
-            this.physics.add.collider(kunai3,this.plateformes);
-
-            kunaiStandTimer = 0;
-            kunai_throw_stand = true;
-        }
-
-        KunaiHere();
-        
-        /////////////////////////////Throw a Kunai
-
-        if(kunaiRight == true && kunai_throw_right==false)
-        {
-            kunai2 = this.physics.add.image(player.x-25, player.y-30, 'ProjectilRight').setVelocityX(SpeedKunaiThrow);
-            kunai2.body.allowGravity = false;
-            this.physics.add.collider(kunai2,this.plateformes);
-            
-            for(let i = 0; i< this.doorList.length; i++)
-            {
-                this.physics.add.collider(this.doorList[i],kunai2);
-            }
-            for(let i = 0; i< this.door2List.length; i++)
-            {
-                this.physics.add.collider(this.door2List[i],kunai2);
-            }
-            for(let i = 0; i< this.door3List.length; i++)
-            {
-                this.physics.add.collider(this.door3List[i],kunai2);
-            }
-
-            kunaiRightTimer=0;
-            kunai_throw_right = true;
-        }
-
-        if(kunaiLeft == true && kunai_throw_left==false)
-        {
-            kunai1 = this.physics.add.image(player.x+25, player.y-30, 'ProjectilLeft').setVelocityX(-SpeedKunaiThrow); 
-            kunai1.body.allowGravity = false;
-            this.physics.add.collider(kunai1,this.plateformes);
-
-            for(let i = 0; i< this.doorList.length; i++)
-            {
-                this.physics.add.collider(this.doorList[i],kunai1);
-            }
-            for(let i = 0; i< this.door2List.length; i++)
-            {
-                this.physics.add.collider(this.door2List[i],kunai1);
-            }
-            for(let i = 0; i< this.door3List.length; i++)
-            {
-                this.physics.add.collider(this.door3List[i],kunai1);
-            }
-
-            kunaiLeftTimer =0;
-            kunai_throw_left = true;
-        }
-
-        
-        KunaiAndTP();*/
 
         Balance();
 
