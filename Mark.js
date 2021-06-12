@@ -30,4 +30,9 @@ class Mark extends Phaser.GameObjects.Sprite
         mark_touched = false;
         markTP = false;
     }
+
+    Anim()
+    {
+        mark.setRotation(SwitchTime);
+    }
 }

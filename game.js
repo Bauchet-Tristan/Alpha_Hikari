@@ -5,8 +5,8 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 1500 },
-            debug: false
+            gravity: { y: 1400 },
+            debug: true
         }
     },
     input:{
@@ -55,6 +55,8 @@ var UIYang4;
 var UIYang5;
 var UIYang6;
 
+//UX
+var sparkle;
 
 //////var joueur//////
 var player;
@@ -75,7 +77,6 @@ var playerSeishin = 6;
 
 //Saut//
 var jump = false;
-var canJump = false;
 
 //Se baisser//
 var playerCrouch;
@@ -96,6 +97,8 @@ var kunai_throw = false;
 var kunai_active = false;
 var kunai_touched = false;
 var kunaiUnlock = true;
+
+var KunaiRotaStop=0;
 
 
 //Teleportation
@@ -145,7 +148,7 @@ var SwitchTime = 180;
 
 
 //Jump//
-var jumpSpeed = 750;
+var jumpSpeed = 700;
 var jump_time_Max = 1;
 
 //run//

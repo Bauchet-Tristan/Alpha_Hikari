@@ -26,11 +26,6 @@ class Clef3 extends Phaser.GameObjects.Sprite
 
     Switch(key,player)
     {
-        if(SwitchTime >= 180)
-        {
-            SwitchTime = 0;
-        }
-
         if(keyNumber3 >= 1)
         {
             key.setRotation(SwitchTime);

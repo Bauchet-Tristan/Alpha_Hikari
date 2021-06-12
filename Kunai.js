@@ -2,13 +2,16 @@ class Kunai extends Phaser.GameObjects.Sprite
 {
 	constructor(scene, x, y) 
     {
-        super(scene, x, y, "Projectil");
+        super(scene, x, y, "Projectile");
 
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
 
 		//this.body.immovable = true;
 		this.body.allowGravity = false;
+
+        // this.body.setOffset(5,10).setSize(50,85,false);
+        this.body.setSize(35,35);
     }
 
 	Shoot(scene) 
@@ -51,9 +54,15 @@ class Kunai extends Phaser.GameObjects.Sprite
 
     KunaiPlatforme(kunai)
     {
+        kunai.setRotation(KunaiRotaStop);
         kunai.body.setVelocity(0,0);
         kunai_touched = true; /////////////////////////////////////////////////  LLLLLLLAAAAAAA
         kunai.alpha = 1;
+    }
+
+    Anim()
+    {
+        kunai.setRotation(SwitchTime);
     }
 
 }

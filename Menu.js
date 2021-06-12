@@ -22,8 +22,10 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet("GrueLPrepa", "assets/GrueLeftPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
         this.load.spritesheet("GrueRPrepa", "assets/GrueRightPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
 
-        this.load.image("Mark","assets/Projectil.png");
-        this.load.image("Projectil","assets/ProjectilLeft.png");
+        this.load.image("Mark","assets/Mark.png");
+        this.load.image("Projectile","assets/Projectile.png");
+        this.load.spritesheet("MarkAnimation", "assets/Sparkle_117_114.png", { frameWidth: 117, frameHeight: 114 });
+
 
 
         this.load.image("door1","assets/FichierDoor(1).png");
@@ -179,13 +181,21 @@ class Menu extends Phaser.Scene //
             repeat: -1
         });
 
+        //Projectile
+        this.anims.create({
+            key: 'MarkAnimationRotate',
+            frames: this.anims.generateFrameNumbers('MarkAnimation', { start: 0, end: 9 }),
+            frameRate: 10,
+            repeat: -1
+        });
+
         cursors = this.input.keyboard.createCursorKeys();
         cursors.space.reset();
     }
 
     update()
     {
-        //this.scene.start("lvl1");
+        this.scene.start("lvl1");
         //controling(this);
 
         if(cursors.space.isDown)
@@ -315,7 +325,7 @@ function kunai_click(scene)
         kunaiTimer = 0;
         kunaiTimerTouched =0;
 
-        kunai = new Kunai(scene, player.x -25, player.y - 30);
+        kunai = new Kunai(scene, player.x, player.y - 20);
         scene.physics.add.collider(kunai, scene.plateformes,kunai.KunaiPlatforme);
 
         for(let i = 0; i< scene.doorList.length; i++)
@@ -332,28 +342,49 @@ function kunai_click(scene)
         }
         
         kunai.Shoot(scene);
+        //sparkle = scene.add.image(player.x,player.y,"door2");
     }
 
     if(kunai_active == true)
     {
-       //console.log(kunaiTimer);
-        if(kunaiTimer >= 30 && kunai_touched == false)
+        /*
+        sparkle.setPosition((kunai.x + player.x)/2, (kunai.y + player.y)/2)
+
+        if(kunai.x < player.x)
         {
+            sparkle.rotation = -Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
+        }
+        else if(kunai.x > player.x)
+        {
+            sparkle.rotation = Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
+        }*/
+
+        if(kunaiTimer >= 100 && kunai_touched == false) //timer si aucune touche
+        {
+            KunaiRotaStop = SwitchTime;
+            kunai.Anim();
             kunai.FadeOut();
         }   
         else if(kunai_touched == true)    
         {
-            kunaiTimerTouched++;
-
-            if(kunaiTimerTouched >100)
+            if(kunaiTimer >= 100)
             {
-                kunai.FadeOut();
+                kunaiTimerTouched++;
+
+                if(kunaiTimerTouched >100) // timer si contre un murs
+                {
+                    kunai.FadeOut();
+                }
             }
         }
-        else{} 
+        else
+        {
+            KunaiRotaStop = SwitchTime;
+            kunai.Anim();
+        } 
     }
 
-    ///////////////////////Teleportation
+    ///////////////////////Teleportation kunai
 
     if(kunai_Throwing == false && kunai_throw ==true)
     {
@@ -364,8 +395,7 @@ function kunai_click(scene)
     {
         playerSeishin--;
         player.x=kunai.x;
-        player.y=kunai.y;
-        player.setVelocity(0,0);
+        player.y=kunai.y-30;
         kunai.Destroy();
     }
 
@@ -386,13 +416,14 @@ function Mark_Space(scene)
         mark_active = true;
         markTimer = 0;
 
-        mark = new Mark(scene, player.x -25, player.y - 30);
+        mark = new Mark(scene, player.x, player.y - 20);
         scene.physics.add.collider(mark, scene.plateformes,);
 
     }
 
     if(mark_active == true)
     {
+        mark.Anim()
        //console.log(markTimer);
         if(markTimer >= 350)
         {
@@ -501,7 +532,7 @@ function Shifting()
         lastDirection ="left";
         player.setVelocityX(-runSpeed);
         player.anims.play('RunLeft', true);
-        player.setOffset(20,10).setSize(40,85,false);
+        player.setOffset(15,10).setSize(50,85,false);
 
     }
     else if (runRight == true)
@@ -509,7 +540,7 @@ function Shifting()
         lastDirection ="right";
         player.setVelocityX(runSpeed);
         player.anims.play('RunRight', true);
-        player.setOffset(10,10).setSize(40,85,false);
+        player.setOffset(5,10).setSize(50,85,false);
 
     }
     else if(idle == true)
@@ -533,10 +564,19 @@ function Shifting()
 
 function Jump()
 {
-    if( jumpButton ==true && (player.body.blocked.down || player.body.touching.down))
-    {                                   
-        player.setVelocityY(-jumpSpeed);
+    //if( jumpButton ==true && (player.body.blocked.down || player.body.touching.down))
+    if(player.body.blocked.down || player.body.touching.down)
+    {
+        jumpTime=0
+    }
 
+    if( jumpButton ==true && jumpTime<20)
+    {  
+        jumpTime= 20;     
+        jump=true;
+
+
+        player.setVelocityY(-jumpSpeed);
         if(lastDirection=="left")
         {
             //player.setVelocityX(-400);
@@ -548,115 +588,11 @@ function Jump()
             player.anims.play('JumpR', true);
         }
     }
-    else{}
-}
-
-
-function KunaiHere()
-{
-    if(kunai_throw_stand == true && kunaiStandTimer >= DispawnKunaiThrowSet)
+    else
     {
-        kunai3.disableBody(true,true);
-
-        if(kunaiStand==false)
-        {
-            kunai_throw_stand = false;
-            kunai3TP=false;
-        }
-    }  
-}
-
-function KunaiAndTP()
-{
-    //left
-    if(kunai_throw_left == true && kunaiLeftTimer >= OnplaceKunaiThrow)
-    {
-        kunai1.setVelocityX(0);
-    }
-
-    if(kunai_throw_left == true && kunaiLeftTimer >= DispawnKunaiThrowTimer)
-    {
-        kunai1.disableBody(true,true);
-
-        if(kunaiLeft==false)
-        {
-            kunai_throw_left = false;
-            kunai1TP=false;
-        }
-    }    
-
-    ////Teleportation kunai////
-    //Gauche
-    //Unlock la tp si touche relever
-    if(kunaiLeft==false && kunai_throw_left==true)
-    {
-        kunai1TP=true;
-    }
-    
-    //Teleportation et brise le kunai
-    if(kunai1TP==true && kunaiLeft == true && playerSeishin >=1)
-    {
-        kunai1TP=false;
-        kunaiLeftTimer = 300;
-        player.x=kunai1.x;
-        player.y=kunai1.y-40;
-        /*player.setVelocityY(-20);
-        player.setVelocityX(0);*/
-        playerSeishin--;
-    }
-
-    //Droite//
-    if(kunai_throw_right == true && kunaiRightTimer >= OnplaceKunaiThrow)
-    {
-        kunai2.setVelocityX(0);
-    }
-    
-    if(kunai_throw_right == true && kunaiRightTimer >= DispawnKunaiThrowTimer)
-    {
-        kunai2.disableBody(true,true);
-
-        if(kunaiRight==false)
-        {
-            kunai_throw_right = false;
-            kunai2TP=false;
-        }
-    }
-
-    //TP
-    if(kunaiRight==false && kunai_throw_right==true)
-    {
-        kunai2TP=true;
-    }
-    
-    if(kunai2TP==true && kunaiRight == true && playerSeishin >=1)
-    {
-        kunai2TP=false;
-        kunaiRightTimer = DispawnKunaiThrowTimer;
-        player.x=kunai2.x;
-        player.y=kunai2.y-40;
-        /*player.setVelocityY(-20);
-        player.setVelocityX(0);*/
-        playerSeishin--;
-    }
-
-    //Stand
-    if(kunaiStand==false && kunai_throw_stand==true)
-    {
-        kunai3TP=true;
-    }
-    
-    if(kunai3TP==true && kunaiStand == true && playerSeishin >=1)
-    {
-        kunai3TP=false;
-        kunaiStandTimer = 500;
-        player.x=kunai3.x;
-        player.y=kunai3.y-40;
-        player.setVelocityY(0);
-        player.setVelocityX(0);
-        playerSeishin--;
+        jump=false;
     }
 }
-
 
 function Lightning()
 {
@@ -668,6 +604,7 @@ function Lightning()
     }
     else
     {
+        if(jump)
         player.body.setMaxVelocityY(800);
     }
 }
@@ -771,5 +708,10 @@ function Timer()
     invincibleTimer++;
     bonus1Cooldown++;
     bonus2Cooldown++;
-    SwitchTime++;
+    SwitchTime = SwitchTime+0.1;
+
+    if(SwitchTime >= 180)
+    {
+        SwitchTime = 0;
+    }
 }

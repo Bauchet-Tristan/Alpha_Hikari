@@ -168,7 +168,7 @@ class lvl1 extends Phaser.Scene //
         for(const i of groupeBonus1Objects){
             this.groupeBonus1.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
-            .setGravityY(-1500)
+            .setGravityY(-1400)
             .setImmovable(true);
         };
 
@@ -185,7 +185,7 @@ class lvl1 extends Phaser.Scene //
         for(const i of groupeBonus2Objects){
             this.groupeBonus2.create(i.x,i.y, 'Bonus1')
             .setOrigin(0.5,0.5)
-            .setGravityY(-1500)
+            .setGravityY(-1400)
             .setImmovable(true);
         };
 

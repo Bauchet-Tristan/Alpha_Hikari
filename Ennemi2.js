@@ -22,19 +22,9 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
 
         if(jump == true && this.body.blocked.down == true)
         {
-            this.body.setVelocityY(-500);
+            this.body.setVelocityY(-jumpSpeed);
             this.anims.play('GoatJump',true);
-            this.timer = 1;
-        }
-        else if(this.timer == 1)
-        {
-            this.jumpTime++;
-            if(this.jumpTime >= jump_time_Max)
-            {
-                this.body.setVelocityY(0);
-                this.timer = 0;
-                this.jumpTime = 0;
-            }
+
         }
         else if(this.body.blocked.down == true)
         {
