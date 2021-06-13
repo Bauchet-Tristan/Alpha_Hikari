@@ -1,19 +1,17 @@
 ﻿
 A faire :
 
-- Integration Sons:   4.30 / 10.35 / 11.32 / 13.40
-
-- Integration Menu clickable:
-
 - Kunai UX remake
 
-- Player Asset (Creer une fonction animation avec les anims) + Equilibrage ingame
+- Integration Menu clickable
+
+- Player Asset + Creer une fonction animation avec les anims + Equilibrage ingame
 
 - Lvl design sequence Tuto
 
 - Lvl design sequence Boss
 
-
+- Integration Son :
 
 
 Code Bonus :
