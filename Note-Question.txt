@@ -1,7 +1,9 @@
 ﻿
 A faire :
 
-- Kunai remake
+- Integration Sons:   4.30 / 10.35 / 11.32 / 13.40
+
+- Integration Menu clickable:
 
 - Kunai UX remake
 
@@ -11,16 +13,16 @@ A faire :
 
 - Lvl design sequence Boss
 
-- Jump UX Made
+
 
 
 Code Bonus :
 
-- UI Kunai
-
 - UI Interrupteur
 
 - fonction reset timer 
+
+- Jump UX Made
 
 - fonction Agrandissement taille camera /vision de jeu
 

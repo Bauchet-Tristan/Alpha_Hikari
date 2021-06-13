@@ -24,6 +24,8 @@ class Menu extends Phaser.Scene //
 
         this.load.image("Mark","assets/Mark.png");
         this.load.image("Projectile","assets/Projectile.png");
+        this.load.image("HitBoxTP","assets/Projectil2.png");
+        this.load.image("HitBoxPlatform","assets/HitBoxPlatform.png");
         this.load.spritesheet("MarkAnimation", "assets/Sparkle_117_114.png", { frameWidth: 117, frameHeight: 114 });
 
 
@@ -54,10 +56,26 @@ class Menu extends Phaser.Scene //
         this.load.image("Sun","assets/Background/72ppi/Plan(7).png");
 
         this.load.image("StarterScreen","assets/EcranTitre.png");
+
+        ////Song
+        this.load.audio("lvlSong","Song/Game-Song.mp3");
+        this.load.audio("kunai","Song/KunaiLancer.mp3");
+        this.load.audio("Storm","Song/StormSong.mp3");
+
+
     }
 
     create()
-    {
+    {   
+        //Song
+        musiclvl = this.sound.add("lvlSong");
+        songKunai = this.sound.add("kunai");
+        songStormTpKunai = this.sound.add("Storm");
+        songStormLightning = this.sound.add("Storm");
+        songStormTpMark = this.sound.add("Storm");
+
+
+        ////
         this.add.image(960, 540, 'StarterScreen');
 
         this.add.text(450,0, "Press space to play").setScale(5,5);  
@@ -326,8 +344,9 @@ function kunai_click(scene)
         kunaiTimerTouched =0;
 
         kunai = new Kunai(scene, player.x, player.y - 20);
-        scene.physics.add.collider(kunai, scene.plateformes,kunai.KunaiPlatforme);
+        songKunai.play();
 
+        scene.physics.add.collider(kunai, scene.plateformes,kunai.KunaiPlatforme);
         for(let i = 0; i< scene.doorList.length; i++)
         {
             scene.physics.add.collider(kunai,scene.doorList[i],kunai.KunaiPlatforme);
@@ -342,11 +361,19 @@ function kunai_click(scene)
         }
         
         kunai.Shoot(scene);
+
+        kunai.HitBoxCollide(scene,kunai);
+
+
+        //scene.physics.add.collider(HitBoxLeft, scene.plateformes,kunai.HitBoxCollideleft);
+
         //sparkle = scene.add.image(player.x,player.y,"door2");
+        
     }
 
     if(kunai_active == true)
     {
+      
         /*
         sparkle.setPosition((kunai.x + player.x)/2, (kunai.y + player.y)/2)
 
@@ -357,7 +384,11 @@ function kunai_click(scene)
         else if(kunai.x > player.x)
         {
             sparkle.rotation = Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
-        }*/
+        }
+        */
+
+        kunai.HitBoxFollow();
+        //kunai.HitBoxCollideleft();
 
         if(kunaiTimer >= 100 && kunai_touched == false) //timer si aucune touche
         {
@@ -383,7 +414,6 @@ function kunai_click(scene)
             kunai.Anim();
         } 
     }
-
     ///////////////////////Teleportation kunai
 
     if(kunai_Throwing == false && kunai_throw ==true)
@@ -393,9 +423,34 @@ function kunai_click(scene)
 
     if(kunai_Throwing && kunai_throw == true && kunaiTP == true && playerSeishin > 0)
     {
+        songStormTpKunai.play();
+
         playerSeishin--;
-        player.x=kunai.x;
-        player.y=kunai.y-30;
+        // 
+        if(KunaiHit=="right")
+        {
+            player.x=kunai.x-20;
+            player.y=kunai.y-30;
+        }
+        else if(KunaiHit=="left")
+        {
+            player.x=kunai.x+20;
+            player.y=kunai.y-30;
+        }
+        else if(KunaiHit=="down")
+        {
+            player.x=kunai.x;
+            player.y=kunai.y-30;
+        }
+        else if(KunaiHit=="up")
+        {
+            player.x=kunai.x;
+            player.y=kunai.y+20;
+        }
+
+        //dconsole.log(KunaiHit);
+        //KunaiHit = "up";
+        
         kunai.Destroy();
     }
 
@@ -414,7 +469,7 @@ function Mark_Space(scene)
         markUnlock = false;
         mark_throw = true;
         mark_active = true;
-        markTimer = 0;
+        markTimer = 0;  
 
         mark = new Mark(scene, player.x, player.y - 20);
         scene.physics.add.collider(mark, scene.plateformes,);
@@ -442,6 +497,7 @@ function Mark_Space(scene)
 
     if(markStand && mark_throw == true && markTP == true && playerSeishin > 0)
     {
+        songStormTpMark.play();
         playerSeishin--;
         player.x=mark.x;
         player.y=mark.y;
@@ -507,6 +563,7 @@ function Controls(scene)
     if(downButton==true && !player.body.blocked.down) 
     {
         lightning_attack = true;
+        songStormLightning.play();
     }
 
     if(player.body.blocked.down==true)
@@ -570,9 +627,9 @@ function Jump()
         jumpTime=0
     }
 
-    if( jumpButton ==true && jumpTime<20)
+    if( jumpButton ==true && jumpTime<50)
     {  
-        jumpTime= 20;     
+        jumpTime= 50;     
         jump=true;
 
 

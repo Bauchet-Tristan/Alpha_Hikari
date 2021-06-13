@@ -19,6 +19,14 @@ var config = {
 //var globale
 var gameOver = false;
 
+//Song
+var musiclvl;
+var songKunai;
+var songStormTpKunai;
+var songStormTpMark;
+var songStormLightning; 
+
+
 //control
 var pointer;
 var kunai_Throwing;
@@ -97,6 +105,11 @@ var kunai_throw = false;
 var kunai_active = false;
 var kunai_touched = false;
 var kunaiUnlock = true;
+var KunaiHit = "up";
+var HitBoxLeft;
+var HitBoxRight;
+var HitBoxDown;
+var HitBoxUp;
 
 var KunaiRotaStop=0;
 

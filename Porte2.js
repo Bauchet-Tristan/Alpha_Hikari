@@ -12,6 +12,7 @@ class Porte2 extends Phaser.GameObjects.Sprite
         this.key = key;
         this.body.allowGravity = false;
        
+        this.body.setSize(80,160);
     }
 
     DoorOpen(numberKey2)

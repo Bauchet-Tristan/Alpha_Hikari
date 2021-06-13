@@ -9,6 +9,7 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
 
         //
         this.body.collideWorldBounds=true;
+        this.body.immovable=true;
         //this.body.allowGravity = false;
 
         this.timer = 0;
@@ -19,7 +20,6 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
 
     Patern()
     {
-
         if(jump == true && this.body.blocked.down == true)
         {
             this.body.setVelocityY(-jumpSpeed);
@@ -32,7 +32,6 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         }
 
         // mettre l'anims loup assis //
-
     }
 
 

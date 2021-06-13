@@ -10,6 +10,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
         //
         this.body.collideWorldBounds=true;
         //this.body.allowGravity = false;
+        this.body.setSize(180,90);
 
         this.speed = 300;
         this.timeHit = 0;

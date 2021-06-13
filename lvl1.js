@@ -12,6 +12,19 @@ class lvl1 extends Phaser.Scene //
 
     create ()
     {
+        //Song
+        var musiclvlConfig ={
+            mute: false,
+            volume: 0.5,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        }
+        musiclvl.play(musiclvlConfig);
+
+        
         
         Fond(this);
         cursors = this.input.keyboard.createCursorKeys();
@@ -49,6 +62,7 @@ class lvl1 extends Phaser.Scene //
 
         //---player--//
         player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -64,6 +78,19 @@ class lvl1 extends Phaser.Scene //
 
         
         ////////////Groupe Object 
+
+        //Platforme//
+
+        const groupePlatform_object= this.carteDuNiveau.getObjectLayer('Object/Platform_object').objects;
+
+        this.plateformList = [];
+
+        for(const i of groupePlatform_object)
+        {
+            this.plateformList [groupePlatform_object.indexOf(i)] = new PlatformeHitBox(this,i.x+40,i.y-40).setAlpha(0);;
+            //this.physics.add.collider(this.plateformList [groupePlatform_object.indexOf(i)],player);
+        }
+
 
         //Key3//
 
