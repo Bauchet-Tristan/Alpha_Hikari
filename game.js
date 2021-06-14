@@ -65,6 +65,7 @@ var UIYang6;
 
 //UX
 var sparkle;
+var sparkle2;
 
 //////var joueur//////
 var player;

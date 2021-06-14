@@ -27,7 +27,7 @@ class Menu extends Phaser.Scene //
         this.load.image("HitBoxTP","assets/Projectil2.png");
         this.load.image("HitBoxPlatform","assets/HitBoxPlatform.png");
         this.load.spritesheet("MarkAnimation", "assets/Sparkle_117_114.png", { frameWidth: 117, frameHeight: 114 });
-        this.load.spritesheet("LightningLink", "assets/link-Lightning_241_101.png", { frameWidth: 240, frameHeight: 101 });
+        this.load.spritesheet("LightningLink", "assets/link-Lightning_241_101.png", { frameWidth: 241, frameHeight: 101 });
 
 
 
@@ -62,7 +62,6 @@ class Menu extends Phaser.Scene //
         this.load.audio("lvlSong","Song/Game-Song.mp3");
         this.load.audio("kunai","Song/KunaiLancer.mp3");
         this.load.audio("Storm","Song/StormSong.mp3");
-
 
     }
 
@@ -216,10 +215,17 @@ class Menu extends Phaser.Scene //
         });
 
         this.anims.create({
+            key: 'LightningLinkEnd',
+            frames: this.anims.generateFrameNumbers('LightningLink', { start: 0, end: 15 }),
+            frameRate: 16,
+            repeat: 0
+        });
+
+        this.anims.create({
             key: 'LightningLinkTP',
-            frames: this.anims.generateFrameNumbers('LightningLinkTP', { start: 17, end: 32 }),
-            frameRate: 15,
-            repeat: -1
+            frames: this.anims.generateFrameNumbers('LightningLink', { start: 17, end: 33 }),
+            frameRate: 30,
+            repeat: 0
         });
 
         cursors = this.input.keyboard.createCursorKeys();
@@ -378,7 +384,6 @@ function kunai_click(scene)
         kunai.Shoot(scene);
         kunai.HitBoxCollide(scene,kunai);
 
-
         sparkle = scene.add.sprite(player.x,player.y,"LightningLink");
         sparkle.anims.play('LightningLink',true);
         
@@ -386,9 +391,9 @@ function kunai_click(scene)
 
     if(kunai_active == true)
     {
+
         sparkle.setPosition((kunai.x + player.x)/2, (kunai.y + player.y)/2)
 
-        
         if(kunai.y < player.y)
         {
             sparkle.rotation =-Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
@@ -420,6 +425,7 @@ function kunai_click(scene)
 
                 if(kunaiTimerTouched >100) // timer si contre un murs
                 {
+                    sparkle.anims.play('LightningLinkEnd',true);
                     kunai.FadeOut();
                 }
             }
@@ -491,10 +497,27 @@ function Mark_Space(scene)
         mark = new Mark(scene, player.x, player.y - 20);
         scene.physics.add.collider(mark, scene.plateformes,);
 
+        sparkle2 = scene.add.sprite(player.x,player.y,"LightningLink");
+        sparkle2.anims.play('LightningLink',true);
+
     }
 
     if(mark_active == true)
     {
+        sparkle2.setPosition((mark.x + player.x)/2, (mark.y + player.y)/2)
+
+        if(mark.y < player.y)
+        {
+            sparkle2.rotation =-Math.acos((mark.x-player.x)/(Math.sqrt(((mark.x-player.x)**2)+((mark.y-player.y)**2))));
+        }
+        else if(mark.y > player.y)
+        {
+            sparkle2.rotation =Math.acos((mark.x-player.x)/(Math.sqrt(((mark.x-player.x)**2)+((mark.y-player.y)**2))));
+        }
+
+        // sparkle.scaleY = Phaser.Math.Distance.BetweenPoints(player, sparkle)/1;
+        sparkle2.scaleX = Phaser.Math.Distance.BetweenPoints(player, sparkle2)/140;
+
         mark.Anim()
        //console.log(markTimer);
         if(markTimer >= 350)
@@ -509,11 +532,13 @@ function Mark_Space(scene)
 
     if(markStand == false && mark_throw ==true)
     {
+        sparkle2.anims.play('LightningLinkEnd',true);
         markTP = true;
     }
 
     if(markStand && mark_throw == true && markTP == true && playerSeishin > 0)
     {
+        sparkle2.anims.play('LightningLinkTP',true);
         songStormTpMark.play();
         playerSeishin--;
         player.x=mark.x;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="60" height="30" tilewidth="80" tileheight="80" infinite="0" nextlayerid="39" nextobjectid="456">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="60" height="30" tilewidth="80" tileheight="80" infinite="0" nextlayerid="39" nextobjectid="456">
  <editorsettings>
   <export target="Map_Hikari.json" format="json"/>
  </editorsettings>
