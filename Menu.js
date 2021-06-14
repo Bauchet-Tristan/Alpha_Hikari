@@ -365,27 +365,30 @@ function kunai_click(scene)
         kunai.HitBoxCollide(scene,kunai);
 
 
-        //scene.physics.add.collider(HitBoxLeft, scene.plateformes,kunai.HitBoxCollideleft);
-
-        //sparkle = scene.add.image(player.x,player.y,"door2");
+        sparkle = scene.add.image(player.x,player.y,"door2");
         
     }
 
     if(kunai_active == true)
     {
       
-        /*
+        
         sparkle.setPosition((kunai.x + player.x)/2, (kunai.y + player.y)/2)
 
-        if(kunai.x < player.x)
+        
+        if(kunai.y < player.y)
         {
-            sparkle.rotation = -Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
+            sparkle.rotation = 30-Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
         }
-        else if(kunai.x > player.x)
+        else if(kunai.y > player.y)
         {
-            sparkle.rotation = Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
+            sparkle.rotation = -30 + Math.acos((kunai.x-player.x)/(Math.sqrt(((kunai.x-player.x)**2)+((kunai.y-player.y)**2))));
         }
-        */
+
+        sparkle.scaleY = Phaser.Math.Distance.BetweenPoints(player, sparkle)/80;
+        sparkle.scalex = Phaser.Math.Distance.BetweenPoints(player, sparkle)/120;
+
+        //////////////////
 
         kunai.HitBoxFollow();
         //kunai.HitBoxCollideleft();

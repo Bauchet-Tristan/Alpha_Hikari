@@ -11,6 +11,7 @@ class Kunai extends Phaser.GameObjects.Sprite
 		this.body.allowGravity = false;
 
         // this.body.setOffset(5,10).setSize(50,85,false);
+        this.setOrigin(0.5,0.5);
         this.body.setSize(35,35);
 
 
