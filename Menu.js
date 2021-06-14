@@ -10,6 +10,7 @@ class Menu extends Phaser.Scene //
     {
         this.load.image("Phaser_tuilesdejeu", "assets/Tile_Set.png");
         this.load.tilemapTiledJSON("carte", "Map_Hikari.json");
+        this.load.tilemapTiledJSON("carteTuto", "Map_Tuto.json");
 
         this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
         this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
@@ -234,7 +235,7 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl1");
+        this.scene.start("lvl_tuto");
         //controling(this);
 
         if(cursors.space.isDown)
@@ -415,6 +416,7 @@ function kunai_click(scene)
         {
             KunaiRotaStop = SwitchTime;
             kunai.Anim();
+            sparkle.anims.play('LightningLinkEnd',true);
             kunai.FadeOut();
         }   
         else if(kunai_touched == true)    
@@ -426,6 +428,7 @@ function kunai_click(scene)
                 if(kunaiTimerTouched >100) // timer si contre un murs
                 {
                     sparkle.anims.play('LightningLinkEnd',true);
+                    
                     kunai.FadeOut();
                 }
             }

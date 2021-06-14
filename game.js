@@ -12,7 +12,7 @@ var config = {
     input:{
         gamepad:true
     },
-    scene: [Menu,lvl1],
+    scene: [Menu,lvl1,lvl_tuto],
 };
 
 

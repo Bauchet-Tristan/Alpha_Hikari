@@ -1,9 +1,9 @@
 
-class lvl1 extends Phaser.Scene //
+class lvl_tuto extends Phaser.Scene //
 { 
     constructor()
     {
-        super("lvl1"); 
+        super("lvl_tuto"); 
     }
 
     preload ()
@@ -43,7 +43,7 @@ class lvl1 extends Phaser.Scene //
 
 
         // chargement de la carte
-        this.carteDuNiveau = this.add.tilemap("carte");
+        this.carteDuNiveau = this.add.tilemap("carteTuto");
 
         // chargement du jeu de tuiles
         this.tileset = this.carteDuNiveau.addTilesetImage("Tile_Set","Phaser_tuilesdejeu");  
@@ -61,7 +61,7 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(100, 100, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
