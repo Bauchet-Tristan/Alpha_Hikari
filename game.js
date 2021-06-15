@@ -12,7 +12,11 @@ var config = {
     input:{
         gamepad:true
     },
-    scene: [Menu,lvl1,lvl_tuto],
+    fps: {
+        target: 60,
+        //forceSetTimeOut: true
+    },
+    scene: [Menu,lvl1,lvl_tuto,lvl_boss],
 };
 
 
@@ -26,6 +30,15 @@ var songStormTpKunai;
 var songStormTpMark;
 var songStormLightning; 
 
+//Cloud
+var alea;
+
+var cloud1;
+var cloud2;
+var cloud3;
+var cloud4;
+
+var movingCloud = 0;
 
 //control
 var pointer;
@@ -117,7 +130,6 @@ var KunaiRotaStop=0;
 
 //Teleportation
 var kunaiTP=false;
-
 var markTP=false;
 
 //Lightning Attaque

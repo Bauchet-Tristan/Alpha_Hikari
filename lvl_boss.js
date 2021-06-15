@@ -1,9 +1,8 @@
-
-class lvl1 extends Phaser.Scene //
+class lvl_boss extends Phaser.Scene //
 { 
     constructor()
     {
-        super("lvl1"); 
+        super("lvl_boss"); 
     }
 
     preload ()
@@ -12,8 +11,6 @@ class lvl1 extends Phaser.Scene //
 
     create ()
     {
-        keyNumber = 0;
-
         //Song
         var musiclvlConfig ={
             mute: false,
@@ -45,7 +42,7 @@ class lvl1 extends Phaser.Scene //
 
 
         // chargement de la carte
-        this.carteDuNiveau = this.add.tilemap("carte");
+        this.carteDuNiveau = this.add.tilemap("carteBoss");
 
         // chargement du jeu de tuiles
         this.tileset = this.carteDuNiveau.addTilesetImage("Tile_Set","Phaser_tuilesdejeu");  
@@ -63,8 +60,8 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player--//
-        //player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
-        player = this.physics.add.sprite(4450, 2200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(100, 100, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -313,15 +310,16 @@ class lvl1 extends Phaser.Scene //
             gameOver = false;
             //return;
         }
-        
-        if(player.x >=4450 && player.y >= 2300)
-        {
-            this.scene.start("lvl_boss"); 
-        }
 
-        //Controle Joueur
+        if(player.x >= 4700 && player.y >= 1500)
+        {
+            this.scene.start("lvl1");
+        }
         
         CloudMove();
+
+        //Controle Joueur
+          
 
 
         ///////////// Avatar and UIAvatar Property /////////////

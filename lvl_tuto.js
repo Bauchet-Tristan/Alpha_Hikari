@@ -24,6 +24,7 @@ class lvl_tuto extends Phaser.Scene //
         }
         musiclvl.play(musiclvlConfig);
 
+        keyNumber = 0;
         
         
         Fond(this);
@@ -61,7 +62,7 @@ class lvl_tuto extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(100, 100, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
@@ -298,19 +299,29 @@ class lvl_tuto extends Phaser.Scene //
 
     update ()
     {
-
+        this.scene.start("lvl1"); 
         if (gameOver == true)
         {
             console.log("gameOver");
             playerHealth = 6;
             playerSeishin = 6;
+
+            player.x = 200;
+            player.y = 200;
+
             gameOver = false;
             //return;
         }
-        
 
-        //Controle Joueur
-          
+        if(player.x >= 4700 && player.y >= 1500)
+        {
+            this.scene.start("lvl1");
+
+           console.log(player.x); 
+           console.log(player.y); 
+        }
+        
+        CloudMove();
 
 
         ///////////// Avatar and UIAvatar Property /////////////

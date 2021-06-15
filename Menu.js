@@ -11,6 +11,7 @@ class Menu extends Phaser.Scene //
         this.load.image("Phaser_tuilesdejeu", "assets/Tile_Set.png");
         this.load.tilemapTiledJSON("carte", "Map_Hikari.json");
         this.load.tilemapTiledJSON("carteTuto", "Map_Tuto.json");
+        this.load.tilemapTiledJSON("carteBoss", "Map_Boss.json");
 
         this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
         this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
@@ -29,7 +30,6 @@ class Menu extends Phaser.Scene //
         this.load.image("HitBoxPlatform","assets/HitBoxPlatform.png");
         this.load.spritesheet("MarkAnimation", "assets/Sparkle_117_114.png", { frameWidth: 117, frameHeight: 114 });
         this.load.spritesheet("LightningLink", "assets/link-Lightning_241_101.png", { frameWidth: 241, frameHeight: 101 });
-
 
 
         this.load.image("door1","assets/FichierDoor(1).png");
@@ -57,6 +57,13 @@ class Menu extends Phaser.Scene //
         this.load.image("FOND6","assets/Background/72ppi/Plan(6).png");
         this.load.image("Sun","assets/Background/72ppi/Plan(7).png");
 
+        //nuage
+        this.load.image("Nuage1","assets/Background/72ppi/Nuage(1).png");
+        this.load.image("Nuage2","assets/Background/72ppi/Nuage(2).png");
+        this.load.image("Nuage3","assets/Background/72ppi/Nuage(3).png");
+        this.load.image("Nuage4","assets/Background/72ppi/Nuage(4).png");
+
+        //fond
         this.load.image("StarterScreen","assets/EcranTitre.png");
 
         ////Song
@@ -74,7 +81,6 @@ class Menu extends Phaser.Scene //
         songStormTpKunai = this.sound.add("Storm");
         songStormLightning = this.sound.add("Storm");
         songStormTpMark = this.sound.add("Storm");
-
 
         ////
         this.add.image(960, 540, 'StarterScreen');
@@ -235,7 +241,7 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl_tuto");
+        this.scene.start("lvl_tuto"); 
         //controling(this);
 
         if(cursors.space.isDown)
@@ -261,8 +267,45 @@ function Fond(scene)
     scene.add.image(2700, 950, 'FOND3').setScrollFactor(0.6,0.6);
     scene.add.image(2200, 950, 'FOND2').setScrollFactor(0.55,0.6);
     scene.add.image(2200, 950, 'FOND1').setScrollFactor(0.5,0.6);
+
+    //cloud
+    alea = Math.random();
+    console.log(cloud1);
+
+    if(alea < 0.5)
+    {
+        cloud1=scene.physics.add.image(400, 950, 'Nuage1');
+        cloud1.body.allowGravity = false;
+
+        cloud2=scene.physics.add.image(400, 500, 'Nuage2');
+        cloud2.body.allowGravity = false;
+    }
+    if(alea > 0.5)
+    {
+        cloud3=scene.physics.add.image(400, 950, 'Nuage3');
+        cloud3.body.allowGravity = false;
+
+        cloud4=scene.physics.add.image(400, 500, 'Nuage4');
+        cloud4.body.allowGravity = false;
+    }
+    
+
+
 }
 
+function CloudMove()
+{   
+    if(alea < 0.5)
+    {
+        cloud1.setVelocityX(3);
+        cloud2.setVelocityX(2);
+    }
+    if(alea > 0.5)
+    {
+        cloud3.setVelocityX(4);
+        cloud4.setVelocityX(5);
+    }
+}
 
 function Patern(enemy)
 {
@@ -272,7 +315,7 @@ function Patern(enemy)
     if(distancePlayerEnemy > 1000 || distancePlayerEnemy < -1000)
     {
         enemy.setVelocityX(0);
-        // mettre l'anims loup assis // 
+        //Mettre l'anims loup assis // 
     }
     else
     {
@@ -804,6 +847,7 @@ function Bonus2()
 function Timer()
 {
     //saut
+    movingCloud += 0.001;
     jumpTime++;
     kunaiTimer++;
     markTimer++;
