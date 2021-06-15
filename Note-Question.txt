@@ -1,17 +1,24 @@
 ﻿
 A faire :
 
-- Kunai UX remake
-
-- Integration Menu clickable
+- "Saut" il faut retoucher la touche
 
 - Player Asset + Creer une fonction animation avec les anims + Equilibrage ingame
 
-- Lvl design sequence Tuto
+- Integration Menu clickable
 
 - Lvl design sequence Boss
 
-- Integration Son :
+- Integration Voix
+
+
+
+//Code Boss : 
+
+-Lazer constant qui se deplace.
+
+-Ennemi a tué qui spawn a divers endroit de la map 
+
 
 
 Code Bonus :
