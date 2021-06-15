@@ -299,7 +299,6 @@ class lvl_tuto extends Phaser.Scene //
 
     update ()
     {
-        this.scene.start("lvl1"); 
         if (gameOver == true)
         {
             console.log("gameOver");
