@@ -352,11 +352,11 @@ class lvl_boss extends Phaser.Scene //
                 }
             }
 
-            if(enemyNumberToUnlock == 4)
+            if(enemyNumberToUnlock <= 4)
             {
                 this.Ennemi1List[0].Destroy();
             }
-            if(enemyNumberToUnlock == 6)
+            if(enemyNumberToUnlock <= 6)
             {
                 this.Ennemi3List[0].Destroy();
             }

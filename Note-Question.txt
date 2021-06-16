@@ -1,7 +1,5 @@
 ﻿A faire :
 
-- asset vie perdu + asset lightning UI
-
 - asset platform mouvante
 
 - asset platform boss Red
@@ -13,7 +11,7 @@
 
 - Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
 
-- Integration touche Tuto.
+- Integration touche Tuto
 
 - Integration Voix
 

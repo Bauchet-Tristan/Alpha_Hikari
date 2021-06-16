@@ -34,6 +34,10 @@ class Menu extends Phaser.Scene //
 
         this.load.image("UIYin","assets/UI//72ppi/Fichier1UI.png");
         this.load.image("UIYang","assets/UI//72ppi/Fichier2UI.png");
+
+        this.load.image("UIYinVide","assets/UI//72ppi/Fichier1Vide.png");
+        this.load.image("UIYangVide","assets/UI//72ppi/Fichier2Vide.png");
+
         this.load.image("UIBlue","assets/UI//72ppi/Fichier3Lightning.png");
         this.load.image("UIYellow","assets/UI//72ppi/Fichier2Lightning.png");
 
@@ -359,15 +363,17 @@ function Patern(enemy)
 function UICreation(scene)
  {
     UILightBlue = scene.add.image(280, 800, 'UIBlue').setOrigin(0,0).setScrollFactor(0);
-    UILightYellow = scene.add.image(1020, 850, 'UIYellow').setOrigin(0,0).setScrollFactor(0); 
+    UILightYellow = scene.add.image(995, 800, 'UIYellow').setOrigin(0,0).setScrollFactor(0); 
 
     for(let i=0; i < UIYangList.length; i++)
     {
+        UIYangListVide[i] = scene.add.sprite(800-(i*90), 900, 'UIYangVide').setOrigin(0,0).setScrollFactor(0).setAlpha(1);
         UIYangList[i] = scene.add.sprite(800-(i*90), 900, 'UIYang').setOrigin(0,0).setScrollFactor(0);
     }
 
     for(let i=0; i < UIYinList.length; i++)
     {
+        UIYinListVide[i] = scene.add.image(1070+(i*90), 900, 'UIYinVide').setOrigin(0,0).setScrollFactor(0).setAlpha(1);
         UIYinList[i] = scene.add.image(1070+(i*90), 900, 'UIYin').setOrigin(0,0).setScrollFactor(0);
     }
  }
@@ -376,6 +382,10 @@ function UICreation(scene)
 
 function UI()
 {    
+    /*if(playerHealth<=1){UIYangList[0].setAlpha(1);}
+    else{UIYangListVide[0].setAlpha(0);}*/
+
+    ////
     if(playerHealth>=1){UIYangList[0].setAlpha(1);}
     else{UIYangList[0].setAlpha(0);gameOver=true;}
 
@@ -457,7 +467,6 @@ function kunai_click(scene)
 
         sparkle = scene.add.sprite(player.x,player.y,"LightningLink");
         sparkle.anims.play('LightningLink',true);
-        
     }
 
     if(kunaiOUT == true)

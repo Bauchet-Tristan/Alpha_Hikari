@@ -60,6 +60,23 @@ var keyA;
 var UILightBlue;
 var UILightYellow;
 
+var UIYinListVide =[UIYin1Vide,UIYin2Vide,UIYin3Vide,UIYin4Vide,UIYin5Vide,UIYin6Vide];
+var UIYin1Vide;
+var UIYin2Vide;
+var UIYin3Vide;
+var UIYin4Vide;
+var UIYin5Vide;
+var UIYin6Vide;
+
+var UIYangListVide =[UIYang1Vide,UIYang2Vide,UIYang3Vide,UIYang4Vide,UIYang5Vide,UIYang6Vide];//Vie
+var UIYang1Vide;
+var UIYang2Vide;
+var UIYang3Vide;
+var UIYang4Vide;
+var UIYang5Vide;
+var UIYang6Vide;
+
+//plein
 var UIYinList =[UIYin1,UIYin2,UIYin3,UIYin4,UIYin5,UIYin6];//Energie
 var UIYin1;
 var UIYin2;
