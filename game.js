@@ -16,7 +16,7 @@ var config = {
         target: 120,
         forceSetTimeOut: true
     },
-    scene: [Menu,lvl1,lvl_tuto,lvl_boss],
+    scene: [Menu,lvl1,lvl_tuto,lvl_boss,ResetBoss],
 };
 
 

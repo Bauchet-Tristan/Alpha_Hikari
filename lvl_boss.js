@@ -47,14 +47,14 @@ class lvl_boss extends Phaser.Scene //
         this.tileset = this.carteDuNiveau.addTilesetImage("Tile_Set","Phaser_tuilesdejeu");  
         
         // chargement du calque calque_background
-        this.backgroundLayer = this.carteDuNiveau.createStaticLayer("Background",this.tileset,0,0);
+        this.backgroundLayer = this.carteDuNiveau.createLayer("Background",this.tileset,0,0);
 
         //Plateform Classic
-        this.plateformes = this.carteDuNiveau.createStaticLayer("Grille/Platform_Classic",this.tileset,0,0);
+        this.plateformes = this.carteDuNiveau.createLayer("Grille/Platform_Classic",this.tileset,0,0);
         this.plateformes.setCollisionByExclusion(-1, true);
 
         //platform background
-        this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
+        this.plateformes_background = this.carteDuNiveau.createLayer("Platform_Background",this.tileset,0,0);
 
 
 
@@ -326,22 +326,45 @@ class lvl_boss extends Phaser.Scene //
 
     update ()
     {
+        if(enemyNumberToUnlock >= 7)
+        {
+            console.log("win");
+        }
+
         playerSeishin=7;
 
         if (gameOver == true)
         {
             console.log("gameOver");
             playerHealth = 6;
-            playerSeishin = 6;
+
+            player.x = 1200;
+            player.y = 700;
+
+            if(enemyNumberToUnlock <= 2)
+            {
+                for(let i = 0; i< this.Ennemi2List.length; i++)
+                {
+                    if(this.Ennemi2List[i].displayList != null)
+                    {
+                        this.Ennemi2List[i].Destroy();
+                    }
+                }
+            }
+
+            if(enemyNumberToUnlock == 4)
+            {
+                this.Ennemi1List[0].Destroy();
+            }
+            if(enemyNumberToUnlock == 6)
+            {
+                this.Ennemi3List[0].Destroy();
+            }
+
+            enemyNumberToUnlock = 0;
 
             gameOver = false;
-            //this.scene.start("lvl_boss"); 
             //return;
-        }
-
-        if(player.x >= 4700 && player.y >= 1500)
-        {
-            this.scene.start("lvl1");
         }
         
         //CloudMove();
@@ -354,7 +377,7 @@ class lvl_boss extends Phaser.Scene //
 
         UI();
 
-        Controls(this); 
+        Controls(this,"false"); 
 
         kunai_click(this);
 
@@ -430,7 +453,7 @@ class lvl_boss extends Phaser.Scene //
             enemyNumberToUnlock++;
         }
 
-        if(enemyNumberToUnlock == 2)
+        if(enemyNumberToUnlock == 3)
         {
             const groupeEnnemi1Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi1').objects;
 
@@ -446,7 +469,7 @@ class lvl_boss extends Phaser.Scene //
             enemyNumberToUnlock++;
         }
 
-        if(enemyNumberToUnlock == 4)
+        if(enemyNumberToUnlock == 5)
         {
             const groupeEnnemi3Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi3').objects;
 
@@ -461,6 +484,8 @@ class lvl_boss extends Phaser.Scene //
             }
             enemyNumberToUnlock++;
         }
+
+        
 
 
         ///////////////// Ennemi1

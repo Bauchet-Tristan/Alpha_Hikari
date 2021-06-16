@@ -23,6 +23,11 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
         this.takeHit = false;
     }
 
+    Destroy()
+    {
+        this.destroy();
+    }
+
     Patern(collide)
     { 
         if(this.alive==false)
@@ -34,6 +39,8 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 
             if(this.TimeOut>=25)
             {
+                this.alive=true;
+                collide.active = true;
                 this.destroy();
             }
         }

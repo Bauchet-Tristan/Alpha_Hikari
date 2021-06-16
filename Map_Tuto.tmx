@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="60" height="30" tilewidth="80" tileheight="80" infinite="0" nextlayerid="42" nextobjectid="949">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="60" height="30" tilewidth="80" tileheight="80" infinite="0" nextlayerid="43" nextobjectid="949">
  <editorsettings>
   <export target="Map_Tuto.json" format="json"/>
  </editorsettings>
@@ -77,6 +77,7 @@
   </layer>
  </group>
  <group id="24" name="Object">
+  <objectgroup id="42" name="BossPlatform"/>
   <objectgroup id="28" name="Ennemi3"/>
   <objectgroup id="27" name="Ennemi2">
    <object id="457" gid="1" x="1440" y="2240" width="80" height="80"/>

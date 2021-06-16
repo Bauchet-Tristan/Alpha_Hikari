@@ -72,6 +72,17 @@
                 }, 
                 {
                  "draworder":"topdown",
+                 "id":39,
+                 "name":"BossPlatform",
+                 "objects":[],
+                 "opacity":1,
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
                  "id":27,
                  "name":"Ennemi2",
                  "objects":[
@@ -4182,11 +4193,11 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":39,
+ "nextlayerid":40,
  "nextobjectid":472,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.6.0",
+ "tiledversion":"1.4.2",
  "tileheight":80,
  "tilesets":[
         {
@@ -4205,6 +4216,6 @@
         }],
  "tilewidth":80,
  "type":"map",
- "version":"1.6",
+ "version":1.4,
  "width":60
 }

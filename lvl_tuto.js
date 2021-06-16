@@ -62,8 +62,8 @@ class lvl_tuto extends Phaser.Scene //
 
 
         //---player--//
-        //player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
-        player = this.physics.add.sprite(1000, 2000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        //player = this.physics.add.sprite(1000, 2000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -266,6 +266,18 @@ class lvl_tuto extends Phaser.Scene //
             this.Ennemi3Collide = this.physics.add.overlap(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
         
             this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
+        }
+
+        //
+        const groupeBossPlatformObjects= this.carteDuNiveau.getObjectLayer('Object/BossPlatform').objects;
+
+        this.BossPlatformList = [];
+
+        for(const i of groupeBossPlatformObjects)
+        {
+            this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)] = new BossPlatform(this,i.x+40,i.y);
+
+            this.collideBossPlatform = this.physics.add.collider(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
         }
 
 

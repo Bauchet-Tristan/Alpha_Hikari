@@ -263,12 +263,12 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl_boss"); 
+        this.scene.start("lvl_tuto"); 
         //controling(this);
 
         if(cursors.space.isDown)
         {
-            this.scene.start("lvl1");
+            this.scene.start("lvl_tuto");
         }
         
     }
@@ -649,7 +649,7 @@ function Mark_Space(scene)
 
 
 
-function Controls(scene)
+function Controls(scene,didier)
 {
     //
     pointer = scene.input.activePointer;
@@ -710,7 +710,14 @@ function Controls(scene)
     //Balance
     if(balanceButton==true)
     {
-        balance=true;
+        if(didier == "false")
+        {
+            balance=false;
+        }
+        else{
+            balance=true;
+        }
+        
     }
     else
     {

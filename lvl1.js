@@ -269,6 +269,18 @@ class lvl1 extends Phaser.Scene //
             this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
         }
 
+        ///
+        const groupeBossPlatformObjects= this.carteDuNiveau.getObjectLayer('Object/BossPlatform').objects;
+
+        this.BossPlatformList = [];
+
+        for(const i of groupeBossPlatformObjects)
+        {
+            this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)] = new BossPlatform(this,i.x+40,i.y);
+
+            this.collideBossPlatform = this.physics.add.collider(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
+        }
+
 
         ///////////Collide///////////
 
