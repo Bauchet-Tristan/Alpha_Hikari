@@ -1,23 +1,18 @@
-class Ennemi2 extends Phaser.GameObjects.Sprite 
+class BossPlatform extends Phaser.GameObjects.Sprite 
 { 
     constructor(scene,x,y)
     { 
-        super(scene,x,y,"GoatR");
+        super(scene,x,y,"door2");
 
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
 
         //
-        this.body.collideWorldBounds=true;
         this.body.immovable=true;
-        //this.body.allowGravity = false;
+        this.body.collideWorldBounds=true;
+        this.body.allowGravity = false;
 
-        this.timer = 0;
-        this.jumpTime = 0;
-        this.jump_time_Max = 20;
-        this.alive = true;
-        this.TimeOut =0;
-        this.takeHit = false;
+        this.body.setSize(80,160);
     }
 
 
@@ -38,21 +33,6 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         }
         else
         {
-            if(jump == true && this.body.blocked.down == true)
-            {
-                this.body.setVelocityY(-jumpSpeed);
-                this.anims.play('GoatJump',true);
-            }
-            else if(this.body.blocked.down == true)
-            {
-                this.anims.play('GoatIdle',true);
-            }
-
-            if(this.takeHit == true)
-            {
-                this.scene.cameras.main.shake(100, 0.05);
-                this.takeHit = false;
-            }
 
         }
         
@@ -60,8 +40,8 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         // mettre l'anims loup assis //
 
     }
-
-    Ennemi2Player(enemy)
+/*
+    BossPlayer(enemy)
     {
         if(lightning_attack==true)
         {
@@ -79,5 +59,5 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
                 enemy.takeHit = true;
             }
         }
-    }
+    }*/
 }

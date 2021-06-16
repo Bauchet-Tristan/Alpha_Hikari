@@ -170,11 +170,12 @@ class Kunai extends Phaser.GameObjects.Sprite
 
     FadeOut() 
     {
-        this.alpha = this.alpha -0.02 ;        
+        this.alpha = this.alpha -0.01 ;        
         
         if(this.alpha == 0)
         {
             this.Destroy();
+            sparkle.destroy();
         }
     }
 

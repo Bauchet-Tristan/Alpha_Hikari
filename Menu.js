@@ -16,14 +16,6 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
         this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
 
-        this.load.spritesheet("GoatR", "assets/Bouquetin_116_123.png", { frameWidth: 116, frameHeight: 123 });
- 
-        this.load.spritesheet("GrueR", "assets/Grue_Right_161_147.png", { frameWidth: 161, frameHeight: 147 });
-        this.load.spritesheet("GrueL", "assets/Grue_Left_162_147.png", { frameWidth: 162, frameHeight: 147 });
-
-        this.load.spritesheet("GrueLPrepa", "assets/GrueLeftPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
-        this.load.spritesheet("GrueRPrepa", "assets/GrueRightPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
-
         this.load.image("Mark","assets/Mark.png");
         this.load.image("Projectile","assets/Projectile.png");
         this.load.image("HitBoxTP","assets/Projectil2.png");
@@ -48,6 +40,19 @@ class Menu extends Phaser.Scene //
         this.load.image("Bonus1","assets/Bonus1.png");
         
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
+
+        this.load.spritesheet("GoatR", "assets/Bouquetin_116_123.png", { frameWidth: 116, frameHeight: 123 });
+ 
+        this.load.spritesheet("GrueR", "assets/Grue_Right_161_147.png", { frameWidth: 161, frameHeight: 147 });
+        this.load.spritesheet("GrueL", "assets/Grue_Left_162_147.png", { frameWidth: 162, frameHeight: 147 });
+
+        this.load.spritesheet("GrueLPrepa", "assets/GrueLeftPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
+        this.load.spritesheet("GrueRPrepa", "assets/GrueRightPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
+
+        this.load.spritesheet("Boss", "assets/Lazer.png", { frameWidth: 80, frameHeight: 640 });
+
+        this.load.spritesheet("Explosion", "assets/Explosion_118_117.png", { frameWidth: 118, frameHeight: 117 });
+
 
         this.load.image("FOND1","assets/Background/72ppi/Plan(1).png");
         this.load.image("FOND2","assets/Background/72ppi/Plan(2).png");
@@ -224,7 +229,7 @@ class Menu extends Phaser.Scene //
         this.anims.create({
             key: 'LightningLinkEnd',
             frames: this.anims.generateFrameNumbers('LightningLink', { start: 0, end: 15 }),
-            frameRate: 16,
+            frameRate: 50,
             repeat: 0
         });
 
@@ -235,13 +240,30 @@ class Menu extends Phaser.Scene //
             repeat: 0
         });
 
+        //enemy die
+        this.anims.create({
+            key: 'enemyDie',
+            frames: this.anims.generateFrameNumbers('Explosion', { start: 0, end: 6 }),
+            frameRate: 30,
+            repeat: 0
+        });
+
+        //Boss
+        
+        /*this.anims.create({
+            key: 'bossLazer',
+            frames: this.anims.generateFrameNumbers('boss', { start: 0, end: 6 }),
+            frameRate: 30,
+            repeat: 0
+        });*/
+
         cursors = this.input.keyboard.createCursorKeys();
         cursors.space.reset();
     }
 
     update()
     {
-        this.scene.start("lvl_tuto"); 
+        this.scene.start("lvl_boss"); 
         //controling(this);
 
         if(cursors.space.isDown)
@@ -297,13 +319,13 @@ function CloudMove()
 {   
     if(alea < 0.5)
     {
-        cloud1.setVelocityX(3);
-        cloud2.setVelocityX(2);
+        cloud1.setVelocityX(6);
+        cloud2.setVelocityX(4);
     }
     if(alea > 0.5)
     {
         cloud3.setVelocityX(4);
-        cloud4.setVelocityX(5);
+        cloud4.setVelocityX(6);
     }
 }
 
@@ -422,7 +444,7 @@ function kunai_click(scene)
         }
         for(let i = 0; i< scene.door3List.length; i++)
         {
-            scene.physics.add.collider(kunai,scene.door3List[i],kunai.KunaiPlatforme);
+            scene.collide2Door3 = scene.physics.add.collider(kunai,scene.door3List[i],kunai.KunaiPlatforme);
         }
         
         kunai.Shoot(scene);
@@ -455,7 +477,7 @@ function kunai_click(scene)
         kunai.HitBoxFollow();
         //kunai.HitBoxCollideleft();
 
-        if(kunaiTimer >= 100 && kunai_touched == false) //timer si aucune touche
+        if(kunaiTimer >= 150 && kunai_touched == false) //timer si aucune touche
         {
             KunaiRotaStop = SwitchTime;
             kunai.Anim();
@@ -464,15 +486,19 @@ function kunai_click(scene)
         }   
         else if(kunai_touched == true)    
         {
-            if(kunaiTimer >= 100)
+            if(kunaiTimerTouched<150)
+            {
+                sparkle.anims.play('LightningLink',true);
+            }
+            if(kunaiTimer >= 150)
             {
                 kunaiTimerTouched++;
 
-                if(kunaiTimerTouched >100) // timer si contre un murs
+                if(kunaiTimerTouched >150) // timer si contre un murs
                 {
                     sparkle.anims.play('LightningLinkEnd',true);
                     
-                    kunai.FadeOut();
+                    kunai.FadeOut(sparkle);
                 }
             }
         }
@@ -566,8 +592,9 @@ function Mark_Space(scene)
 
         mark.Anim()
        //console.log(markTimer);
-        if(markTimer >= 350)
+        if(markTimer >= 450)
         {
+            sparkle2.anims.play('LightningLinkEnd',true);
             mark.FadeOut();
         }   
         else{} 
@@ -578,7 +605,7 @@ function Mark_Space(scene)
 
     if(markStand == false && mark_throw ==true)
     {
-        sparkle2.anims.play('LightningLinkEnd',true);
+        
         markTP = true;
     }
 
@@ -710,15 +737,16 @@ function Shifting()
 function Jump()
 {
     //if( jumpButton ==true && (player.body.blocked.down || player.body.touching.down))
-    if(player.body.blocked.down || player.body.touching.down)
+    if((player.body.blocked.down || player.body.touching.down)&& jumpRelease==true)
     {
         jumpTime=0
     }
 
-    if( jumpButton ==true && jumpTime<50)
+    if( jumpButton ==true && jumpTime<50 )
     {  
         jumpTime= 50;     
         jump=true;
+        jumpRelease = false;
 
 
         player.setVelocityY(-jumpSpeed);
@@ -736,6 +764,11 @@ function Jump()
     else
     {
         jump=false;
+    }
+
+    if(jumpButton==false)
+    {
+        jumpRelease=true;
     }
 }
 

@@ -234,7 +234,7 @@ class lvl1 extends Phaser.Scene //
         {
             this.Ennemi1List [groupeEnnemi1Objects.indexOf(i)] = new Ennemi1(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
+            this.Ennemi1Collide = this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
 
             this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],this.plateformes);
         }
@@ -249,7 +249,7 @@ class lvl1 extends Phaser.Scene //
         {
             this.Ennemi2List [groupeEnnemi2Objects.indexOf(i)] = new Ennemi2(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
+            this.Ennemi2Collide = this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
         
             this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],this.plateformes);
         }
@@ -264,7 +264,7 @@ class lvl1 extends Phaser.Scene //
         {
             this.Ennemi3List [groupeEnnemi3Objects.indexOf(i)] = new Ennemi3(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
+            this.Ennemi3Collide = this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
         
             this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
         }
@@ -362,14 +362,14 @@ class lvl1 extends Phaser.Scene //
         //door3
         for(let i = 0; i< this.door3List.length; i++)
         {
-            this.door3List[i].DoorOpen(this.collideDoor3);
+            this.door3List[i].DoorOpen(this.collideDoor3,this.collide2Door3);
         }
 
         if(restartDoor3 >= 1)      
         {        
             for(let i = 0; i< this.door3List.length; i++)
             {
-                this.door3List[i].Reset(this.collideDoor3);
+                this.door3List[i].Reset(this.collideDoor3,this.collide2Door3);
             }
         }
 
@@ -393,7 +393,7 @@ class lvl1 extends Phaser.Scene //
         {
             if(this.Ennemi1List[i].displayList != null)
             {
-                this.Ennemi1List[i].Patern();
+                this.Ennemi1List[i].Patern(this.Ennemi1Collide);
             }
         }
 
@@ -404,7 +404,7 @@ class lvl1 extends Phaser.Scene //
         {
             if(this.Ennemi2List[i].displayList != null)
             {
-                this.Ennemi2List[i].Patern();
+                this.Ennemi2List[i].Patern(this.Ennemi2Collide);
             }
         }
 
@@ -415,7 +415,7 @@ class lvl1 extends Phaser.Scene //
         {
             if(this.Ennemi3List[i].displayList != null)
             {
-                this.Ennemi3List[i].Patern();
+                this.Ennemi3List[i].Patern(this.Ennemi3Collide);
             }
         }
 

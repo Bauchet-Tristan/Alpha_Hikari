@@ -16,41 +16,64 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
         this.timeHit = 0;
 
         this.distancePlayerEnemy;
+        this.alive = true;
+        this.TimeOut =0;
+        this.takeHit = false;
     }
 
-    Patern()
+    Patern(collide)
     {
-        this.timeHit++;
-
-        if(this.timeHit >= 500)
+        if(this.alive==false)
         {
-            //console.log(this.timeHit);
-            this.speed = 300;
-        }
+            this.TimeOut++;
+            
+            collide.active = false;
+            this.anims.play('enemyDie',true);
 
-        this.distancePlayerEnemy = player.x - this.body.x;
-        //console.log(distancePlayerEnemy);
-        
-        if(this.distancePlayerEnemy > 1000 || this.distancePlayerEnemy < -1000 ||//distance max
-            this.distancePlayerEnemy > 100 && this.distancePlayerEnemy < 200 ||//distance corp a corp 
-            this.distancePlayerEnemy < 100 && this.distancePlayerEnemy > 0) // //distance corp a corp
-        {
-            this.body.setVelocityX(0);
-            // mettre l'anims loup assis // 
+            if(this.TimeOut>=25)
+            {
+                this.destroy();
+            }
         }
         else
         {
-            if(this.distancePlayerEnemy > 100)
+            this.timeHit++;
+
+            if(this.timeHit >= 500)
             {
-                //gauche
-                this.anims.play('WolfRight',true);
-                this.body.setVelocityX(this.speed);
+                //console.log(this.timeHit);
+                this.speed = 300;
             }
-            else if (this.distancePlayerEnemy < 100)
+
+            this.distancePlayerEnemy = player.x - this.body.x;
+            //console.log(distancePlayerEnemy);
+            
+            if(this.distancePlayerEnemy > 1000 || this.distancePlayerEnemy < -1000 ||//distance max
+                this.distancePlayerEnemy > 100 && this.distancePlayerEnemy < 200 ||//distance corp a corp 
+                this.distancePlayerEnemy < 100 && this.distancePlayerEnemy > 0) // //distance corp a corp
             {
-                //droite
-                this.anims.play('WolfLeft',true);
-                this.body.setVelocityX(-this.speed);
+                this.body.setVelocityX(0);
+                // mettre l'anims loup assis // 
+            }
+            else
+            {
+                if(this.distancePlayerEnemy > 100)
+                {
+                    //gauche
+                    this.anims.play('WolfRight',true);
+                    this.body.setVelocityX(this.speed);
+                }
+                else if (this.distancePlayerEnemy < 100)
+                {
+                    //droite
+                    this.anims.play('WolfLeft',true);
+                    this.body.setVelocityX(-this.speed);
+                }
+            }
+            if(this.takeHit == true)
+            {
+                this.scene.cameras.main.shake(100, 0.05);
+                this.takeHit = false;
             }
         }
     }
@@ -61,7 +84,9 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
     {
         if(lightning_attack==true)
         {
-            enemy.destroy();
+            //enemy.anims.play('enemyDie',true);
+            //enemy.destroy();
+            enemy.alive=false;
             enemyNumberToUnlock++;
         }
         else
@@ -75,6 +100,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
                 //console.log(enemy);
                 playerHealth--;
                 invincibleTimer = 0;
+                enemy.takeHit = true;
             }
         }
     }

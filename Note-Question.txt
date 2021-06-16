@@ -1,15 +1,14 @@
-﻿
-A faire :
-
-- "Saut" il faut retoucher la touche
-
-- Player Asset + Creer une fonction animation avec les anims + Equilibrage ingame
-
-- Integration Menu clickable
+﻿A faire :
 
 - Lvl design sequence Boss
 
+- asset vie perdu
+
+- Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
+
 - Integration Voix
+
+- Integration Menu clickable
 
 
 

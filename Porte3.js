@@ -15,12 +15,13 @@ class Porte3 extends Phaser.GameObjects.Sprite
         this.body.setSize(80,160);
     }
 
-    DoorOpen(collide)
+    DoorOpen(collide,collide2)
     {
         //console.log("boby");
         if( keyNumber3 == this.key)
         {
             collide.active = false;
+            collide2.active = false;
             this.setAlpha(0); 
         }
 
@@ -30,9 +31,10 @@ class Porte3 extends Phaser.GameObjects.Sprite
         }
     }
 
-    Reset(collide)
+    Reset(collide,collide2)
     {
         collide.active = true;
+        collide2.active = true;
         this.setAlpha(1); 
         restartDoor3 = 0;
         keyNumber3 = 0;

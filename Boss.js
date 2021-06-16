@@ -1,8 +1,8 @@
-class Ennemi2 extends Phaser.GameObjects.Sprite 
+class Boss extends Phaser.GameObjects.Sprite 
 { 
     constructor(scene,x,y)
     { 
-        super(scene,x,y,"GoatR");
+        super(scene,x,y,"Boss");
 
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
@@ -10,11 +10,9 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         //
         this.body.collideWorldBounds=true;
         this.body.immovable=true;
-        //this.body.allowGravity = false;
+        this.body.allowGravity = false;
 
         this.timer = 0;
-        this.jumpTime = 0;
-        this.jump_time_Max = 20;
         this.alive = true;
         this.TimeOut =0;
         this.takeHit = false;
@@ -38,14 +36,13 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         }
         else
         {
-            if(jump == true && this.body.blocked.down == true)
+            if(this.body.x<=560)
             {
-                this.body.setVelocityY(-jumpSpeed);
-                this.anims.play('GoatJump',true);
+                this.body.setVelocityX(200);
             }
-            else if(this.body.blocked.down == true)
+            else if (this.body.x>=1760)
             {
-                this.anims.play('GoatIdle',true);
+                this.body.setVelocityX(-200);
             }
 
             if(this.takeHit == true)
@@ -53,7 +50,6 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
                 this.scene.cameras.main.shake(100, 0.05);
                 this.takeHit = false;
             }
-
         }
         
 
@@ -61,23 +57,15 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
 
     }
 
-    Ennemi2Player(enemy)
+    BossPlayer(enemy)
     {
-        if(lightning_attack==true)
+
+        if(invincibleTimer >= 150)
         {
-            //enemy.anims.play('enemyDie',true);
-            //enemy.destroy();
-            enemy.alive=false;
-            enemyNumberToUnlock++;
+            playerHealth--;
+            invincibleTimer = 0;
+            enemy.takeHit = true;
         }
-        else
-        {
-            if(invincibleTimer >= 150)
-            {
-                playerHealth--;
-                invincibleTimer = 0;
-                enemy.takeHit = true;
-            }
-        }
+        
     }
 }

@@ -13,8 +13,8 @@ var config = {
         gamepad:true
     },
     fps: {
-        target: 60,
-        //forceSetTimeOut: true
+        target: 120,
+        forceSetTimeOut: true
     },
     scene: [Menu,lvl1,lvl_tuto,lvl_boss],
 };
@@ -99,6 +99,7 @@ var playerSeishin = 6;
 
 //Saut//
 var jump = false;
+var jumpRelease =true;
 
 //Se baisser//
 var playerCrouch;
@@ -172,6 +173,10 @@ var SwitchTime = 180;
 
 ////////////// Equilibrage: //////////////
 
+//kunai Mark
+var kunaiTimerMax = 0;
+var kunaiTimerTouchedMax = 0;
+var markTimerMax = 0;
 
 //Jump//
 var jumpSpeed = 700;

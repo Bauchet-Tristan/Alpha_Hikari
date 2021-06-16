@@ -62,8 +62,8 @@ class lvl_tuto extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
-        //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        //player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(1000, 2000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -233,7 +233,7 @@ class lvl_tuto extends Phaser.Scene //
         {
             this.Ennemi1List [groupeEnnemi1Objects.indexOf(i)] = new Ennemi1(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
+            this.Ennemi1Collide = this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
 
             this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],this.plateformes);
         }
@@ -248,7 +248,7 @@ class lvl_tuto extends Phaser.Scene //
         {
             this.Ennemi2List [groupeEnnemi2Objects.indexOf(i)] = new Ennemi2(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
+            this.Ennemi2Collide = this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
         
             this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],this.plateformes);
         }
@@ -263,7 +263,7 @@ class lvl_tuto extends Phaser.Scene //
         {
             this.Ennemi3List [groupeEnnemi3Objects.indexOf(i)] = new Ennemi3(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
+            this.Ennemi3Collide = this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
         
             this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
         }
@@ -299,6 +299,7 @@ class lvl_tuto extends Phaser.Scene //
 
     update ()
     {
+        //this.scene.start("lvl1");
         if (gameOver == true)
         {
             console.log("gameOver");
@@ -392,7 +393,7 @@ class lvl_tuto extends Phaser.Scene //
         {
             if(this.Ennemi1List[i].displayList != null)
             {
-                this.Ennemi1List[i].Patern();
+                this.Ennemi1List[i].Patern(this.Ennemi1Collide);
             }
         }
 
@@ -403,7 +404,7 @@ class lvl_tuto extends Phaser.Scene //
         {
             if(this.Ennemi2List[i].displayList != null)
             {
-                this.Ennemi2List[i].Patern();
+                this.Ennemi2List[i].Patern(this.Ennemi2Collide);
             }
         }
 
@@ -414,7 +415,7 @@ class lvl_tuto extends Phaser.Scene //
         {
             if(this.Ennemi3List[i].displayList != null)
             {
-                this.Ennemi3List[i].Patern();
+                this.Ennemi3List[i].Patern(this.Ennemi3Collide);
             }
         }
 

@@ -24,7 +24,6 @@ class lvl_boss extends Phaser.Scene //
         musiclvl.play(musiclvlConfig);
 
         
-        
         Fond(this);
         cursors = this.input.keyboard.createCursorKeys();
 
@@ -60,7 +59,7 @@ class lvl_boss extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(100, 100, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(600, 700, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
@@ -231,7 +230,7 @@ class lvl_boss extends Phaser.Scene //
         {
             this.Ennemi1List [groupeEnnemi1Objects.indexOf(i)] = new Ennemi1(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
+            this.Ennemi1Collide = this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
 
             this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],this.plateformes);
         }
@@ -246,7 +245,7 @@ class lvl_boss extends Phaser.Scene //
         {
             this.Ennemi2List [groupeEnnemi2Objects.indexOf(i)] = new Ennemi2(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
+            this.Ennemi2Collide = this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
         
             this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],this.plateformes);
         }
@@ -261,9 +260,35 @@ class lvl_boss extends Phaser.Scene //
         {
             this.Ennemi3List [groupeEnnemi3Objects.indexOf(i)] = new Ennemi3(this,i.x,i.y);
 
-            this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
+            this.Ennemi3Collide = this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
         
             this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
+        }
+
+        //Boss
+        const groupeBossObjects = this.carteDuNiveau.getObjectLayer('Object/Boss').objects;
+
+        this.BossList = [];
+
+        for(const i of groupeBossObjects)
+        {
+            this.BossList [groupeBossObjects.indexOf(i)] = new Boss(this,i.x,i.y);
+
+            this.BossCollide = this.physics.add.overlap(this.BossList[groupeBossObjects.indexOf(i)],player,this.BossList[groupeBossObjects.indexOf(i)].BossPlayer);
+        
+            //this.physics.add.collider(this.BossList[groupeBossObjects.indexOf(i)],this.plateformes);
+        }
+
+        //BossPlatform
+        const groupeBossPlatformObjects= this.carteDuNiveau.getObjectLayer('Object/BossPlatform').objects;
+
+        this.BossPlatformList = [];
+
+        for(const i of groupeBossPlatformObjects)
+        {
+            this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)] = new BossPlatform(this,1,i.x,i.y);
+
+            this.collideBossPlatform = this.physics.add.collider(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
         }
 
 
@@ -297,6 +322,7 @@ class lvl_boss extends Phaser.Scene //
 
     update ()
     {
+        playerSeishin=7;
 
         if (gameOver == true)
         {
@@ -304,10 +330,8 @@ class lvl_boss extends Phaser.Scene //
             playerHealth = 6;
             playerSeishin = 6;
 
-            player.x = playerX;
-            player.y = playerY;
-
             gameOver = false;
+            //this.scene.start("lvl_boss"); 
             //return;
         }
 
@@ -316,7 +340,7 @@ class lvl_boss extends Phaser.Scene //
             this.scene.start("lvl1");
         }
         
-        CloudMove();
+        //CloudMove();
 
         //Controle Joueur
           
@@ -383,7 +407,7 @@ class lvl_boss extends Phaser.Scene //
         Bonus1();
         Bonus2();
 
-        /////////////////// Ennemi Property ///////////////////
+                /////////////////// Ennemi Property ///////////////////
 
         ///////////////// Ennemi1
 
@@ -391,7 +415,7 @@ class lvl_boss extends Phaser.Scene //
         {
             if(this.Ennemi1List[i].displayList != null)
             {
-                this.Ennemi1List[i].Patern();
+                this.Ennemi1List[i].Patern(this.Ennemi1Collide);
             }
         }
 
@@ -402,7 +426,7 @@ class lvl_boss extends Phaser.Scene //
         {
             if(this.Ennemi2List[i].displayList != null)
             {
-                this.Ennemi2List[i].Patern();
+                this.Ennemi2List[i].Patern(this.Ennemi2Collide);
             }
         }
 
@@ -413,7 +437,26 @@ class lvl_boss extends Phaser.Scene //
         {
             if(this.Ennemi3List[i].displayList != null)
             {
-                this.Ennemi3List[i].Patern();
+                this.Ennemi3List[i].Patern(this.Ennemi3Collide);
+            }
+        }
+
+        ///////////////// Boss
+        for(let i = 0; i< this.BossList.length; i++)
+        {
+            if(this.BossList[i].displayList != null)
+            {
+                this.BossList[i].Patern(this.BossCollide);
+            }
+        }
+
+        ///////////////// BossPlatform
+        
+        for(let i = 0; i< this.BossList.length; i++)
+        {
+            if(this.BossList[i].displayList != null)
+            {
+                this.BossList[i].Patern(this.BossCollide);
             }
         }
 
