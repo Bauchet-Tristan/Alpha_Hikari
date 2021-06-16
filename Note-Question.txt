@@ -2,16 +2,13 @@
 
 - asset platform mouvante
 
-- asset platform boss Red
+- Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
 
-- asset Lazer Boss relier a la boule magique
 
 
 - Lvl design sequence Running (timer)
 
-- Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
-
-- Integration touche Tuto
+- Integration touche Tuto + Recherche Police ecriture + Titre du Jeu
 
 - Integration Voix
 

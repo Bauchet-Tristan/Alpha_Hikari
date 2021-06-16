@@ -53,7 +53,8 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet("GrueLPrepa", "assets/GrueLeftPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
         this.load.spritesheet("GrueRPrepa", "assets/GrueRightPrepaAttack_132_145.png", { frameWidth: 132, frameHeight: 145 });
 
-        this.load.spritesheet("Boss", "assets/Lazer.png", { frameWidth: 80, frameHeight: 640 });
+        this.load.spritesheet("Boss", "assets/Boss.png", { frameWidth: 160, frameHeight: 800 });
+        this.load.image("ProjectilBoss","assets/ProjectilBoss.png");
 
         this.load.spritesheet("Explosion", "assets/Explosion_118_117.png", { frameWidth: 118, frameHeight: 117 });
 
@@ -267,7 +268,7 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl_tuto"); 
+        this.scene.start("lvl_boss"); 
         //controling(this);
 
         if(cursors.space.isDown)
@@ -459,7 +460,7 @@ function kunai_click(scene)
 
         for(let i = 0; i< scene.BossPlatformList.length; i++)
         {
-            scene.physics.add.collider(kunai,scene.BossPlatformList[i],kunai.KunaiPlatformeBoss);
+            scene.physics.add.overlap(kunai,scene.BossPlatformList[i],kunai.KunaiPlatformeBoss);
         }
         
         kunai.Shoot(scene);
@@ -591,7 +592,7 @@ function Mark_Space(scene)
 
         for(let i = 0; i< scene.BossPlatformList.length; i++)
         {
-            scene.physics.add.collider(mark,scene.BossPlatformList[i],mark.markPlatform);
+            scene.physics.add.overlap(mark,scene.BossPlatformList[i],mark.markPlatform);
         }
 
         sparkle2 = scene.add.sprite(player.x,player.y,"LightningLink");

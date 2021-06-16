@@ -10,12 +10,12 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
         //
         this.body.collideWorldBounds=true;
         this.body.allowGravity = false;
-
         //
+
         this.body.setSize(150,90);
 
         this.speedX = 200;
-        this.speedY = 500;
+        this.speedY = 350;
         this.distancePlayerEnemy;
         this.timerAttack = 0;
         this.alive = true;
@@ -116,7 +116,6 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
                 {
                     //attack 
                     this.speedX = 350;
-                    this.speedY = 250;
 
                     if(this.hauterPlayerEnemy < 10)
                     {
@@ -129,10 +128,12 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 
                     if(this.distancePlayerEnemy > 100)
                     {
+                        this.anims.play('GrueFlyRight',true);
                         this.body.setVelocityX(this.speedX);
                     }
                     else if (this.distancePlayerEnemy < 100)
                     {
+                        this.anims.play('GrueFlyLeft',true);
                         this.body.setVelocityX(-this.speedX);
                     }
                 }
@@ -163,7 +164,7 @@ class Ennemi3 extends Phaser.GameObjects.Sprite
 
     Ennemi3Player(enemy)
     {
-        if(lightning_attack==true)
+        if(lightning_attack==true && enemy.alive==true)
         {
             //enemy.anims.play('enemyDie',true);
             //enemy.destroy();

@@ -89,7 +89,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
 
     Ennemi1Player(enemy)
     {
-        if(lightning_attack==true)
+        if(lightning_attack==true && enemy.alive==true)
         {
             //enemy.anims.play('enemyDie',true);
             //enemy.destroy();

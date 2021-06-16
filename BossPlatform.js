@@ -2,7 +2,7 @@ class BossPlatform extends Phaser.GameObjects.Sprite
 { 
     constructor(scene,x,y)
     { 
-        super(scene,x,y,"door2");
+        super(scene,x,y,"ProjectilBoss");
 
         scene.add.existing(this);
         scene.physics.world.enableBody(this);
@@ -12,18 +12,17 @@ class BossPlatform extends Phaser.GameObjects.Sprite
         this.body.collideWorldBounds=true;
         this.body.allowGravity = false;
 
-        this.body.setSize(80,160);
+        this.body.setSize(120,120);
     }
 
 
     Patern(collide)
     {
-        if(this.body.y <= 650)
+        if(this.body.y <= 800)
         {
             this.body.setVelocityY(100);
         }
-        
-        if(this.body.y >= 860)
+        else if(this.body.y >= 1320)
         {
             this.body.setVelocityY(-100);
         }

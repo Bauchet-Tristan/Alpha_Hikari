@@ -59,7 +59,7 @@ class lvl_boss extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(1200, 700, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(2550, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
@@ -275,7 +275,7 @@ class lvl_boss extends Phaser.Scene //
 
         for(const i of groupeBossObjects)
         {
-            this.BossList [groupeBossObjects.indexOf(i)] = new Boss(this,i.x,i.y);
+            this.BossList [groupeBossObjects.indexOf(i)] = new Boss(this,i.x,i.y-160);
 
             this.BossCollide = this.physics.add.overlap(this.BossList[groupeBossObjects.indexOf(i)],player,this.BossList[groupeBossObjects.indexOf(i)].BossPlayer);
         
@@ -291,7 +291,7 @@ class lvl_boss extends Phaser.Scene //
         {
             this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)] = new BossPlatform(this,i.x+40,i.y);
 
-            this.collideBossPlatform = this.physics.add.collider(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
+            this.collideBossPlatform = this.physics.add.overlap(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
         }
 
 
@@ -338,10 +338,10 @@ class lvl_boss extends Phaser.Scene //
             console.log("gameOver");
             playerHealth = 6;
 
-            player.x = 1200;
-            player.y = 700;
+            player.x = 2550;
+            player.y = 1000;
 
-            if(enemyNumberToUnlock <= 2)
+            if(enemyNumberToUnlock <= 3)
             {
                 for(let i = 0; i< this.Ennemi2List.length; i++)
                 {
@@ -352,11 +352,11 @@ class lvl_boss extends Phaser.Scene //
                 }
             }
 
-            if(enemyNumberToUnlock <= 4)
+            if(enemyNumberToUnlock == 4)
             {
                 this.Ennemi1List[0].Destroy();
             }
-            if(enemyNumberToUnlock <= 6)
+            if(enemyNumberToUnlock == 6)
             {
                 this.Ennemi3List[0].Destroy();
             }
@@ -435,7 +435,7 @@ class lvl_boss extends Phaser.Scene //
         Bonus2();
 
         /////////////////// Ennemi Property ///////////////////
-
+        
         //Spawn
         if(enemyNumberToUnlock == 0)
         {
@@ -452,7 +452,7 @@ class lvl_boss extends Phaser.Scene //
             }
             enemyNumberToUnlock++;
         }
-
+        console.log(enemyNumberToUnlock);
         if(enemyNumberToUnlock == 3)
         {
             const groupeEnnemi1Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi1').objects;

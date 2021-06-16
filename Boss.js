@@ -11,6 +11,9 @@ class Boss extends Phaser.GameObjects.Sprite
         this.body.collideWorldBounds=true;
         this.body.immovable=true;
         this.body.allowGravity = false;
+        //
+
+        this.body.setSize(80,800);
 
         this.timer = 0;
         this.alive = true;
@@ -36,11 +39,11 @@ class Boss extends Phaser.GameObjects.Sprite
         }
         else
         {
-            if(this.body.x<=560)
+            if(this.body.x<=1750)
             {
                 this.body.setVelocityX(200);
             }
-            else if (this.body.x>=1760)
+            else if (this.body.x>=3300)
             {
                 this.body.setVelocityX(-200);
             }
