@@ -2,6 +2,8 @@
 
 - Reset une scene
 
+-touche equilibre desactiver pendant boss
+
 - asset vie perdu + asset lightning UI
 
 - asset platform mouvante
