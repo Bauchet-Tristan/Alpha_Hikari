@@ -1,22 +1,25 @@
 ﻿A faire :
 
-- Lvl design sequence Boss
+- Reset une scene
 
-- asset vie perdu
+- asset vie perdu + asset lightning UI
+
+- asset platform mouvante
+
+- asset platform boss Red
+
+- asset Lazer Boss relier a la boule magique
+
+
+- Lvl design sequence Running (timer)
 
 - Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
+
+- Integration touche Tuto.
 
 - Integration Voix
 
 - Integration Menu clickable
-
-
-
-//Code Boss : 
-
--Lazer constant qui se deplace.
-
--Ennemi a tué qui spawn a divers endroit de la map 
 
 
 

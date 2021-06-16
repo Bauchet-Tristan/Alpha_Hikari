@@ -23,7 +23,7 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
 
     Patern(collide)
     {
-
+        //console.log("didier");
         if(this.alive==false)
         {
             this.TimeOut++;

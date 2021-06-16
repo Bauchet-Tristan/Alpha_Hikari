@@ -113,6 +113,8 @@ var mark_active = false;
 var mark_touched = false;
 var markUnlock = true;
 
+var markOUT = false;
+
 //Kunai//
 var kunai;
 
@@ -125,9 +127,9 @@ var HitBoxLeft;
 var HitBoxRight;
 var HitBoxDown;
 var HitBoxUp;
-
 var KunaiRotaStop=0;
 
+var kunaiOUT = false;
 
 //Teleportation
 var kunaiTP=false;

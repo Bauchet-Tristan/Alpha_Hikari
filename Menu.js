@@ -446,6 +446,11 @@ function kunai_click(scene)
         {
             scene.collide2Door3 = scene.physics.add.collider(kunai,scene.door3List[i],kunai.KunaiPlatforme);
         }
+
+        for(let i = 0; i< scene.BossPlatformList.length; i++)
+        {
+            scene.physics.add.collider(kunai,scene.BossPlatformList[i],kunai.KunaiPlatformeBoss);
+        }
         
         kunai.Shoot(scene);
         kunai.HitBoxCollide(scene,kunai);
@@ -453,6 +458,12 @@ function kunai_click(scene)
         sparkle = scene.add.sprite(player.x,player.y,"LightningLink");
         sparkle.anims.play('LightningLink',true);
         
+    }
+
+    if(kunaiOUT == true)
+    {
+        sparkle.destroy();
+        kunai.Destroy();
     }
 
     if(kunai_active == true)
@@ -569,9 +580,19 @@ function Mark_Space(scene)
         mark = new Mark(scene, player.x, player.y - 20);
         scene.physics.add.collider(mark, scene.plateformes,);
 
+        for(let i = 0; i< scene.BossPlatformList.length; i++)
+        {
+            scene.physics.add.collider(mark,scene.BossPlatformList[i],mark.markPlatform);
+        }
+
         sparkle2 = scene.add.sprite(player.x,player.y,"LightningLink");
         sparkle2.anims.play('LightningLink',true);
+    }
 
+    if(markOUT == true)
+    {
+        sparkle2.destroy();
+        mark.Destroy();
     }
 
     if(mark_active == true)

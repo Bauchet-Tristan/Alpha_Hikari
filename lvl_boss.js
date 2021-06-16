@@ -59,7 +59,7 @@ class lvl_boss extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(600, 700, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(1200, 700, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
@@ -226,17 +226,20 @@ class lvl_boss extends Phaser.Scene //
 
         this.Ennemi1List = [];
 
-        for(const i of groupeEnnemi1Objects)
+        /*for(const i of groupeEnnemi1Objects)
         {
             this.Ennemi1List [groupeEnnemi1Objects.indexOf(i)] = new Ennemi1(this,i.x,i.y);
 
             this.Ennemi1Collide = this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
 
             this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],this.plateformes);
-        }
+        }*/
 
         //ennemi2
+        const groupeEnnemi2Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi2').objects;
 
+        this.Ennemi2List = [];
+        /*
         const groupeEnnemi2Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi2').objects;
 
         this.Ennemi2List = [];
@@ -248,7 +251,7 @@ class lvl_boss extends Phaser.Scene //
             this.Ennemi2Collide = this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
         
             this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],this.plateformes);
-        }
+        }*/
 
         //ennemi3
 
@@ -256,14 +259,14 @@ class lvl_boss extends Phaser.Scene //
 
         this.Ennemi3List = [];
 
-        for(const i of groupeEnnemi3Objects)
+        /*for(const i of groupeEnnemi3Objects)
         {
             this.Ennemi3List [groupeEnnemi3Objects.indexOf(i)] = new Ennemi3(this,i.x,i.y);
 
             this.Ennemi3Collide = this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
         
             this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
-        }
+        }*/
 
         //Boss
         const groupeBossObjects = this.carteDuNiveau.getObjectLayer('Object/Boss').objects;
@@ -286,7 +289,7 @@ class lvl_boss extends Phaser.Scene //
 
         for(const i of groupeBossPlatformObjects)
         {
-            this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)] = new BossPlatform(this,1,i.x,i.y);
+            this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)] = new BossPlatform(this,i.x+40,i.y);
 
             this.collideBossPlatform = this.physics.add.collider(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
         }
@@ -298,6 +301,7 @@ class lvl_boss extends Phaser.Scene //
         
         ///////// UI
         UICreation(this);
+        enemyNumberToUnlock = 0;
 
         // Input Events Reset
         cursors.left.reset();
@@ -407,7 +411,57 @@ class lvl_boss extends Phaser.Scene //
         Bonus1();
         Bonus2();
 
-                /////////////////// Ennemi Property ///////////////////
+        /////////////////// Ennemi Property ///////////////////
+
+        //Spawn
+        if(enemyNumberToUnlock == 0)
+        {
+            const groupeEnnemi2Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi2').objects;
+
+            this.Ennemi2List = [];
+            for(const i of groupeEnnemi2Objects)
+            {
+                this.Ennemi2List [groupeEnnemi2Objects.indexOf(i)] = new Ennemi2(this,i.x,i.y);
+
+                this.Ennemi2Collide = this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],player,this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)].Ennemi2Player);
+            
+                this.physics.add.collider(this.Ennemi2List[groupeEnnemi2Objects.indexOf(i)],this.plateformes);
+            }
+            enemyNumberToUnlock++;
+        }
+
+        if(enemyNumberToUnlock == 2)
+        {
+            const groupeEnnemi1Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi1').objects;
+
+            this.Ennemi1List = [];
+            for(const i of groupeEnnemi1Objects)
+            {
+                this.Ennemi1List [groupeEnnemi1Objects.indexOf(i)] = new Ennemi1(this,i.x,i.y);
+
+                this.Ennemi1Collide = this.physics.add.overlap(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],player,this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)].Ennemi1Player);
+            
+                this.physics.add.collider(this.Ennemi1List[groupeEnnemi1Objects.indexOf(i)],this.plateformes);
+            }
+            enemyNumberToUnlock++;
+        }
+
+        if(enemyNumberToUnlock == 4)
+        {
+            const groupeEnnemi3Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi3').objects;
+
+            this.Ennemi3List = [];
+            for(const i of groupeEnnemi3Objects)
+            {
+                this.Ennemi3List [groupeEnnemi3Objects.indexOf(i)] = new Ennemi3(this,i.x,i.y);
+
+                this.Ennemi3Collide = this.physics.add.overlap(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],player,this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)].Ennemi3Player);
+            
+                this.physics.add.collider(this.Ennemi1List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
+            }
+            enemyNumberToUnlock++;
+        }
+
 
         ///////////////// Ennemi1
 
@@ -452,11 +506,11 @@ class lvl_boss extends Phaser.Scene //
 
         ///////////////// BossPlatform
         
-        for(let i = 0; i< this.BossList.length; i++)
+        for(let i = 0; i< this.BossPlatformList.length; i++)
         {
-            if(this.BossList[i].displayList != null)
+            if(this.BossPlatformList[i].displayList != null)
             {
-                this.BossList[i].Patern(this.BossCollide);
+                this.BossPlatformList[i].Patern(this.BossPlatformCollide);
             }
         }
 

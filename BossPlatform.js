@@ -18,27 +18,17 @@ class BossPlatform extends Phaser.GameObjects.Sprite
 
     Patern(collide)
     {
-
-        if(this.alive==false)
+        if(this.body.y <= 650)
         {
-            this.TimeOut++;
-            
-            collide.active = false;
-            this.anims.play('enemyDie',true);
-
-            if(this.TimeOut>=25)
-            {
-                this.destroy();
-            }
-        }
-        else
-        {
-
+            this.body.setVelocityY(100);
         }
         
+        if(this.body.y >= 860)
+        {
+            this.body.setVelocityY(-100);
+        }
 
         // mettre l'anims loup assis //
-
     }
 /*
     BossPlayer(enemy)

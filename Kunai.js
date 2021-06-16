@@ -39,6 +39,11 @@ class Kunai extends Phaser.GameObjects.Sprite
                 
     }
 
+    KunaiPlatformeBoss()
+    {
+        kunaiOUT = true;
+    }
+
     HitBoxCollideleft()
     {   
         KunaiHit ="left";
@@ -62,11 +67,15 @@ class Kunai extends Phaser.GameObjects.Sprite
     HitBoxCollide(scene,kunai)
     {
         //////////////////
+        for(let i = 0; i< scene.BossPlatformList.length; i++)
+        {
+            scene.physics.add.collider(HitBoxLeft, scene.BossPlatformList[i],kunai.HitBoxCollideleft);
+        }
+
         for(let i = 0; i< scene.plateformList.length; i++)
         {
             scene.physics.add.collider(HitBoxLeft, scene.plateformList[i],kunai.HitBoxCollideleft);
         }
-
         for(let i = 0; i< scene.doorList.length; i++)
         {
             scene.physics.add.collider(HitBoxLeft, scene.doorList[i],kunai.HitBoxCollideleft);
@@ -80,6 +89,11 @@ class Kunai extends Phaser.GameObjects.Sprite
             scene.physics.add.collider(HitBoxLeft, scene.door3List[i],kunai.HitBoxCollideleft);
         }
         //////////////////
+        for(let i = 0; i< scene.BossPlatformList.length; i++)
+        {
+            scene.physics.add.collider(HitBoxRight, scene.BossPlatformList[i],kunai.HitBoxCollideright);
+        }
+
         for(let i = 0; i< scene.plateformList.length; i++)
         {
             scene.physics.add.collider(HitBoxRight, scene.plateformList[i],kunai.HitBoxCollideright);
@@ -97,6 +111,11 @@ class Kunai extends Phaser.GameObjects.Sprite
             scene.physics.add.collider(HitBoxRight, scene.door3List[i],kunai.HitBoxCollideright);
         }
         //////////////////
+        for(let i = 0; i< scene.BossPlatformList.length; i++)
+        {
+            scene.physics.add.collider(HitBoxUp, scene.BossPlatformList[i],kunai.HitBoxCollideup);
+        }
+
         for(let i = 0; i< scene.plateformList.length; i++)
         {
             scene.physics.add.collider(HitBoxUp, scene.plateformList[i],kunai.HitBoxCollideup);
@@ -114,6 +133,11 @@ class Kunai extends Phaser.GameObjects.Sprite
             scene.physics.add.collider(HitBoxUp, scene.door3List[i],kunai.HitBoxCollideup);
         }
         //////////////////
+        for(let i = 0; i< scene.BossPlatformList.length; i++)
+        {
+            scene.physics.add.collider(HitBoxDown, scene.BossPlatformList[i],kunai.HitBoxCollidedown);
+        }
+
         for(let i = 0; i< scene.plateformList.length; i++)
         {
             scene.physics.add.collider(HitBoxDown, scene.plateformList[i],kunai.HitBoxCollidedown);
@@ -192,6 +216,7 @@ class Kunai extends Phaser.GameObjects.Sprite
         kunai_active = false;
         kunai_touched = false;
         kunaiTP = false;
+        kunaiOUT = false;
     }
 
 

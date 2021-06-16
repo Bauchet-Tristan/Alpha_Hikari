@@ -22,6 +22,10 @@ class Mark extends Phaser.GameObjects.Sprite
         }
     }
 
+    markPlatform()
+    {
+        markOUT = true;
+    }
 
     Destroy() 
     {
@@ -30,6 +34,7 @@ class Mark extends Phaser.GameObjects.Sprite
         mark_active = false;
         mark_touched = false;
         markTP = false;
+        markOUT = false;
     }
 
     Anim()
