@@ -268,7 +268,7 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl_boss"); 
+        this.scene.start("lvl_tuto"); 
         //controling(this);
 
         if(cursors.space.isDown)
