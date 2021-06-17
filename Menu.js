@@ -73,6 +73,16 @@ class Menu extends Phaser.Scene //
         this.load.image("Nuage3","assets/Background/72ppi/Nuage(3).png");
         this.load.image("Nuage4","assets/Background/72ppi/Nuage(4).png");
 
+        //Nuage Tuto
+        this.load.image("Nuage1Tuto","assets/TutoCloud/72ppi/Nuage1Tuto.png");
+        this.load.image("Nuage2Tuto","assets/TutoCloud/72ppi/Nuage2Tuto.png");
+        this.load.image("Nuage3Tuto","assets/TutoCloud/72ppi/Nuage3Tuto.png");
+        this.load.image("Nuage4Tuto","assets/TutoCloud/72ppi/Nuage4Tuto.png");
+        this.load.image("Nuage5Tuto","assets/TutoCloud/72ppi/Nuage5Tuto.png");
+        this.load.image("Nuage6Tuto","assets/TutoCloud/72ppi/Nuage6Tuto.png");
+        this.load.image("Nuage7Tuto","assets/TutoCloud/72ppi/Nuage7Tuto.png");
+        this.load.image("Nuage8Tuto","assets/TutoCloud/72ppi/Nuage8Tuto.png");
+
         //fond
         this.load.image("StarterScreen","assets/EcranTitre.png");
 
@@ -95,7 +105,7 @@ class Menu extends Phaser.Scene //
         ////
         this.add.image(960, 540, 'StarterScreen');
 
-        this.add.text(450,0, "Press space to play").setScale(5,5);  
+        //this.add.text(450,0, "Press space to play").setScale(5,5);  
 
         ///////////les anims Player
         this.anims.create({
@@ -217,12 +227,12 @@ class Menu extends Phaser.Scene //
         });
 
         //Projectile
-        this.anims.create({
+        /*this.anims.create({
             key: 'MarkAnimationRotate',
             frames: this.anims.generateFrameNumbers('MarkAnimation', { start: 0, end: 9 }),
             frameRate: 10,
             repeat: -1
-        });
+        });*/
 
         this.anims.create({
             key: 'LightningLink',
@@ -268,12 +278,12 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl_tuto"); 
+        this.scene.start("lvl1"); 
         //controling(this);
 
         if(cursors.space.isDown)
         {
-            this.scene.start("lvl_tuto");
+            this.scene.start("Story1");
         }
         
     }
@@ -289,49 +299,110 @@ function Fond(scene)
 {
     scene.add.image(2300, 950, 'FOND6').setScrollFactor(0.8,0.6);
     scene.add.image(2400, 950, 'Sun').setScrollFactor(0.8,0.6);
-    scene.add.image(2300, 950, 'FOND5').setScrollFactor(0.8,0.6);
-    scene.add.image(2700, 950, 'FOND4').setScrollFactor(0.65,0.6);
-    scene.add.image(2700, 950, 'FOND3').setScrollFactor(0.6,0.6);
-    scene.add.image(2200, 950, 'FOND2').setScrollFactor(0.55,0.6);
-    scene.add.image(2200, 950, 'FOND1').setScrollFactor(0.5,0.6);
+
+
 
     //cloud
     alea = Math.random();
     console.log(cloud1);
 
-    if(alea < 0.5)
-    {
-        cloud1=scene.physics.add.image(400, 950, 'Nuage1');
-        cloud1.body.allowGravity = false;
+    scene.add.image(2300, 950, 'FOND5').setScrollFactor(0.8,0.6);
+    scene.add.image(2700, 950, 'FOND4').setScrollFactor(0.65,0.6);
 
-        cloud2=scene.physics.add.image(400, 500, 'Nuage2');
-        cloud2.body.allowGravity = false;
-    }
-    if(alea > 0.5)
+    if(alea < 0.8)
     {
-        cloud3=scene.physics.add.image(400, 950, 'Nuage3');
+        cloud3=scene.physics.add.image(2500, 950, 'Nuage3').setScale(0.7).setScrollFactor(0.8,0.8);
         cloud3.body.allowGravity = false;
 
-        cloud4=scene.physics.add.image(400, 500, 'Nuage4');
+        cloud1=scene.physics.add.image(2000, 1200, 'Nuage1').setScale(0.4).setScrollFactor(0.9,0.9);
+        cloud1.body.allowGravity = false;
+
+        cloud4=scene.physics.add.image(700, 1400, 'Nuage4').setScale(0.8).setScrollFactor(0.8,0.8);
         cloud4.body.allowGravity = false;
+
+        cloud1.setVelocityX(6);
+        cloud3.setVelocityX(4);
+        cloud4.setVelocityX(4);
     }
     
+    
+    scene.add.image(2700, 950, 'FOND3').setScrollFactor(0.6,0.6);
+    if(alea < 0.5)
+    {
+        cloud1=scene.physics.add.image(600, 1050, 'Nuage1').setScale(0.9).setScrollFactor(0.8,0.8);
+        cloud1.body.allowGravity = false;
 
+        cloud2=scene.physics.add.image(300, 700, 'Nuage2').setScale(0.5).setScrollFactor(0.8,0.6);
+        cloud2.body.allowGravity = false;
+
+        cloud3=scene.physics.add.image(3000, 1400, 'Nuage3').setScale(0.6).setScrollFactor(0.8,0.8);
+        cloud3.body.allowGravity = false;
+
+        cloud1.setVelocityX(6);
+        cloud2.setVelocityX(4);
+        cloud3.setVelocityX(4);
+    }
+    
+    scene.add.image(2200, 950, 'FOND2').setScrollFactor(0.55,0.6);
+    if(alea > 0.5)
+    {
+        cloud3=scene.physics.add.image(800, 950, 'Nuage3').setScale(0.7).setScrollFactor(0.8,0.9);
+        cloud3.body.allowGravity = false;
+
+        cloud1=scene.physics.add.image(2200, 1300, 'Nuage1').setScale(0.6).setScrollFactor(0.9,0.8);
+        cloud1.body.allowGravity = false;
+
+        cloud4=scene.physics.add.image(1000, 500, 'Nuage4').setScale(0.5).setScrollFactor(0.8,0.9);
+        cloud4.body.allowGravity = false;
+
+        cloud3.setVelocityX(6);
+        cloud1.setVelocityX(4);
+        cloud4.setVelocityX(4);
+    }
+    
+    scene.add.image(2200, 950, 'FOND1').setScrollFactor(0.5,0.6);
+    if(alea > 0.8)
+    {
+        cloud3=scene.physics.add.image(1800, 950, 'Nuage3').setScale(0.7).setScrollFactor(0.9,0.9);
+        cloud3.body.allowGravity = false;
+
+        cloud1=scene.physics.add.image(00, 1600, 'Nuage1').setScale(0.5).setScrollFactor(0.8,0.8);
+        cloud1.body.allowGravity = false;
+
+        cloud2=scene.physics.add.image(1300, 1300, 'Nuage2').setScale(0.9).setScrollFactor(0.9,0.8);
+        cloud2.body.allowGravity = false;
+
+        cloud1.setVelocityX(6);
+        cloud3.setVelocityX(4);
+        cloud2.setVelocityX(4);
+    }
+    
+    if(alea > 0)
+    {
+        cloud3=scene.physics.add.image(2600, 1000, 'Nuage3').setScale(0.7).setScrollFactor(0.9,0.8);
+        cloud3.body.allowGravity = false;
+
+        cloud1=scene.physics.add.image(500, 1400, 'Nuage1').setScale(0.5).setScrollFactor(0.9,0.8);
+        cloud1.body.allowGravity = false;
+
+        cloud4=scene.physics.add.image(1200, 500, 'Nuage4').setScale(0.9).setScrollFactor(0.9,0.8);
+        cloud4.body.allowGravity = false;
+
+        cloud2=scene.physics.add.image(1900, 1900, 'Nuage2').setScale(0.8).setScrollFactor(0.9,0.8);
+        cloud2.body.allowGravity = false;
+
+        cloud1.setVelocityX(6);
+        cloud2.setVelocityX(4);
+        cloud3.setVelocityX(6);
+        cloud4.setVelocityX(4);
+    }
+    
+    
 
 }
 
 function CloudMove()
 {   
-    if(alea < 0.5)
-    {
-        cloud1.setVelocityX(6);
-        cloud2.setVelocityX(4);
-    }
-    if(alea > 0.5)
-    {
-        cloud3.setVelocityX(4);
-        cloud4.setVelocityX(6);
-    }
 }
 
 function Patern(enemy)
@@ -529,7 +600,7 @@ function kunai_click(scene)
             kunai.Anim();
         } 
     }
-    ///////////////////////Teleportation kunai
+    ///////////////////////Teleportation Kunai
 
     if(kunai_Throwing == false && kunai_throw ==true)
     {
@@ -623,7 +694,7 @@ function Mark_Space(scene)
 
         mark.Anim()
        //console.log(markTimer);
-        if(markTimer >= 450)
+        if(markTimer >= 800)
         {
             sparkle2.anims.play('LightningLinkEnd',true);
             mark.FadeOut();
@@ -860,24 +931,25 @@ function Balance()
 
 
 
-function PlayerBonus1()
+function PlayerBonus1(bonus1)
 {
     if(bonus1State == "unactive")
     {    
         bonus1Cooldown = 0;
     }
+    bonus1.setRotation(SwitchTime);
 }
 
 
 function Bonus1()
 {    
-    if(bonus1Cooldown<=400)
+    if(bonus1Cooldown<=1)
     {
         bonus1State = "active";
         playerSeishin=6;
 
         //player.setTintFill(0x5f5f5f);//change direct la couleur de base
-        player.setTint(0x5f5f5f);//filtre de couleur
+        //player.setTint(0x5f5f5f);//filtre de couleur
     }
     else
     {

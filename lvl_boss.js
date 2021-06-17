@@ -47,14 +47,14 @@ class lvl_boss extends Phaser.Scene //
         this.tileset = this.carteDuNiveau.addTilesetImage("Tile_Set","Phaser_tuilesdejeu");  
         
         // chargement du calque calque_background
-        this.backgroundLayer = this.carteDuNiveau.createLayer("Background",this.tileset,0,0);
+        this.backgroundLayer = this.carteDuNiveau.createLayer("Grille/Background",this.tileset,0,0);
 
         //Plateform Classic
         this.plateformes = this.carteDuNiveau.createLayer("Grille/Platform_Classic",this.tileset,0,0);
         this.plateformes.setCollisionByExclusion(-1, true);
 
         //platform background
-        this.plateformes_background = this.carteDuNiveau.createLayer("Platform_Background",this.tileset,0,0);
+        //this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
 
 
 
@@ -452,7 +452,7 @@ class lvl_boss extends Phaser.Scene //
             }
             enemyNumberToUnlock++;
         }
-        console.log(enemyNumberToUnlock);
+        //console.log(enemyNumberToUnlock);
         if(enemyNumberToUnlock == 3)
         {
             const groupeEnnemi1Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi1').objects;

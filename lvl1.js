@@ -51,14 +51,14 @@ class lvl1 extends Phaser.Scene //
         this.tileset = this.carteDuNiveau.addTilesetImage("Tile_Set","Phaser_tuilesdejeu");  
         
         // chargement du calque calque_background
-        this.backgroundLayer = this.carteDuNiveau.createStaticLayer("Background",this.tileset,0,0);
+        this.backgroundLayer = this.carteDuNiveau.createLayer("Grille/Background",this.tileset,0,0);
 
         //Plateform Classic
-        this.plateformes = this.carteDuNiveau.createStaticLayer("Grille/Platform_Classic",this.tileset,0,0);
+        this.plateformes = this.carteDuNiveau.createLayer("Grille/Platform_Classic",this.tileset,0,0);
         this.plateformes.setCollisionByExclusion(-1, true);
 
         //platform background
-        this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
+        //this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
 
 
 
@@ -328,6 +328,16 @@ class lvl1 extends Phaser.Scene //
         
         if(player.x >=4450 && player.y >= 2300)
         {
+            if(kunaiTP == true)
+            {
+                kunai.Destroy();
+            }
+
+            if(markTP == true)
+            {
+                mark.Destroy();
+            }
+
             this.scene.start("lvl_boss"); 
         }
 

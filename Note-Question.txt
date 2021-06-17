@@ -1,16 +1,23 @@
 ﻿A faire :
 
-- asset platform mouvante
-
 - Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
 
-
-
-- Lvl design sequence Running (timer)
-
-- Integration touche Tuto + Recherche Police ecriture + Titre du Jeu
+- Integration des scenes story + reglage voix + creation des dialogues
 
 - Integration Voix
+
+- flip la chevre si on est a gauche ou a droite
+
+
+
+- Lvl design sequence Running (timer),Booster
+
+
+- Integration decors
+
+- Integration Mobile contrôle
+
+- Diapo
 
 - Integration Menu clickable
 
@@ -18,15 +25,7 @@
 
 Code Bonus :
 
-- UI Interrupteur
-
-- fonction reset timer 
-
-- Jump UX Made
-
-- fonction Agrandissement taille camera /vision de jeu
-
-
+- Fonction Agrandissement taille camera /vision de jeu quand player est arreter
 
 
 

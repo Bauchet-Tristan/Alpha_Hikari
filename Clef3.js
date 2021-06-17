@@ -32,7 +32,7 @@ class Clef3 extends Phaser.GameObjects.Sprite
 
             SwitchDoor3Open++;
 
-            if(SwitchDoor3Open >= 100)
+            if(SwitchDoor3Open >= 200)
             {
                 key.setRotation(SwitchTime);
                 restartDoor3 = 1;

@@ -50,20 +50,32 @@ class lvl_tuto extends Phaser.Scene //
         this.tileset = this.carteDuNiveau.addTilesetImage("Tile_Set","Phaser_tuilesdejeu");  
         
         // chargement du calque calque_background
-        this.backgroundLayer = this.carteDuNiveau.createStaticLayer("Background",this.tileset,0,0);
+        this.backgroundLayer = this.carteDuNiveau.createLayer("Grille/Background",this.tileset,0,0);
 
         //Plateform Classic
-        this.plateformes = this.carteDuNiveau.createStaticLayer("Grille/Platform_Classic",this.tileset,0,0);
+        this.plateformes = this.carteDuNiveau.createLayer("Grille/Platform_Classic",this.tileset,0,0);
         this.plateformes.setCollisionByExclusion(-1, true);
 
         //platform background
-        this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
+        //this.plateformes_background = this.carteDuNiveau.createStaticLayer("Platform_Background",this.tileset,0,0);
+
+        //Tuto Cloud
+        this.Nuage1Tuto = this.add.image(500, 200, 'Nuage1Tuto');
+        this.Nuage2Tuto = this.add.image(3600, 800, 'Nuage2Tuto');
+        this.Nuage3Tuto = this.add.image(3770, 1100, 'Nuage3Tuto');
+        this.Nuage4Tuto = this.add.image(3040, 1200, 'Nuage4Tuto');
+        this.Nuage5Tuto = this.add.image(2200, 800, 'Nuage5Tuto');
+        this.Nuage6Tuto = this.add.image(2200, 1100, 'Nuage6Tuto');
+        this.Nuage7Tuto = this.add.image(1200, 900, 'Nuage7Tuto');
+        this.Nuage8Tuto = this.add.image(1150, 1700, 'Nuage8Tuto');
 
 
 
         //---player--//
         player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
-        //player = this.physics.add.sprite(1000, 2000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        //player = this.physics.add.sprite(2500, 2000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+
+
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -327,6 +339,16 @@ class lvl_tuto extends Phaser.Scene //
 
         if(player.x >= 4700 && player.y >= 1500)
         {
+            if(kunaiTP == true)
+            {
+                kunai.Destroy();
+            }
+
+            if(markTP == true)
+            {
+                mark.Destroy();
+            }
+            
             this.scene.start("lvl1");
 
            console.log(player.x); 
