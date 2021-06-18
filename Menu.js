@@ -36,8 +36,8 @@ class Menu extends Phaser.Scene //
         this.load.image("UIYin","assets/UI//72ppi/Fichier1UI.png");
         this.load.image("UIYang","assets/UI//72ppi/Fichier2UI.png");
 
-        this.load.image("UIYinVide","assets/UI//72ppi/Fichier1Vide.png");
-        this.load.image("UIYangVide","assets/UI//72ppi/Fichier2Vide.png");
+        this.load.image("UIYinVide","assets/UI//72ppi/Fichier1VIDE.png");
+        this.load.image("UIYangVide","assets/UI//72ppi/Fichier2VIDE.png");
 
         this.load.image("UIBlue","assets/UI//72ppi/Fichier3Lightning.png");
         this.load.image("UIYellow","assets/UI//72ppi/Fichier2Lightning.png");
