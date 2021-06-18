@@ -184,7 +184,7 @@ class Kunai extends Phaser.GameObjects.Sprite
             this.dY = ((pointer.y+30) - player.y);
             this.dX = (pointer.x - player.x);
 
-            this.dSpeed = (950 / (Math.abs(this.dY) + Math.abs(this.dX)));
+            this.dSpeed = (kunaiSpeed / (Math.abs(this.dY) + Math.abs(this.dX)));
 
             this.body.setVelocityY(this.dY * this.dSpeed);
             this.body.setVelocityX(this.dX * this.dSpeed);

@@ -1,23 +1,27 @@
 ﻿A faire :
 
+
 - Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
+
+
 
 - Integration des scenes story + reglage voix + creation des dialogues
 
 - Integration Voix
 
+
+
 - flip la chevre si on est a gauche ou a droite
-
-
 
 - Lvl design sequence Running (timer),Booster
 
-
 - Integration decors
 
-- Integration Mobile contrôle
-
 - Diapo
+
+
+
+- Integration Mobile contrôle
 
 - Integration Menu clickable
 

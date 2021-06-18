@@ -12,6 +12,7 @@ class Menu extends Phaser.Scene //
         this.load.tilemapTiledJSON("carte", "Map_Hikari.json");
         this.load.tilemapTiledJSON("carteTuto", "Map_Tuto.json");
         this.load.tilemapTiledJSON("carteBoss", "Map_Boss.json");
+        this.load.tilemapTiledJSON("carte2", "Map_SpeedRun.json");
 
         this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
         this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
@@ -278,7 +279,7 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("lvl1"); 
+        this.scene.start("Story1"); 
         //controling(this);
 
         if(cursors.space.isDown)

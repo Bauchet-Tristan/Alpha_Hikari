@@ -349,7 +349,7 @@ class lvl_tuto extends Phaser.Scene //
                 mark.Destroy();
             }
             
-            this.scene.start("lvl1");
+            this.scene.start("Story2");
 
            console.log(player.x); 
            console.log(player.y); 

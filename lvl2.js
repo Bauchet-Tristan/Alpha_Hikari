@@ -1,9 +1,9 @@
 
-class lvl1 extends Phaser.Scene //
+class lvl2 extends Phaser.Scene //
 { 
     constructor()
     {
-        super("lvl1"); 
+        super("lvl2"); 
     }
 
     preload ()
@@ -45,7 +45,7 @@ class lvl1 extends Phaser.Scene //
 
 
         // chargement de la carte
-        this.carteDuNiveau = this.add.tilemap("carte");
+        this.carteDuNiveau = this.add.tilemap("carte2");
 
         // chargement du jeu de tuiles
         this.tileset = this.carteDuNiveau.addTilesetImage("Tile_Set","Phaser_tuilesdejeu");  
@@ -63,8 +63,18 @@ class lvl1 extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
-        //player = this.physics.add.sprite(4450, 2200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        //player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        playerHealth = 6;
+
+        //equilibrage lvl speed run//
+        runSpeed = 450;
+        kunaiSpeed = 1200;
+        SwitchX = 0;
+        SwitchY = 0;
+
+        SwitchX2 = 900;
+        SwitchY2 = 1000;
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -312,6 +322,10 @@ class lvl1 extends Phaser.Scene //
 
     update ()
     {
+        console.log(player.x);
+        console.log(player.y);
+        
+        playerSeishin = 7;
 
         if (gameOver == true)
         {
@@ -326,7 +340,7 @@ class lvl1 extends Phaser.Scene //
             //return;
         }
         
-        if(player.x >=4450 && player.y >= 2300)
+        if(player.x >=500 && player.y >= 2300)
         {
             if(kunaiTP == true)
             {
@@ -338,7 +352,7 @@ class lvl1 extends Phaser.Scene //
                 mark.Destroy();
             }
 
-            this.scene.start("Story3"); 
+            this.scene.start("lvl_boss"); 
         }
 
         //Controle Joueur
@@ -350,7 +364,7 @@ class lvl1 extends Phaser.Scene //
 
         UI();
 
-        Controls(this); 
+        Controls(this,"false"); 
 
         kunai_click(this);
 

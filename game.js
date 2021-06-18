@@ -16,7 +16,7 @@ var config = {
         target: 120,
         forceSetTimeOut: true
     },
-    scene: [Menu,lvl1,lvl_tuto,lvl_boss,ResetBoss,Story1],
+    scene: [Menu,lvl1,lvl_tuto,lvl_boss,ResetBoss,Story1,lvl2,Story2,Story3,Story4],
 };
 
 
@@ -196,6 +196,7 @@ var SwitchTime = 180;
 var kunaiTimerMax = 0;
 var kunaiTimerTouchedMax = 0;
 var markTimerMax = 0;
+var kunaiSpeed = 950;
 
 //Jump//
 var jumpSpeed = 700;
@@ -203,6 +204,14 @@ var jump_time_Max = 1;
 
 //run//
 var runSpeed =300;
+
+//Switch Door destroy //
+var SwitchX = 535;
+var SwitchY = 600;
+
+var SwitchX2 = 0;
+var SwitchY2 = 0;
+
 
 //
 var game = new Phaser.Game(config);

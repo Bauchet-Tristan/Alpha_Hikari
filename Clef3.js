@@ -39,7 +39,12 @@ class Clef3 extends Phaser.GameObjects.Sprite
             }
         }
 
-        if(player.y <= 600 && player.x <=535)
+
+        if(player.y <= SwitchY && player.x <=SwitchX)
+        {
+            this.destroy();
+        }
+        if(player.y >= SwitchY2 && player.x <=SwitchX2)
         {
             this.destroy();
         }

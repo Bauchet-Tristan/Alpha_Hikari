@@ -61,7 +61,8 @@ class lvl_boss extends Phaser.Scene //
         //---player--//
         player = this.physics.add.sprite(2550, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         //player = this.physics.add.sprite(playerX, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
-
+        playerHealth = 6;
+        
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
         player.setCollideWorldBounds(true);
@@ -328,7 +329,7 @@ class lvl_boss extends Phaser.Scene //
     {
         if(enemyNumberToUnlock >= 7)
         {
-            console.log("win");
+            this.scene.start("Story4"); 
         }
 
         playerSeishin=7;
