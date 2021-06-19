@@ -72,7 +72,7 @@ class lvl_tuto extends Phaser.Scene //
 
 
         //---player--//
-        player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(60,115,false);
         //player = this.physics.add.sprite(2500, 2000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
 
 
@@ -350,9 +350,6 @@ class lvl_tuto extends Phaser.Scene //
             }
             
             this.scene.start("Story2");
-
-           console.log(player.x); 
-           console.log(player.y); 
         }
         
         CloudMove();
@@ -369,6 +366,8 @@ class lvl_tuto extends Phaser.Scene //
         Mark_Space(this);
 
         Shifting();
+
+        AnimationDress();
 
         Jump();
 

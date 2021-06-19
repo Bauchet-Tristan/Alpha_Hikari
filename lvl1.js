@@ -358,12 +358,13 @@ class lvl1 extends Phaser.Scene //
 
         Shifting();
 
+        AnimationDress();
+
         Jump();
 
         Lightning();
         
         //Crouch();
-
 
         Balance();
 

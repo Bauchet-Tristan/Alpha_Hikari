@@ -18,19 +18,19 @@ class Kunai extends Phaser.GameObjects.Sprite
         //////// Hit box Propretie ////////
         HitBoxLeft = scene.physics.add.image(this.body.x,this.body.y,"HitBoxTP");
         HitBoxLeft.body.allowGravity = false;
-        HitBoxLeft.setSize(30,30);
+        HitBoxLeft.setSize(50,30);
 
         HitBoxRight = scene.physics.add.image(this.body.x,this.body.y,"HitBoxTP");
         HitBoxRight.body.allowGravity = false;
-        HitBoxRight.setSize(30,30);
+        HitBoxRight.setSize(50,30);
 
         HitBoxUp = scene.physics.add.image(this.body.x,this.body.y,"HitBoxTP");
         HitBoxUp.body.allowGravity = false;
-        HitBoxUp.setSize(30,30);
+        HitBoxUp.setSize(30,50);
 
         HitBoxDown = scene.physics.add.image(this.body.x,this.body.y,"HitBoxTP");
         HitBoxDown.body.allowGravity = false;
-        HitBoxDown.setSize(30,30);
+        HitBoxDown.setSize(30,50);
 
         HitBoxLeft.alpha = 0;
         HitBoxUp.alpha = 0;
@@ -46,22 +46,22 @@ class Kunai extends Phaser.GameObjects.Sprite
 
     HitBoxCollideleft()
     {   
-        KunaiHit ="left";
+        KunaiHitH ="left";
     }
 
     HitBoxCollideright()
     {   
-        KunaiHit ="right";
+        KunaiHitH ="right";
     }
 
     HitBoxCollidedown()
     {   
-        KunaiHit ="down";
+        KunaiHitV ="down";
     }
 
     HitBoxCollideup()
     {   
-        KunaiHit ="up";
+        KunaiHitV ="up";
     }
 
     HitBoxCollide(scene,kunai)
@@ -160,17 +160,17 @@ class Kunai extends Phaser.GameObjects.Sprite
 
     HitBoxFollow()
     {
-        HitBoxRight.x = this.body.x+50;
+        HitBoxRight.x = this.body.x+80;
         HitBoxRight.y = this.body.y+18;
 
-        HitBoxLeft.x = this.body.x-15;
+        HitBoxLeft.x = this.body.x-45;
         HitBoxLeft.y = this.body.y+18;
 
         HitBoxDown.x = this.body.x+18;
-        HitBoxDown.y = this.body.y+50;
+        HitBoxDown.y = this.body.y+80;
 
         HitBoxUp.x = this.body.x+18;
-        HitBoxUp.y = this.body.y-15;
+        HitBoxUp.y = this.body.y-45;
     }
 
 

@@ -14,8 +14,11 @@ class Menu extends Phaser.Scene //
         this.load.tilemapTiledJSON("carteBoss", "Map_Boss.json");
         this.load.tilemapTiledJSON("carte2", "Map_SpeedRun.json");
 
-        this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight.png", { frameWidth: 74, frameHeight: 103 });
-        this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft.png", { frameWidth: 74, frameHeight: 103 });
+        this.load.spritesheet("ArazamiR", "assets/CaractereAnnimationRight_94_130.png", { frameWidth: 94, frameHeight: 130 });
+        this.load.spritesheet("ArazamiL", "assets/CaractereAnnimationLeft_98_129.png", { frameWidth: 98, frameHeight: 129 });
+
+        this.load.spritesheet("ArazamiRDress", "assets/CaractereAnnimationRightDress_94_130.png", { frameWidth: 94, frameHeight: 130 });
+        this.load.spritesheet("ArazamiLDress", "assets/CaractereAnnimationLeftDress_98_129.png", { frameWidth: 98, frameHeight: 129 });
 
         this.load.image("Mark","assets/Mark.png");
         this.load.image("Projectile","assets/Projectile.png");
@@ -47,6 +50,7 @@ class Menu extends Phaser.Scene //
         this.load.spritesheet('ennemi', 'assets/wolf.png', { frameWidth: 211, frameHeight: 106 });
 
         this.load.spritesheet("GoatR", "assets/Bouquetin_116_123.png", { frameWidth: 116, frameHeight: 123 });
+        this.load.spritesheet("GoatL", "assets/BouquetinLeft_116_122.png", { frameWidth: 116, frameHeight: 122 });
  
         this.load.spritesheet("GrueR", "assets/Grue_Right_161_147.png", { frameWidth: 161, frameHeight: 147 });
         this.load.spritesheet("GrueL", "assets/Grue_Left_162_147.png", { frameWidth: 162, frameHeight: 147 });
@@ -153,20 +157,107 @@ class Menu extends Phaser.Scene //
 
         this.anims.create({
             key: 'JumpR',
-            frames: this.anims.generateFrameNumbers('ArazamiR', { start: 44, end: 59 }),
-            frameRate: 16,
+            frames: this.anims.generateFrameNumbers('ArazamiR', { start: 44, end: 57 }),
+            frameRate: 20,
             repeat: -1
         });
 
         this.anims.create({
             key: 'JumpL',
-            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 44, end: 59 }),
-            frameRate: 16,
+            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 44, end: 57 }),
+            frameRate: 20,
             repeat: -1
         });
-        /////
 
-         ///////////les anims Ennemi
+        this.anims.create({
+            key: 'ThunderL',
+            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 92, end: 105 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'ThunderR',
+            frames: this.anims.generateFrameNumbers('ArazamiL', { start: 92, end: 105 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+
+
+        //////////Anims Dress /////////
+        this.anims.create({
+            key: 'RunLeftDress',
+            frames: this.anims.generateFrameNumbers('ArazamiLDress', { start: 61, end: 89 }),
+            frameRate: 40,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'RunRightDress',
+            frames: this.anims.generateFrameNumbers('ArazamiRDress', { start: 61, end: 89 }),
+            frameRate: 40,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'IdleRDress',
+            frames: this.anims.generateFrameNumbers('ArazamiRDress', { start: 0, end: 29 }),
+            frameRate: 30,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'IdleLDress',
+            frames: this.anims.generateFrameNumbers('ArazamiLDress', { start: 0, end: 29 }),
+            frameRate: 30,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'AttackLDress',
+            frames: this.anims.generateFrameNumbers('ArazamiLDress', { start: 31, end: 42 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'AttackRDress',
+            frames: this.anims.generateFrameNumbers('ArazamiRDress', { start: 31, end: 42 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'JumpRDress',
+            frames: this.anims.generateFrameNumbers('ArazamiRDress', { start: 44, end: 57 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'JumpLDress',
+            frames: this.anims.generateFrameNumbers('ArazamiLDress', { start: 44, end: 57 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'ThunderLDress',
+            frames: this.anims.generateFrameNumbers('ArazamiLDress', { start: 92, end: 105 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'ThunderRDress',
+            frames: this.anims.generateFrameNumbers('ArazamiLDress', { start: 92, end: 105 }),
+            frameRate: 20,
+            repeat: -1
+        });
+
+
+        ///////////les anims Ennemi
         this.anims.create({
             key: 'WolfLeft',
             frames: this.anims.generateFrameNumbers('ennemi', { start: 0, end: 11 }),
@@ -193,6 +284,20 @@ class Menu extends Phaser.Scene //
         this.anims.create({
             key: 'GoatJump',
             frames: this.anims.generateFrameNumbers('GoatR', { start: 0, end: 14 }),
+            frameRate: 14,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'GoatIdleL',
+            frames: this.anims.generateFrameNumbers('GoatL', { start: 16, end: 32 }),
+            frameRate: 16,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'GoatJumpL',
+            frames: this.anims.generateFrameNumbers('GoatL', { start: 0, end: 14 }),
             frameRate: 14,
             repeat: -1
         });
@@ -305,7 +410,6 @@ function Fond(scene)
 
     //cloud
     alea = Math.random();
-    console.log(cloud1);
 
     scene.add.image(2300, 950, 'FOND5').setScrollFactor(0.8,0.6);
     scene.add.image(2700, 950, 'FOND4').setScrollFactor(0.65,0.6);
@@ -512,6 +616,7 @@ function kunai_click(scene)
         kunai_active = true;
         kunaiTimer = 0;
         kunaiTimerTouched =0;
+        this.animKunai = 50;
 
         kunai = new Kunai(scene, player.x, player.y - 20);
         songKunai.play();
@@ -615,28 +720,31 @@ function kunai_click(scene)
 
         playerSeishin--;
         // 
-        if(KunaiHit=="right")
+        if(KunaiHitV=="down")
         {
-            player.x=kunai.x-20;
-            player.y=kunai.y-30;
+            player.y=kunai.y-60;
         }
-        else if(KunaiHit=="left")
+        else if(KunaiHitV=="up")
         {
-            player.x=kunai.x+20;
-            player.y=kunai.y-30;
-        }
-        else if(KunaiHit=="down")
-        {
-            player.x=kunai.x;
-            player.y=kunai.y-30;
-        }
-        else if(KunaiHit=="up")
-        {
-            player.x=kunai.x;
-            player.y=kunai.y+20;
+            player.y=kunai.y+40;
         }
 
-        //dconsole.log(KunaiHit);
+
+        if(KunaiHitH=="right")
+        {
+            player.x=kunai.x-30;
+        }
+
+        else if(KunaiHitH=="left")
+        {
+            player.x=kunai.x+30;
+
+        }
+
+        
+        
+
+        //console.log(KunaiHit);
         //KunaiHit = "up";
         
         kunai.Destroy();
@@ -807,38 +915,150 @@ function Controls(scene,didier)
     }
 }
 
+function Animation()
+{
+    if(lastDirection=="left")
+    {
+        player.setOffset(25,15).setSize(60,110,false);
+
+        if(lightning_attack == true)
+        {
+            player.anims.play('ThunderL', true);
+        }
+
+        else if(this.animKunai >0)
+        {
+            this.animKunai--;
+            player.anims.play('AttackL', true);
+        }
+        else if(jump == true || this.animJump>0)
+        {
+            this.animJump--;
+
+            player.anims.play('JumpL', true);
+        }
+        else if(runLeft == true)
+        {
+            player.anims.play('RunLeft', true);
+        }
+        else
+        {
+            player.anims.play('IdleL', true);
+        }
+    }
+    else
+    {
+        player.setOffset(15,15).setSize(60,110,false);
+
+        if(lightning_attack == true)
+        {
+            player.anims.play('ThunderR', true);
+        }
+
+        else if(this.animKunai >0)
+        {
+            this.animKunai--;
+            player.anims.play('AttackR', true);
+        }
+        else if(jump == true || this.animJump>0)
+        {
+            this.animJump--;
+
+            player.anims.play('JumpR', true);
+        }
+        else if(runRight == true)
+        {
+            player.anims.play('RunRight', true);
+        }
+        else
+        {
+            player.anims.play('IdleR', true);
+        }
+    }
+
+}
+
+
+function AnimationDress()
+{
+    if(lastDirection=="left")
+    {
+        player.setOffset(25,15).setSize(60,110,false);
+
+        if(lightning_attack == true)
+        {
+            player.anims.play('ThunderLDress', true);
+        }
+
+        else if(this.animKunai >0)
+        {
+            this.animKunai--;
+            player.anims.play('AttackLDress', true);
+        }
+        else if(jump == true || this.animJump>0)
+        {
+            this.animJump--;
+
+            player.anims.play('JumpLDress', true);
+        }
+        else if(runLeft == true)
+        {
+            player.anims.play('RunLeftDress', true);
+        }
+        else
+        {
+            player.anims.play('IdleLDress', true);
+        }
+    }
+    else
+    {
+        player.setOffset(15,15).setSize(60,110,false);
+
+        if(lightning_attack == true)
+        {
+            player.anims.play('ThunderRDress', true);
+        }
+
+        else if(this.animKunai >0)
+        {
+            this.animKunai--;
+            player.anims.play('AttackRDress', true);
+        }
+        else if(jump == true || this.animJump>0)
+        {
+            this.animJump--;
+
+            player.anims.play('JumpRDress', true);
+        }
+        else if(runRight == true)
+        {
+            player.anims.play('RunRightDress', true);
+        }
+        else
+        {
+            player.anims.play('IdleRDress', true);
+        }
+    }
+
+}
+
 function Shifting()
 {
     if(runLeft == true)
     {
         lastDirection ="left";
         player.setVelocityX(-runSpeed);
-        player.anims.play('RunLeft', true);
-        player.setOffset(15,10).setSize(50,85,false);
 
     }
     else if (runRight == true)
     {
         lastDirection ="right";
         player.setVelocityX(runSpeed);
-        player.anims.play('RunRight', true);
-        player.setOffset(5,10).setSize(50,85,false);
-
+       // player.anims.play('RunRight', true);
     }
     else if(idle == true)
     {
         player.setVelocityX(0);
-
-        if(lastDirection=="left")
-        {
-            player.anims.play('IdleL', true);
-            player.setOffset(20,10).setSize(40,85,false);
-        }
-        else
-        {
-            player.anims.play('IdleR', true);
-            player.setOffset(10,10).setSize(40,85,false);
-        }
     }
     else{}
 }
@@ -860,16 +1080,7 @@ function Jump()
 
 
         player.setVelocityY(-jumpSpeed);
-        if(lastDirection=="left")
-        {
-            //player.setVelocityX(-400);
-            player.anims.play('JumpL', true);
-        }
-        else if(lastDirection=="right")
-        {
-            //player.setVelocityX(400);
-            player.anims.play('JumpR', true);
-        }
+        this.animJump=80;
     }
     else
     {

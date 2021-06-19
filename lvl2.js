@@ -63,18 +63,20 @@ class lvl2 extends Phaser.Scene //
 
 
         //---player--//
-        //player = this.physics.add.sprite(playerX, playerY, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
+        //player = this.physics.add.sprite(2000, 1000, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         player = this.physics.add.sprite(200, 200, 'dude').setOrigin(0.5,0.5).setSize(40,85,false);
         playerHealth = 6;
 
         //equilibrage lvl speed run//
         runSpeed = 450;
-        kunaiSpeed = 1200;
+        kunaiSpeed = 1250;
         SwitchX = 0;
         SwitchY = 0;
 
         SwitchX2 = 900;
         SwitchY2 = 1000;
+
+        //restartDoor3 = 1;
 
         this.physics.world.setBounds(0,0,this.carteDuNiveau.widthInPixels,this.carteDuNiveau.heightInPixels);
 
@@ -279,7 +281,7 @@ class lvl2 extends Phaser.Scene //
             this.physics.add.collider(this.Ennemi3List[groupeEnnemi3Objects.indexOf(i)],this.plateformes);
         }
 
-        ///
+        ///Boss Platform
         const groupeBossPlatformObjects= this.carteDuNiveau.getObjectLayer('Object/BossPlatform').objects;
 
         this.BossPlatformList = [];
@@ -288,13 +290,13 @@ class lvl2 extends Phaser.Scene //
         {
             this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)] = new BossPlatform(this,i.x+40,i.y);
 
-            this.collideBossPlatform = this.physics.add.collider(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
+            this.collideBossPlatform = this.physics.add.overlap(this.BossPlatformList [groupeBossPlatformObjects.indexOf(i)],player);
         }
 
 
         ///////////Collide///////////
-
         this.physics.add.collider(player, this.plateformes);
+        
         
         ///////// UI
         UICreation(this);
@@ -321,10 +323,7 @@ class lvl2 extends Phaser.Scene //
 
 
     update ()
-    {
-        console.log(player.x);
-        console.log(player.y);
-        
+    {        
         playerSeishin = 7;
 
         if (gameOver == true)
@@ -333,8 +332,8 @@ class lvl2 extends Phaser.Scene //
             playerHealth = 6;
             playerSeishin = 6;
 
-            player.x = playerX;
-            player.y = playerY;
+            player.x = 200;
+            player.y = 200;
 
             gameOver = false;
             //return;
@@ -371,6 +370,8 @@ class lvl2 extends Phaser.Scene //
         Mark_Space(this);
 
         Shifting();
+
+        Animation();
 
         Jump();
 

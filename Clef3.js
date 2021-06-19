@@ -14,7 +14,6 @@ class Clef3 extends Phaser.GameObjects.Sprite
 
         this.body.setRotation = 20;
 
-
     }
 
     keyPlayer()
@@ -22,7 +21,7 @@ class Clef3 extends Phaser.GameObjects.Sprite
         keyNumber3++;
         SwitchDoor3Open = 0;
         //console.log(keyNumber);
-    }
+    } 
 
     Switch(key,player)
     {

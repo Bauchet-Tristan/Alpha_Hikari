@@ -18,6 +18,7 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
         this.alive = true;
         this.TimeOut =0;
         this.takeHit = false;
+        this.distancePlayerEnemy = 0;
     }
 
     Destroy()
@@ -28,6 +29,10 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
     Patern(collide) 
     {
         //console.log("didier");
+
+        this.distancePlayerEnemy = player.x - this.body.x;
+
+
         if(this.alive==false)
         {
             this.TimeOut++;
@@ -47,11 +52,26 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
             if(jump == true && this.body.blocked.down == true)
             {
                 this.body.setVelocityY(-jumpSpeed);
-                this.anims.play('GoatJump',true);
+
+                if(this.distancePlayerEnemy>100)
+                {
+                    this.anims.play('GoatJump',true);
+                }
+                else
+                {
+                    this.anims.play('GoatJumpL',true);
+                }
             }
             else if(this.body.blocked.down == true)
             {
-                this.anims.play('GoatIdle',true);
+                if(this.distancePlayerEnemy>100)
+                {
+                    this.anims.play('GoatIdle',true);
+                }
+                else
+                {
+                    this.anims.play('GoatIdleL',true);
+                }
             }
 
             if(this.takeHit == true)

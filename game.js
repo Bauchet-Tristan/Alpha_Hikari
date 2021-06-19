@@ -6,7 +6,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 1400 },
-            debug: false
+            debug: true
         }
     },
     input:{
@@ -139,7 +139,8 @@ var kunai_throw = false;
 var kunai_active = false;
 var kunai_touched = false;
 var kunaiUnlock = true;
-var KunaiHit = "up";
+var KunaiHitV = "up";
+var KunaiHitH = "right";
 var HitBoxLeft;
 var HitBoxRight;
 var HitBoxDown;
@@ -162,7 +163,7 @@ var keyNumber3 = 0;
 
 //Door
 var enemyNumberToUnlock=0;
-var restartDoor3; 
+var restartDoor3=0; 
 var SwitchDoor3Open = 0;
 
 

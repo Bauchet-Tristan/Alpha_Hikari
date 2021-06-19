@@ -52,7 +52,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
                 this.speed = 300;
             }
 
-            this.distancePlayerEnemy = player.x - this.body.x;
+            this.distancePlayerEnemy = player.x - this.body.x; 
             //console.log(distancePlayerEnemy);
             
             if(this.distancePlayerEnemy > 1000 || this.distancePlayerEnemy < -1000 ||//distance max

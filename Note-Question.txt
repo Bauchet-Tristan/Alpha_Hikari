@@ -5,15 +5,11 @@
 
 
 
-- Integration des scenes story + reglage voix + creation des dialogues
+- Integration des scenes story + reglage voix
 
 - Integration Voix
 
 
-
-- flip la chevre si on est a gauche ou a droite
-
-- Lvl design sequence Running (timer),Booster
 
 - Integration decors
 
@@ -21,16 +17,12 @@
 
 
 
+
+Code Amelioratif v// :
+
+- Fonction Agrandissement taille camera /vision de jeu quand player est arreter
+
 - Integration Mobile contrôle
 
 - Integration Menu clickable
 
-
-
-Code Bonus :
-
-- Fonction Agrandissement taille camera /vision de jeu quand player est arreter
-
-
-
-/////Info 2D/////

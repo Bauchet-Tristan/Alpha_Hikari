@@ -385,6 +385,8 @@ class lvl_boss extends Phaser.Scene //
         Mark_Space(this);
 
         Shifting();
+        
+        Animation();
 
         Jump();
 
@@ -453,7 +455,7 @@ class lvl_boss extends Phaser.Scene //
             }
             enemyNumberToUnlock++;
         }
-        //console.log(enemyNumberToUnlock);
+
         if(enemyNumberToUnlock == 3)
         {
             const groupeEnnemi1Objects = this.carteDuNiveau.getObjectLayer('Object/Ennemi1').objects;
