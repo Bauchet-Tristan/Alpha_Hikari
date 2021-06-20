@@ -1,0 +1,1 @@
+Extraire le fichier " electron.rar " pour obtenir l'executable.
