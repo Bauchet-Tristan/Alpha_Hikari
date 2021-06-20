@@ -95,6 +95,7 @@ class Ennemi1 extends Phaser.GameObjects.Sprite
             //enemy.destroy();
             enemy.alive=false;
             enemyNumberToUnlock++;
+            invincibleTimer = 120;
         }
         else
         {

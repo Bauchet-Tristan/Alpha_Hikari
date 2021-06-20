@@ -30,6 +30,47 @@ var songStormTpKunai;
 var songStormTpMark;
 var songStormLightning; 
 
+var musicEffectConfig ={
+    mute: false,
+    volume: 0.8,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0
+}
+
+var musiclvlConfig ={
+    mute: false,
+    volume: 0.25,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: true,
+    delay: 0
+}
+
+this.storyConfigYindol ={
+    mute: false,
+    volume: 2,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0
+}
+
+this.storyConfig ={
+    mute: false,
+    volume: 22,
+    rate: 1,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0
+}
+
+
 //Cloud
 var alea;
 

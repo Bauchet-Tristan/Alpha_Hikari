@@ -332,14 +332,6 @@ class Menu extends Phaser.Scene //
             repeat: -1
         });
 
-        //Projectile
-        /*this.anims.create({
-            key: 'MarkAnimationRotate',
-            frames: this.anims.generateFrameNumbers('MarkAnimation', { start: 0, end: 9 }),
-            frameRate: 10,
-            repeat: -1
-        });*/
-
         this.anims.create({
             key: 'LightningLink',
             frames: this.anims.generateFrameNumbers('LightningLink', { start: 0, end: 15 }),
@@ -384,8 +376,8 @@ class Menu extends Phaser.Scene //
 
     update()
     {
-        this.scene.start("Story1"); 
-        //controling(this);
+        //this.scene.start("Story4"); 
+
 
         if(cursors.space.isDown)
         {
@@ -393,12 +385,6 @@ class Menu extends Phaser.Scene //
         }
         
     }
-}
-
-// Fonction du code
-function controling(scene)
-{
-    boby=cursors.space.isDown;
 }
 
 function Fond(scene)
@@ -619,7 +605,7 @@ function kunai_click(scene)
         this.animKunai = 50;
 
         kunai = new Kunai(scene, player.x, player.y - 20);
-        songKunai.play();
+        songKunai.play(musicEffectConfig);
 
         scene.physics.add.collider(kunai, scene.plateformes,kunai.KunaiPlatforme);
         for(let i = 0; i< scene.doorList.length; i++)
@@ -715,7 +701,7 @@ function kunai_click(scene)
 
     if(kunai_Throwing && kunai_throw == true && kunaiTP == true && playerSeishin > 0)
     {
-        songStormTpKunai.play();
+        songStormTpKunai.play(musicEffectConfig);
         sparkle.anims.play('LightningLinkTP',true);
 
         playerSeishin--;
@@ -823,7 +809,7 @@ function Mark_Space(scene)
     if(markStand && mark_throw == true && markTP == true && playerSeishin > 0)
     {
         sparkle2.anims.play('LightningLinkTP',true);
-        songStormTpMark.play();
+        songStormTpMark.play(musicEffectConfig);
         playerSeishin--;
         player.x=mark.x;
         player.y=mark.y;
@@ -889,7 +875,7 @@ function Controls(scene,didier)
     if(downButton==true && !player.body.blocked.down) 
     {
         lightning_attack = true;
-        songStormLightning.play();
+        songStormLightning.play(musicEffectConfig);
     }
 
     if(player.body.blocked.down==true)

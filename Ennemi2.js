@@ -89,12 +89,15 @@ class Ennemi2 extends Phaser.GameObjects.Sprite
 
     Ennemi2Player(enemy)
     {
+        console.log(invincibleTimer);
+
         if(lightning_attack==true && enemy.alive==true)
         {
             //enemy.anims.play('enemyDie',true);
             //enemy.destroy();
             enemy.alive=false;
             enemyNumberToUnlock++;
+            invincibleTimer = 120;
         }
         else
         {

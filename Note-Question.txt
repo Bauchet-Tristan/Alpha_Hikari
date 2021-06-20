@@ -1,10 +1,6 @@
 ﻿A faire :
 
 
-- Player Asset + Creer une fonction animation avec les anims + Equilibrage inGame
-
-
-
 - Integration des scenes story + reglage voix
 
 - Integration Voix

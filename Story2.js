@@ -8,6 +8,10 @@ class Story2 extends Phaser.Scene //
 
     preload ()
     {
+        this.load.audio("Story2","Song/Story/Story_2.mp3");
+
+        //
+        this.load.image("Story2Arazuma","assets/Story/72ppi/Story2Arazuma.png");
     }
 
     create ()
@@ -18,6 +22,15 @@ class Story2 extends Phaser.Scene //
         //
         this.skip =true;
         this.dialogue =0;
+
+        //Song
+        this.Story2 = this.sound.add("Story2");
+
+        /////////////
+
+        this.image = this.add.image(600, 625, 'Story2Arazuma').setAlpha(0);
+        this.add.image(950, 100, 'StorySpace');
+        
 
         cursors.space.reset();
     }
@@ -36,12 +49,26 @@ class Story2 extends Phaser.Scene //
         {
             this.skip=true;            
         }
+        ////////////////////////////
 
+        if(this.dialogue==0)
+        {
+            this.Story2.play(storyConfig);           
+        }
 
         if(this.dialogue==1)
         {
-            this.scene.start("lvl1");             
+            this.image.setAlpha(1);          
         }
+
+        
+        if(this.dialogue == 2)
+        {
+            this.Story2.stop();  
+            this.scene.start("lvl1"); 
+        }
+
+
     }
 }
 

@@ -13,19 +13,6 @@ class lvl1 extends Phaser.Scene //
     create ()
     {
         keyNumber = 0;
-
-        //Song
-        var musiclvlConfig ={
-            mute: false,
-            volume: 0.3,
-            rate: 1,
-            detune: 0,
-            seek: 0,
-            loop: true,
-            delay: 0
-        }
-        musiclvl.play(musiclvlConfig);
-
         
         
         Fond(this);
