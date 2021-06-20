@@ -19,6 +19,7 @@ class Story4 extends Phaser.Scene //
 
     create ()
     {
+        musiclvl.stop();
         musiclvl = this.sound.add("lvlSong");
         musiclvl.play(musiclvlConfig);
 
@@ -55,7 +56,6 @@ class Story4 extends Phaser.Scene //
         {
             this.skip=false;
             this.dialogue++;
-            console.log("+1");
         }
 
         if(cursors.space.isUp)

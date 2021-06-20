@@ -14,9 +14,12 @@ class lvl2 extends Phaser.Scene //
     create ()
     {
         keyNumber = 0;
-        musiclvl = this.sound.add("lvlSong2");
+        keyNumber2 = 0;
+        musiclvl.stop();
+
 
         //Song
+        musiclvl = this.sound.add("lvlSong2");
         musiclvl.play(musiclvlConfig);
        
         

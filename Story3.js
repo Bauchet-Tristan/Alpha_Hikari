@@ -28,6 +28,8 @@ class Story3 extends Phaser.Scene //
 
     create ()
     {
+
+
         cursors.space.reset();
         cursors = this.input.keyboard.createCursorKeys();
 
@@ -69,7 +71,6 @@ class Story3 extends Phaser.Scene //
         {
             this.skip=false;
             this.dialogue++;
-            //console.log("+1");
         }
 
         if(cursors.space.isUp)

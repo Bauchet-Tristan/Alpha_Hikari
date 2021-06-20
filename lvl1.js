@@ -13,7 +13,7 @@ class lvl1 extends Phaser.Scene //
     create ()
     {
         keyNumber = 0;
-        
+                
         
         Fond(this);
         cursors = this.input.keyboard.createCursorKeys();

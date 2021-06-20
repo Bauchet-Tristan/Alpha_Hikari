@@ -44,7 +44,6 @@ class Story1 extends Phaser.Scene //
         if(cursors.space.isDown && this.skip==true)
         {
             this.dialogue++;
-            console.log("+1");
             this.skip=false;
         }
 
