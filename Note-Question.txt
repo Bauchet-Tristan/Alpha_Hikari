@@ -1,20 +1,8 @@
 ﻿A faire :
 
 
-- Integration des scenes story + reglage voix
 
-- Integration Voix
-
-
-
-- Integration decors
-
-- Diapo
-
-
-
-
-Code Amelioratif v// :
+Code Amelioratif //:
 
 - Fonction Agrandissement taille camera /vision de jeu quand player est arreter
 
